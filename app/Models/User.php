@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -12,7 +12,6 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-   
     use HasFactory;
     use Notifiable;
     use HasApiTokens;
