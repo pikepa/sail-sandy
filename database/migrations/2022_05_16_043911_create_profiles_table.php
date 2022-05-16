@@ -17,6 +17,7 @@ return new class () extends Migration {
 
             $table->uuid('uuid')->unique();
             $table->text('bio')->nullable();
+            $table->foreignId('user_id')->index()->constrained()->cascadeOnDelete();
 
             $table->timestamps();
         });
