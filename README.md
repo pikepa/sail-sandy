@@ -8,4 +8,4 @@ This is a news media site for Bomborra Productions owned by Luke Hunt a well kno
 ## Status
 
 - Converting a wordpress site to Laravel Version 9
-- Deveoping the new landing page.
+- Developing the new landing page.

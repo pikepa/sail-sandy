@@ -19,22 +19,9 @@
     </head>
     <body class="font-sans antialiased">
 
-            <div class="max-w-4xl mx-auto px-6 grid grid-row grid-cols-8 gap-12 mt-16">
-
-                <div>
-                    sidebar
-                </div>
-                <div>
-                    sidebar
-                </div>
-                <div>
-                    sidebar
-                </div>
-                <div>
+            <div >
 
                 {{ $slot }}
-
-                </div>
 
             </div>
         @livewireScripts
