@@ -1,10 +1,11 @@
 <x-app-layout>
     
-All Posts
-
+<div class="p-4 text-4xl text-gray-700 font-bold text-center">All Posts</div>
 
 @foreach($posts as $item)
-<li class="list-disc">    {{$item->title}} </li>
+<li>    {{$item->title}} <br>
+{{$item->body}}
+</li>
 @endforeach
 
 </x-app-layout>

@@ -11,4 +11,5 @@ it('can return all posts', function()
                                                 ->assertSee('All Posts')
                                                 ->assertSee('my title');
 
+
 });
