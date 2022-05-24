@@ -3,12 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ManagePostsController;
+use App\Http\Controllers\ManageSubscriberController;
 
 
 Route::get('/', HomeController::class);
 
 
 Route::resource('posts',ManagePostsController::class);
+Route::resource('subscribers',ManageSubscriberController::class);
 
 
 // ---------

@@ -11,5 +11,6 @@ it('can return all posts', function()
                                                 ->assertSee('All Posts')
                                                 ->assertSee('my title');
 
+    expect(Post::latest()->first()->title)->toBe('my title');
 
 });
