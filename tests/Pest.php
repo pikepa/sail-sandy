@@ -6,6 +6,10 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 // Uses the given test case and trait in the current folder recursively
 uses(TestCase::class, RefreshDatabase::class)->in(__DIR__);
 
+// laravel plugin specific
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Expectations
