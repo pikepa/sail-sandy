@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Subscriber;
-use Tests\RequestFactories\SignupRequestFactory;
 
 use function Pest\Laravel\post;
 use function Pest\Faker\faker;

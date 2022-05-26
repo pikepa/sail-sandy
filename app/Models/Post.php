@@ -7,10 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = [
-        'title',
-        'uuid',
-        'body',
-    ];
+    protected $guarded = [];
+
     use HasFactory;
 }

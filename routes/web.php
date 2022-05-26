@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ManagePostsController;
 use App\Http\Controllers\ManageSubscriberController;
 
@@ -13,8 +14,9 @@ Route::resource('posts',ManagePostsController::class);
 Route::resource('subscribers',ManageSubscriberController::class);
 
 
-// ---------
+Route::resource('categories',CategoryController::class);
 
+// ---------
 
 Route::get('/dashboard', function () {
     return view('dashboard');
