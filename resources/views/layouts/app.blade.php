@@ -20,9 +20,11 @@
     <body class="font-sans antialiased">
 
             <div >
+                <div class="max-w-6xl p-2 mx-auto mt-2 bg-slate-200 rounded-lg">
 
                 {{ $slot }}
 
+                </div>
             </div>
         @livewireScripts
     </body>
