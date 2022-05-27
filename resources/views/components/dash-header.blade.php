@@ -1,15 +1,16 @@
     <div class="mb-4 min-h-34 p-2 bg-teal-50 rounded-lg flex flex-row justify-between">
         <div class="ml-2 flex flex-row space-x-4 items-center">
                 <div><a href='/'>Home Page</a></div>
-                <div>Pages</div>
-                <div>Posts</div>
-                <div> <a href='/categories'>Categories</a> </div>
-        </div>
+                @if (URL::current() != url('/pages') )<div> <a href='/pages'>Manage Pages</a> </div>@endif
+                @if (URL::current() != url('/posts') )<div> <a href='/posts'>Manage Posts</a> </div>@endif
+                @if (URL::current() != url('/categories') )<div> <a href='/categories'>Manage Categories</a> </div>@endif
+                @if (URL::current() != url('/dashboard') )<div> <a href='/dashboard'>Dashboard</a> </div>@endif
+            </div>
 
          @auth
             <div class="mr-2 flex flex-row space-x-4 items-center">
                 <div>
-                    {{auth()->user()->name}}
+                   Hi {{auth()->user()->name}}
                 </div>
                 <div class="text-end">
                     <form method="POST" action="{{ route('logout') }}">
