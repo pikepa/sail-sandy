@@ -1,38 +1,55 @@
 <?php
 
-use App\Models\Category;
-use function Pest\Laravel\get;
-use function Pest\Laravel\post;
+use App\Models\User;
+use Livewire\Livewire;
+use App\Http\Livewire\Category\ManageCategories;
 
 
-test('Category is a mandatory field', function () {
+beforeEach(function () {
+  $this->user = User::factory()->create();
+}); 
 
-    $this->signIn();
-       
-    $cat= ['category'=>'', 'status'=>1];
-    
-    post('/categories',$cat)->assertInvalid(['category' => 'The category field is required.']);
-  
-  });
-  
-  test('Category is a unique value field', function () {
-  
-    Category::create(['category'=>'Featured', 'status'=>'1']);
-  
-    $this->signIn();
-       
-    $cat= ['category'=>'Featured', 'status'=>'1'];
-    
-    post('/categories',$cat)->assertInvalid(['category' => 'The category has already been taken.']);
-  
-  });
-  
-  test('Status is either 0 or 1', function () {
-  
-    $this->signIn();
-       
-    $cat= ['category'=>'Featured', 'status'=>'2'];
-    
-    post('/categories',$cat)->assertInvalid(['status' => 'The status must be between 0 and 1.']);
-  
-  });
+
+test('A category is required', function () {
+  $this->signIn($this->user);
+
+  Livewire::test(ManageCategories::class)
+  ->set('category','')
+  ->set('status', 1)
+  ->call('save')
+  ->assertHasErrors(['category' => 'required']);
+
+});
+
+test('A category has max chars 50', function () {
+  $this->signIn($this->user);
+
+  Livewire::test(ManageCategories::class)
+  ->set('category',str_repeat('s',51))
+  ->set('status', 1)
+  ->call('save')
+  ->assertHasErrors(['category' => 'max']);
+
+});
+
+test('A status is required', function () {
+  $this->signIn($this->user);
+
+  Livewire::test(ManageCategories::class)
+  ->set('category','Foo bar')
+  ->set('status', '')
+  ->call('save')
+  ->assertHasErrors(['status' => 'required']);
+
+});
+
+test('A status is an integer', function () {
+  $this->signIn($this->user);
+
+  Livewire::test(ManageCategories::class)
+  ->set('category','Foo bar')
+  ->set('status', '32.2')
+  ->call('save')
+  ->assertHasErrors(['status' => 'integer']);
+
+});
