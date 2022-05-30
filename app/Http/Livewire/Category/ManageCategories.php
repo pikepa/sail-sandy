@@ -10,9 +10,12 @@ class ManageCategories extends Component
     public $category='';
     public $status='';
     public $category_id='';
+    public $categories;
 
     public function render()
     {
+        $this->categories=Category::orderBy('category','asc')->get();
+
         return view('livewire.category.manage-categories');
     }
 
