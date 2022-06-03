@@ -20,3 +20,6 @@ This is the conversion of a news media site from wordpress to Laravel for Bombor
 
 ## Categories
 - [ ] Create Category CRUD.
+
+### Abilities
+- The Ability to *Manage Posts*

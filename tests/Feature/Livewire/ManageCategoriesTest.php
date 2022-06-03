@@ -34,7 +34,6 @@ test('an authorised user can create a category', function () {
 });
 
 
-
 test('an authorised user can update a category', function () {
     $this->signIn($this->user);
     $category=Category::factory()->create();
@@ -63,16 +62,13 @@ test('an authorised user can delete a category', function () {
 
 });
 
-test('an authorised user can see a category', function () {
+test('an authorised user can see a category listing', function () {
     $this->signIn($this->user);
     $category=Category::factory()->create();
 
     Livewire::test(ManageCategories::class)
-    ->set('category_id',$category->id)
- 
-    ->call('destroy')
-    ->assertSuccessful();
+    ->assertSee($category->category);
 
-    $this->assertDatabaseCount('categories', 0);
+    $this->assertDatabaseCount('categories',1);
 
-})->skip();
+});

@@ -32,7 +32,7 @@
                 </ul>
                 <div>
                     @auth
-                        <a class="uppercase text-gray-100 pr-4 " href="/dashboard">Dashboard</a>
+                    <a class="uppercase text-gray-100 pr-4 " href="/dashboard">Dashboard</a>
                     @endauth
                     @guest
                     <a class="uppercase text-gray-100 pr-4 " href="/login">Login</a>
@@ -100,8 +100,7 @@
                         The Book
                     </div>
                     <div class="row-span-2 row-end-auto">
-                        <img class='rounded-lg' src="images/PT-Front-Cover.jpeg"
-                            alt="Book_cover">
+                        <img class='rounded-lg' src="images/PT-Front-Cover.jpeg" alt="Book_cover">
                     </div>
                 </div>
             </div>

@@ -11,7 +11,7 @@ $this->withoutExceptionHandling();
 
         post('/subscribers', ['email' => $email])->assertValid();
 
-   //     expect(Subscriber::latest()->first()->email)->toBe($email);
+        expect(Subscriber::latest()->first()->email)->toBe($email);
 
 }); 
 
