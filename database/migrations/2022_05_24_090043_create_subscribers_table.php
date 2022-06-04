@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('subscribers', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
+            $table->timestamp('validated_at')->nullable();
             $table->timestamps();
         });
     }

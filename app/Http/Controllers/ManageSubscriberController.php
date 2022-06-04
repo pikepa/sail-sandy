@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SubsConfMail;
 use App\Models\Subscriber;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Mail;
 
 class ManageSubscriberController extends Controller
 {
@@ -37,9 +41,16 @@ class ManageSubscriberController extends Controller
     {
         $validated = $request->validate([
             'email' => 'email|required|unique:subscribers',
+            'validated_at' => '',
         ]);
 
-        Subscriber::create($validated);  
+        $subscriber = Subscriber::create($validated);  
+
+        if($subscriber){
+
+            $subscriber->sendOTP();
+
+        }
     
     }
 

@@ -6,10 +6,9 @@ use function Pest\Laravel\post;
 use function Pest\Faker\faker;
 
 test('anyone can subscribe to the Newsletter', function () {
-$this->withoutExceptionHandling();
         $email = faker()->email;
 
-        post('/subscribers', ['email' => $email])->assertValid();
+        post('/subscribers', ['email' => $email, ])->assertValid();
 
         expect(Subscriber::latest()->first()->email)->toBe($email);
 
@@ -45,15 +44,6 @@ test('an email is required for a subscribers table', function () {
 });
 
 
-test('when a subscription is successful, a confirmation email is sent', function () {
-        
-        $email = faker()->name;
-
-        post('/subscribers', ['email' => $email])
-
-        ->assertInvalid(['email' => 'The email field is required.']);
-
-})->skip();
 
 
 

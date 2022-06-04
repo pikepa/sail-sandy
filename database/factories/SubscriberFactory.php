@@ -18,7 +18,7 @@ class SubscriberFactory extends Factory
     {
         return [
             'email'        => $this->faker->unique()->safeEmail(),
-            'unsubscribed' => '',
+            'validated_at' => '',
        ];
     }
 }
