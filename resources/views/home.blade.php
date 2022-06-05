@@ -1,46 +1,16 @@
 <x-app-layout>
+    <x-pages.standard-page>
 
-    <div class="max-w-6xl p-4 mx-auto border-teal-100 rounded-lg border-2">
         <menus class="grid grid-cols-1 border-b-2 ">
-            <div class="rounded-t-lg p-2 text-gray-100  bg-gray-900 ">
-                <div class="uppercase flex flex-row justify-between items-center p-2 ">
-                    <div>Home</div>
-                    <div>Asia Watch</div>
-                    <div>The Vault</div>
-                    <div>Foreign Correspondence</div>
-                    <div>Highlights</div>
-                    <div>The Gallery</div>
-                    <div class="">
-                        <input class='text-gray-700 p-2 rounded' type="text" placeholder="Search">
-                    </div>
-                </div>
 
-            </div>
-            <div class="p-4 h-32 bg-teal-400">
-                <div class="p-2 uppercase text-gray-800 font-bold text-4xl   text-center">
-                    Bomborra Media Productions
-                </div>
-                <div class="p-2 uppercase text-red-600 font-semibold text-lg   text-center">
-                    THE TRUTH ALWAYS BREAKS - A COLLABORATION BY CORRESPONDENTS IN SOUTHEAST ASIA
-                </div>
-            </div>
-            <div class="flex flex-row justify-between items-center p-2 text-center bg-gray-900">
-                <ul class="uppercase flex text-gray-100 justify-left items-center p-2 ">
-                    <li class="mr-6">About Us</li>
-                    <li class="mr-6">Correspondents</li>
-                    <li>Broadcasts</li>
-                </ul>
-                <div>
-                    @auth
-                    <a class="uppercase text-gray-100 pr-4 " href="/dashboard">Dashboard</a>
-                    @endauth
-                    @guest
-                    <a class="uppercase text-gray-100 pr-4 " href="/login">Login</a>
-                    @endguest
-                </div>
-            </div>
+            <x-menus.menu-top />
 
-            <div class="p-2 bg-gray-100">News Ticker >>>></div>
+            <x-menus.menu-middle />
+
+            <x-menus.menu-bottom />
+
+            <x-menus.ticker />
+
         </menus>
 
         <main class="mt-1 flex flex-row space-x-1 justify-between ">
@@ -88,8 +58,10 @@
                 </div>
             </div>
             <div class="w-1/4  bg-white border-2 p-1">
+<div class="text-center font-semibold text-3xl">Newsletter</div>
                 <div class="p-2  pb-4 rounded-lg border-2 border-gray-200">
-                    <button class="rounded text-center text-xl font-bold text-teal-900  bg-teal-400 p-2 mt-2">Subscribe to our Newsletter</button>
+                    <button class="rounded text-center text-xl font-bold text-teal-900  bg-teal-400 p-2 mt-2">Subscribe
+                        to our Newsletter</button>
                 </div>
 
                 <div class="rounded-lg border-2 border-gray-200 ">
@@ -184,6 +156,6 @@
             </div>
         </footer>
 
-    </div>
+    </x-pages.standard-page>
 
 </x-app-layout>

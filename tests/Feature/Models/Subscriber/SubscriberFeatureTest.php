@@ -55,13 +55,13 @@ test('a name is required for a subscriber', function () {
 
 test('a newsletter subscribe button appears on the home screen', function () {
         
-       $res = get('/')->assertSee(['Subscribe to our Newsletter']);
+       $res = get('/')->assertSuccessful()
+       ->assertSee('Newsletter');
 
 });
 
 
 test('a guest user can see the create subscriber page', function () {
-//   $this->withoutExceptionHandling();
         $this->get('/subscribers/create')
          ->assertSuccessful()
          ->assertSee('Name')
