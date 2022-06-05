@@ -7,6 +7,7 @@ use function Pest\Faker\faker;
 
 test('anyone can subscribe to the Newsletter', function () {
         $email = faker()->email;
+        $name = faker()->name;
 
         post('/subscribers', ['email' => $email, ])->assertValid();
 
@@ -17,8 +18,9 @@ test('anyone can subscribe to the Newsletter', function () {
 test('an new email must be unique on the subscribers table', function () {
 
         $email = faker()->email;
+        $name = faker()->name;
        
-        Subscriber::create(['email' => $email]);
+        Subscriber::create(['email'=>$email, 'name'=>$name]);
         
         post('/subscribers', ['email' => $email])
 

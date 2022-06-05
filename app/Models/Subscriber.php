@@ -30,6 +30,8 @@ public function cacheTheOTP(){
 
     $OTP = Str::random(40);
 
+    $this->update(['validation_key'=>$OTP]);
+
     Cache::put([$this->OTPKey() => $OTP], now()->addMinutes(30));
 
     return $OTP;

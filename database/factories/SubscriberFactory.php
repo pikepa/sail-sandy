@@ -18,6 +18,8 @@ class SubscriberFactory extends Factory
     {
         return [
             'email'        => $this->faker->unique()->safeEmail(),
+            'name'        => $this->faker->unique()->name(),
+            'validation_key' => '',
             'validated_at' => '',
        ];
     }
