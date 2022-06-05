@@ -6,8 +6,9 @@ use App\Mail\SubsConfMail;
 use App\Models\Subscriber;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Cache;
+use App\Http\Livewire\Subscriber\CreateSubscriber;
 
 class ManageSubscriberController extends Controller
 {
@@ -26,9 +27,9 @@ class ManageSubscriberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-       
+        return view("livewire.subscriber.create-subscriber");
     }
 
     /**
@@ -45,14 +46,12 @@ class ManageSubscriberController extends Controller
             'validated_at' => '',
         ]);
 
-        $subscriber = Subscriber::create($validated);  
+        $subscriber = Subscriber::create($validated);
 
-        if($subscriber){
+        if ($subscriber) {
 
             $subscriber->sendOTP();
-
         }
-    
     }
 
     /**

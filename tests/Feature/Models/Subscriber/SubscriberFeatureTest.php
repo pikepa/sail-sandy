@@ -2,9 +2,10 @@
 
 use App\Models\Subscriber;
 
+use function Pest\Faker\faker;
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
-use function Pest\Faker\faker;
+use App\Http\Livewire\Subscriber\CreateSubscriber;
 
 test('anyone can subscribe to the Newsletter', function () {
         $email = faker()->email;
@@ -57,6 +58,15 @@ test('a newsletter subscribe button appears on the home screen', function () {
        $res = get('/')->assertSee(['Subscribe to our Newsletter']);
 
 });
+
+
+test('a guest user can see the create subscriber page', function () {
+//   $this->withoutExceptionHandling();
+        $this->get('/subscribers/create')
+         ->assertSuccessful()
+         ->assertSee('Name')
+         ->assertSee('Email');
+ });
 
 
 

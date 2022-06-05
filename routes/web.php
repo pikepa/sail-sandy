@@ -13,7 +13,7 @@ use App\Http\Controllers\VerifySubscriberController;
 * Guest Routes
 */
 Route::get('/', HomeController::class);
-Route::resource('subscribers',ManageSubscriberController::class);
+Route::resource('/subscribers',ManageSubscriberController::class);
 Route::post('/verifyOTP',[VerifySubscriberController::class, 'verify']);
 
 
