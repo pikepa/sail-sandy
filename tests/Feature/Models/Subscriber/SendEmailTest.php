@@ -13,7 +13,7 @@ test('an email is sent when a subscriber is created', function () {
         
     $email = faker()->email;
 
-    post('/subscribers', ['email' => $email]);
+    post('/subscribers', ['email' => $email, 'name' => 'Peter Piper']);
 
     Mail::AssertSent(SubsConfMail::class);
 });
@@ -36,7 +36,7 @@ test('an OTP is stored in Cache for the subscriber', function () {
         
     $email = faker()->email;
 
-    post('/subscribers', ['email' => $email]);
+    post('/subscribers', ['email' => $email, 'name' => 'Peter Piper']);
 
     $subscriber = Subscriber::get()->first();
     

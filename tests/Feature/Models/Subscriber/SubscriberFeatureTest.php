@@ -2,14 +2,14 @@
 
 use App\Models\Subscriber;
 
+use function Pest\Laravel\get;
 use function Pest\Laravel\post;
 use function Pest\Faker\faker;
 
 test('anyone can subscribe to the Newsletter', function () {
         $email = faker()->email;
-        $name = faker()->name;
 
-        post('/subscribers', ['email' => $email, ])->assertValid();
+        post('/subscribers', ['email' => $email,'name'=> 'Peter Piper' ])->assertValid();
 
         expect(Subscriber::latest()->first()->email)->toBe($email);
 
@@ -18,9 +18,8 @@ test('anyone can subscribe to the Newsletter', function () {
 test('an new email must be unique on the subscribers table', function () {
 
         $email = faker()->email;
-        $name = faker()->name;
        
-        Subscriber::create(['email'=>$email, 'name'=>$name]);
+        Subscriber::create(['email'=>$email]);
         
         post('/subscribers', ['email' => $email])
 
@@ -37,7 +36,7 @@ test('an new email must be a valid email', function () {
 
 });
 
-test('an email is required for a subscribers table', function () {
+test('an email is required for a subscriber', function () {
         
         post('/subscribers', ['email' => ''])
 
@@ -45,11 +44,17 @@ test('an email is required for a subscribers table', function () {
 
 });
 
-test('an name is required for a subscribers table', function () {
+test('a name is required for a subscriber', function () {
         
         post('/subscribers', ['name' => ''])
 
         ->assertInvalid(['name' => 'The name field is required.']);
+
+});
+
+test('a newsletter subscribe button appears on the home screen', function () {
+        
+       $res = get('/')->assertSee(['Subscribe to our Newsletter']);
 
 });
 

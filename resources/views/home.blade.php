@@ -87,12 +87,9 @@
                     </div>
                 </div>
             </div>
-            <div class="w-1/4 grid grid-cols-1 space-y-2 bg-white border-2 p-1">
-                <div class="p-2 text-center text-xl Font-bold text-teal-900 pb-4 rounded-lg border-2 border-gray-200">
-                    Subscribe to our mailing list.
-                    <input class='inline-block w-full p-2 mt-2 border border-gray-1 rounded' type="text"
-                        placeholder="Email Address" />
-                    <button class="rounded bg-teal-400 p-2 mt-2">Submit</button>
+            <div class="w-1/4  bg-white border-2 p-1">
+                <div class="p-2  pb-4 rounded-lg border-2 border-gray-200">
+                    <button class="rounded text-center text-xl font-bold text-teal-900  bg-teal-400 p-2 mt-2">Subscribe to our Newsletter</button>
                 </div>
 
                 <div class="rounded-lg border-2 border-gray-200 ">
