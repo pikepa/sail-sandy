@@ -45,6 +45,14 @@ test('an email is required for a subscribers table', function () {
 
 });
 
+test('an name is required for a subscribers table', function () {
+        
+        post('/subscribers', ['name' => ''])
+
+        ->assertInvalid(['name' => 'The name field is required.']);
+
+});
+
 
 
 

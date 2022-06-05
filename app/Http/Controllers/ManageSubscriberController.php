@@ -41,6 +41,7 @@ class ManageSubscriberController extends Controller
     {
         $validated = $request->validate([
             'email' => 'email|required|unique:subscribers',
+            'name' => 'required',
             'validated_at' => '',
         ]);
 
