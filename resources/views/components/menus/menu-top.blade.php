@@ -1,6 +1,6 @@
 <div class="rounded-t-lg p-2 text-gray-100  bg-gray-900 ">
     <div class="uppercase flex flex-row justify-between items-center p-2 ">
-        <div>Home</div>
+        <a href="/"><div>Home</div></a>
         <div>Asia Watch</div>
         <div>The Vault</div>
         <div>Foreign Correspondence</div>

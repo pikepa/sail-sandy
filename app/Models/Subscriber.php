@@ -43,7 +43,8 @@ public function sendOTP(){
     $this->cacheTheOTP();
 
     Mail::to($this->email)
-    ->send(new SubscribedEmail($this->cacheTheOTP(),$this->id));
+  //  ->send(new SubscribedEmail($this->cacheTheOTP(),$this->id))
+    ->queue(new SubscribedEmail($this->cacheTheOTP(),$this->id));
     
 }
 
