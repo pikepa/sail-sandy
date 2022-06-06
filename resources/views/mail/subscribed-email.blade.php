@@ -5,11 +5,18 @@ Thank you for submitting your email to receive our Newsletter. Please click on t
 
 If this was not you, then please ignore this email and your address will be deleted from our system after 2 hours.
 
-Your OTP is {{$OTP}} and your user Id is {{$ID}}
 
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
+<div class="mx-auto">
+    <a href="{{url('verifyOTP')}}/{{$ID}}/{{$OTP}}" class="block" >
+        <button class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Click to Verify
+            </button>
+    </a>
+    <br/>
+    <br/>
+</div>
+
+
 
 Thanks,<br>
 {{ config('app.name') }}

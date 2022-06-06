@@ -6,15 +6,14 @@ use App\Http\Livewire\Pages\ManagePages;
 use App\Http\Livewire\Posts\ManagePosts;
 use App\Http\Livewire\Category\ManageCategories;
 use App\Http\Controllers\ManageSubscriberController;
-use App\Http\Controllers\VerifySubscriberController;
-
+use App\Http\Livewire\Subscriber\VerifySubscriber;
 
 /*
 * Guest Routes
 */
 Route::get('/', HomeController::class);
 Route::resource('/subscribers',ManageSubscriberController::class);
-Route::post('/verifyOTP',[VerifySubscriberController::class, 'verify']);
+Route::get('/verifyOTP/{id}/{otp}', VerifySubscriber::class);
 
 
 /*

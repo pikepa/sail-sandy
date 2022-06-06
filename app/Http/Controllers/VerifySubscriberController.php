@@ -10,11 +10,12 @@ class VerifySubscriberController extends Controller
 {
     public function verify(Request $request){
 
-        $subscriber = Subscriber::find($request->id);
         
-        if($request->OTP === Cache::get('OTP')){
-            $subscriber->update(['validated_at' => now()]);
-            return response(null,201);
-        }
+        // $subscriber = Subscriber::find($request->id);
+        
+        // if($request->OTP === Cache::get('OTP')){
+        //     $subscriber->update(['validated_at' => now()]);
+        //     return response(null,201);
+        // }
     }
 }
