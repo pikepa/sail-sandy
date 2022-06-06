@@ -14,7 +14,6 @@ use App\Http\Livewire\Subscriber\VerifySubscriber;
 Route::get('/', HomeController::class);
 Route::resource('/subscribers',ManageSubscriberController::class);
 Route::get('/verifyOTP/{id}/{otp}', VerifySubscriber::class);
-Route::get('/verifyOTP/{id}/{otp}', VerifySubscriber::class);
 
 
 /*
