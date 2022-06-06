@@ -872,6 +872,9 @@ select {
 .cursor-not-allowed {
   cursor: not-allowed;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
 .list-inside {
   list-style-position: inside;
 }
@@ -1453,6 +1456,9 @@ select {
 }
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+.hover\:pointer-events-auto:hover {
+  pointer-events: auto;
 }
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
