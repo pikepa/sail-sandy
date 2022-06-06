@@ -28,7 +28,7 @@ public  function OTPKey(){
 
 public function cacheTheOTP(){
 
-    $OTP = Str::random(40);
+    $OTP = Str::random(32);
 
     $this->update(['validation_key'=>$OTP]);
 

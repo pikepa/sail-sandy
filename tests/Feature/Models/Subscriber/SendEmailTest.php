@@ -1,7 +1,7 @@
 <?php
 
-use App\Mail\SubsConfMail;
 use App\Models\Subscriber;
+use App\Mail\SubscribedEmail;
 use function Pest\Faker\faker;
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
@@ -15,7 +15,7 @@ test('an email is sent when a subscriber is created', function () {
 
     post('/subscribers', ['email' => $email, 'name' => 'Peter Piper']);
 
-    Mail::AssertSent(SubsConfMail::class);
+    Mail::AssertSent(SubscribedEmail::class);
 });
 
 test('an email is not sent if subscriber is not created', function () {
@@ -26,7 +26,7 @@ test('an email is not sent if subscriber is not created', function () {
 
     post('/subscribers', ['email' => 'asdaddaddasdadsa']);
 
-    Mail::AssertNotSent(SubsConfMail::class);
+    Mail::AssertNotSent(SubscribedEmail::class);
 });
 
 
