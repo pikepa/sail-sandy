@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <x-pages.standard-Page>
+    <x-pages.standard-page>
         <div onclick="location.href='/';" class="cursor-pointer">
             <menus class="grid grid-cols-1 border-b-2 ">
 
@@ -53,5 +53,5 @@
             </div>
         </x-forms.card>
 
-    </x-pages.standard-Page>
+    </x-pages.standard-page>
 </x-guest-layout>
