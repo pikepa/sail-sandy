@@ -55,7 +55,7 @@ class ManageSubscriberController extends Controller
 
     return redirect('/subscribers/thankyou');
     
-}z
+}
 
     /**
      * Display the specified resource.
