@@ -58,10 +58,13 @@
                 </div>
             </div>
             <div class="w-1/4  bg-white border-2 p-1">
-<div class="text-center font-semibold text-3xl">Newsletter</div>
+                <div class="text-center font-semibold text-3xl">Newsletter</div>
                 <div class="p-2  pb-4 rounded-lg border-2 border-gray-200">
-                    <button class="rounded text-center text-xl font-bold text-teal-900  bg-teal-400 p-2 mt-2">Subscribe
-                        to our Newsletter</button>
+                    <a href="/subscribers/create">
+                        <button
+                            class="rounded text-center text-xl font-bold text-teal-900  bg-teal-400 p-2 mt-2">Subscribe
+                            to our Newsletter</button>
+                    </a>
                 </div>
 
                 <div class="rounded-lg border-2 border-gray-200 ">

@@ -52,7 +52,10 @@ class ManageSubscriberController extends Controller
 
             $subscriber->sendOTP();
         }
-    }
+
+    return redirect('/');
+    
+}
 
     /**
      * Display the specified resource.

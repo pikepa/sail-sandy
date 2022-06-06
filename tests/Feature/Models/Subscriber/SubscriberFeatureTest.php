@@ -57,13 +57,13 @@ test('a newsletter subscribe button appears on the home screen', function () {
         
        $res = get('/')->assertSuccessful()
        ->assertSee('Newsletter');
-
 });
 
 
 test('a guest user can see the create subscriber page', function () {
         $this->get('/subscribers/create')
          ->assertSuccessful()
+         ->assertSee('Newsletter Registration')
          ->assertSee('Name')
          ->assertSee('Email');
  });

@@ -7,20 +7,22 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SubsConfMail extends Mailable
+class SubscribedEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $OTP;
+    public $ID;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($OTP)
+    public function __construct($OTP, $ID)
     {
         $this->OTP = $OTP;
+        $this->ID = $ID;
     }
 
     /**
@@ -30,6 +32,6 @@ class SubsConfMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('SubsConf')->with(['OTP' => $this->OTP]);
+        return $this->markdown('mail.subscribed-email',['OTP' => $this->OTP, 'ID'=>$this->ID]);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Mail\SubsConfMail;
+use App\Mail\SubscribedEmail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Cache;
@@ -41,8 +41,9 @@ public function cacheTheOTP(){
 public function sendOTP(){
 
     $this->cacheTheOTP();
-    
-    Mail::to('pikepeter@gmail.com')->send(new SubsConfMail($this->cacheTheOTP()));
+
+    Mail::to($this->email)
+    ->send(new SubscribedEmail($this->cacheTheOTP(),$this->id));
     
 }
 
