@@ -15,7 +15,7 @@ test('an email is sent when a subscriber is created', function () {
 
     post('/subscribers', ['email' => $email, 'name' => 'Peter Piper']);
 
-    Mail::AssertSent(SubscribedEmail::class);
+    Mail::AssertQueued(SubscribedEmail::class);
 });
 
 test('an email is not sent if subscriber is not created', function () {
