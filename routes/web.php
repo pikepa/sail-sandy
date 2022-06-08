@@ -15,7 +15,7 @@ use App\Http\Controllers\ManageSubscriberController;
 Route::get('/', HomeController::class);
 Route::resource('/subscribers',ManageSubscriberController::class);
 Route::get('/verifyOTP/{id}/{otp}', VerifySubscriber::class);
-Route::get('/posts/{id}', ShowPost::class);
+Route::get('/posts/{slug}', ShowPost::class);
 
 /*
 * App Routes

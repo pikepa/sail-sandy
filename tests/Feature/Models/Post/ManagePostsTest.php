@@ -11,10 +11,12 @@ test('an authorised user sees the Manage Posts page', function () {
 test('A guest can view a published post', function () {
     $post = Post::factory()->create();
 
-    $this->get('/posts/{{$post->id}}')
+    $this->get('/posts/{{$post->slug}}')
         ->assertSee($post->title)
         ->assertSee($post->body)
         ->assertSee('Home')
         ->assertSee('Bomborra');
 });
+
+
 

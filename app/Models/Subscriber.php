@@ -13,7 +13,9 @@ class Subscriber extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $table = 'subscribers';
+    
+    protected $fillable = ['name', 'email', 'validation_key', 'validated_at'];
 
 public function OTP(){
 

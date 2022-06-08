@@ -19,12 +19,14 @@
                     Featured Articles
                 </div>
                 <div class="grid grid-cols-3 gap-2">
-                    <div class=" bg-teal-100">
-                        <img class="rounded-t-lg" src="images/1.jpeg" alt="placeimg">
-                        <div class="p-2 font-bold text-center text-xl">Title 1</div>
-                        <p class="p-2 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
+                    <a href="/posts/id-culpa-magni-qui-placeat-sapiente-in-voluptas">
+                        <div class=" bg-teal-100">
+                            <img class="rounded-t-lg" src="images/1.jpeg" alt="placeimg">
+                            <div class="p-2 font-bold text-center text-xl">Title 1</div>
+                            <p class="p-2 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </a>
                     <div class=" bg-teal-100">
                         <img class="rounded-t-lg" src="images/2.jpeg" alt="placeimg">
                         <div class="p-2 font-bold text-center text-xl">Title 1</div>

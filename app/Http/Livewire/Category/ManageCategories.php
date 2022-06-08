@@ -7,7 +7,8 @@ use App\Models\Category;
 
 class ManageCategories extends Component
 {
-    public $category = '';
+    public $name = '';
+    public $slug = '';
     public $status = '';
     public $category_id = '';
     public $categories;
@@ -33,7 +34,7 @@ class ManageCategories extends Component
 
     public function render()
     {
-        $this->categories = Category::orderBy('category', 'asc')->get();
+        $this->categories = Category::orderBy('name', 'asc')->get();
 
         return view('livewire.category.manage-categories');
     }
@@ -60,7 +61,8 @@ class ManageCategories extends Component
     public function save()
     {
         $categoryData = $this->validate([
-            'category' => 'required|max:50',
+            'name' => 'required|max:50',
+            'slug' => 'required',
             'status' => 'required|numeric|integer'
         ]);
 
@@ -76,7 +78,7 @@ class ManageCategories extends Component
 
         $category->update(
             [
-                'category' => $this->category,
+                'name' => $this->name,
                 'status' => $this->status
             ]
         );

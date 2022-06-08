@@ -38,7 +38,7 @@
                           <x-slot name="body">
                             @forEach($categories as $category)
                             <x-table.row>
-                              <x-table.cell>{{$category->category}}</x-table.cell>
+                              <x-table.cell>{{$category->name}}</x-table.cell>
                               <x-table.cell>{{$category->type}}</x-table.cell>
                               <x-table.cell>{{$category->status}}</x-table.cell>
                               <x-table.cell>

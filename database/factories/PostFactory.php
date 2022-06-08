@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 
@@ -16,11 +17,13 @@ class PostFactory extends Factory
      */
     public function definition()
     {
+        $title = $this->faker->sentence;
+        $slug = Str::slug($title,'-');
 
         return [
             'uuid'          =>$this->faker->uuid,
-            'title'         => $this->faker->name,
-            'slug'          => $this->faker->slug,
+            'title'         => $title,
+            'slug'          => $slug,
             'body'          => $this->faker->paragraph,
         ];
     }

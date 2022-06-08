@@ -24,12 +24,13 @@ test('an authorised user can create a category', function () {
     $this->signIn($this->user);
 
     Livewire::test(ManageCategories::class)
-    ->set('category','FOOBAR')
+    ->set('name','FOOBAR')
+    ->set('slug','foobar')
     ->set('status', 1)
     ->call('save')
     ->assertSuccessful();
 
-    expect(Category::latest()->first()->category)->toBe('FOOBAR');
+    expect(Category::latest()->first()->name)->toBe('FOOBAR');
 
 });
 
@@ -40,12 +41,12 @@ test('an authorised user can update a category', function () {
 
     Livewire::test(ManageCategories::class)
     ->set('category_id','1')
-    ->set('category','FOOBAR')
+    ->set('name','FOOBAR')
     ->set('status', 1)
     ->call('update')
     ->assertSuccessful();
 
-    expect(Category::latest()->first()->category)->toBe('FOOBAR');
+    expect(Category::latest()->first()->name)->toBe('FOOBAR');
 });
 
 test('an authorised user can delete a category', function () {

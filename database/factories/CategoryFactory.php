@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,12 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
+        $name = $this->faker->sentence;
+        $slug = Str::slug($name,'-');
+
         return [
-            'category' => $this->faker->unique()->word(),
+            'name' => $name,
+            'slug' => $slug,
             'status' =>$this->faker->numberBetween(0,1),
        ];
     }
