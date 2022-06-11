@@ -10,7 +10,7 @@ beforeEach(function () {
 }); 
 
 
-test('A category is required', function () {
+test('A category name is required', function () {
   $this->signIn($this->user);
 
   Livewire::test(ManageCategories::class)

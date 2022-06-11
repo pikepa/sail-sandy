@@ -17,10 +17,16 @@ return new class extends Migration
             $table->id();
 
             $table->uuid('uuid')->unique();
+            $table->string('cover_image');
             $table->string('title');
             $table->string('slug');
-            $table->text('body')->nullable();
+            $table->longText('body');
+            $table->text('meta_description')->nullable();
+            $table->timestamp('published_at')->nullable();
+            $table->boolean('featured')->nullable()->default(0);
 
+            $table->foreignId('author_id')->constrained('users');
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

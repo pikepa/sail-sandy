@@ -14,8 +14,26 @@ class Post extends Model
 
     protected $table = 'posts';
 
-    protected $fillable = ['title', 'body'];
+    protected $fillable = [
+        'title',
+        'cover_image',
+        'slug',
+        'body',
+        'meta_description',
+        'published_at',
+        'featured',
+        'author_id',
+        'category_id'
+    ];
 
+
+    public function scopePublished($query)
+ 
+    {
+     
+        return $query->where('published_at', 'ne', null);
+     
+    }
 
     public function setSlugAttribute($value)
     {

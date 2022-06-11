@@ -18,7 +18,7 @@ class Category extends Model
 
     protected $table = 'categories';
 
-    protected $fillable = ['name', 'slug', 'status'];
+    protected $fillable = ['name', 'slug', 'status','parent_id'];
 
     public function setNameAttribute($value)
     {
@@ -50,5 +50,11 @@ class Category extends Model
     public function posts(): HasMany
     {
         return $this->HasMany(Post::class);
+    }
+
+    public function subsCategories(): HasMany
+    {
+        return $this->hasMany(Category::class,'parent_id')
+        ->with('categories');
     }
 }

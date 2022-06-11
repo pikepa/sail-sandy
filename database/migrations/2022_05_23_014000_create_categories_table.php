@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('post_tag', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->required()->unique();
+            $table->string('slug')->required();
+            $table->smallInteger('status')->required()->default(1);
+            $table->foreignId('parent_id')->nullable()->constrained('categories');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_tags');
+        Schema::dropIfExists('categories');
     }
 };

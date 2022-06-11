@@ -16,12 +16,16 @@
                 <div class="max-w-7xl mx-auto ">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200">
+                            <div style="float:left;" class="mr-6">
+                                <img src="{{$post->cover_image}}" width='400px' alt="Cover Image">
+                            </div>
                             <div class="text-3xl font-semibold">
                                 {{$post->title}}
                             </div>
                             <div>
-                                Body: {{$post->body}}
+                                Body: {!!$post->body!!}
                             </div>
+
                         </div>
                     </div>
                 </div>
