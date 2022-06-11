@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -27,8 +29,29 @@ class Post extends Model
     ];
 
 
+    public function getFeaturedAttribute($value)
+    {
+        if($value == 1)
+        {
+            return 'True';
+        } 
+        else{
+            return '';
+        }    
+    
+    }
+    public function getPublishedAtAttribute($value)
+    {
+        if ($value = null)
+        {
+            return 'Draft';
+        } 
+        else{
+            return Carbon::parse($value)->format('M d, Y');
+        }    
+    }
+
     public function scopePublished($query)
- 
     {
      
         return $query->where('published_at', 'ne', null);
@@ -44,7 +67,7 @@ class Post extends Model
     *       Relationships
     */
 
-    public function user(): BelongsTo
+    public function author(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

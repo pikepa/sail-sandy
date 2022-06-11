@@ -30,7 +30,7 @@ class ManagePosts extends Component
 
     public function mount()
     {
-        $this->posts = Post::orderBy('created_at', 'desc')->get();
+        $this->posts = Post::with('author')->orderBy('created_at', 'desc')->get();
     }
 
     public function render()

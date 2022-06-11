@@ -27,8 +27,9 @@
 
                             <x-table.row>
                               <x-table.heading class="text-left">Title</x-table.heading>
-                              <x-table.heading class="text-left">Type</x-table.heading>
+                              <x-table.heading class="text-left">Author</x-table.heading>
                               <x-table.heading class="text-left">Status</x-table.heading>
+                              <x-table.heading class="text-left">Featured</x-table.heading>
                               <x-table.heading class="text-left"></x-table.heading>
                               <x-table.heading class="text-left"></x-table.heading>
                             </x-table.row>
@@ -38,8 +39,9 @@
                             @forEach($posts as $post)
                             <x-table.row>
                               <x-table.cell><a href="/posts/{{$post->slug}}">{{$post->title}}</a></x-table.cell>
-                              <x-table.cell>{{$post->author_id}}</x-table.cell>
+                              <x-table.cell>{{$post->author->name}}</x-table.cell>
                               <x-table.cell>{{$post->published_at}}</x-table.cell>
+                              <x-table.cell>{{$post->featured}}</x-table.cell>
                               <x-table.cell>
                                 <x-button.link wire:click="edit({{ $post->id }})">Edit</x-button.link>
                               </x-table.cell>
