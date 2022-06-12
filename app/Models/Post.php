@@ -29,27 +29,31 @@ class Post extends Model
     ];
 
 
-    public function getFeaturedAttribute($value)
+    protected function Featured(): Attribute
     {
-        if($value == 1)
-        {
-            return 'True';
-        } 
-        else{
-            return '';
-        }    
-    
+        return Attribute::make(
+
+            get: function ($value) {
+
+            if($value == 1){ return 'True';} 
+                return '';
+            }
+        );
     }
-    public function getPublishedAtAttribute($value)
+
+    protected function PublishedAt(): Attribute
     {
-        if ($value = null)
-        {
+        return Attribute::make(
+
+            get: function ($value) {
+
+            if ($value !== null) { return Carbon::parse($value)->format('M d, Y');}
+
             return 'Draft';
-        } 
-        else{
-            return Carbon::parse($value)->format('M d, Y');
-        }    
+        }  
+        );
     }
+ 
 
     public function scopePublished($query)
     {

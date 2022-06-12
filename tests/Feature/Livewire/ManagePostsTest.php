@@ -27,7 +27,7 @@ test('An authorised user can see a list of all posts', function () {
     
     $this->signIn();
 
-    $post1 = Post::factory()->create([]);
+    $post1 = Post::factory()->create();
     $post2 = Post::factory()->create();
 
     $this->get('/posts/')

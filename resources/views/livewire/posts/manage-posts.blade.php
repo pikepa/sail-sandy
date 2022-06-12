@@ -28,7 +28,7 @@
                             <x-table.row>
                               <x-table.heading class="text-left">Title</x-table.heading>
                               <x-table.heading class="text-left">Author</x-table.heading>
-                              <x-table.heading class="text-left">Status</x-table.heading>
+                              <x-table.heading class="text-left">Published</x-table.heading>
                               <x-table.heading class="text-left">Featured</x-table.heading>
                               <x-table.heading class="text-left"></x-table.heading>
                               <x-table.heading class="text-left"></x-table.heading>
