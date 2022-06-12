@@ -1,6 +1,5 @@
-<div class=" ">
+<div>
     <x-dash-header/>
-
     <div class="py-2">
         <div class="max-w-7xl mx-auto px-2">
           <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -28,8 +27,8 @@
                             <x-table.row>
                               <x-table.heading class="text-left">Title</x-table.heading>
                               <x-table.heading class="text-left">Author</x-table.heading>
-                              <x-table.heading class="text-left">Published</x-table.heading>
-                              <x-table.heading class="text-left">Featured</x-table.heading>
+                              <x-table.heading class="text-center">Published</x-table.heading>
+                              <x-table.heading class="text-center">Featured</x-table.heading>
                               <x-table.heading class="text-left"></x-table.heading>
                               <x-table.heading class="text-left"></x-table.heading>
                             </x-table.row>
@@ -38,10 +37,10 @@
                           <x-slot name="body">
                             @forEach($posts as $post)
                             <x-table.row>
-                              <x-table.cell><a href="/posts/{{$post->slug}}">{{$post->title}}</a></x-table.cell>
+                              <x-table.cell class="text-sky-600 font-bold dark:text-sky-400"><a href="/posts/{{$post->slug}}">{{$post->title}}</a></x-table.cell>
                               <x-table.cell>{{$post->author->name}}</x-table.cell>
-                              <x-table.cell>{{$post->published_at}}</x-table.cell>
-                              <x-table.cell>{{$post->featured}}</x-table.cell>
+                              <x-table.cell class="text-center">{{$post->published_at}}</x-table.cell>
+                              <x-table.cell class="text-center">{{$post->featured}}</x-table.cell>
                               <x-table.cell>
                                 <x-button.link wire:click="edit({{ $post->id }})">Edit</x-button.link>
                               </x-table.cell>
@@ -64,8 +63,5 @@
             </div>
           </div>
         </div>
-
       </div>
-
-
 </div>

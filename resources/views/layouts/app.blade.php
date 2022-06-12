@@ -18,6 +18,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     @livewireStyles
+    @bukStyles
 </head>
 
 <body class="font-sans antialiased">
@@ -30,6 +31,7 @@
         </div>
     </div>
     @livewireScripts
+    @bukScripts
 </body>
 
 </html>
