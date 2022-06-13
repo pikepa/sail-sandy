@@ -1,12 +1,13 @@
 <?php
 
 use App\Models\Post;
+use App\Models\User;
 use Livewire\Livewire;
 use App\Models\Category;
 use App\Http\Livewire\Posts\ShowPost;
 use App\Http\Livewire\Posts\ManagePosts;
 
-test('an authorised user sees the Manage Posts page', function () {
+test('An authorised user sees the Manage Posts page', function () {
     $this->signIn();
     Livewire::test(ManagePosts::class)->assertSee('Posts')
     ->assertSee('A list of all the posts in your account.');
@@ -44,6 +45,31 @@ test('An authorised user can see a list of all posts', function () {
         ->assertSee($post2->author_id)
         ->assertSee($post2->published_at);
 });
+
+test('An authorised user can add a post', function () {
+   
+    $this->actingAs(User::factory()->create());
+   
+    Category::factory()->create();
+
+    Livewire::test(ManagePosts::class)
+        ->set('cover_img', 'https://google.com')
+        ->set('title', 'this is a post')
+        ->set('slug', 'this-is-a-post')
+        ->set('body', str_repeat('s',100))
+        ->set('category_id',1)
+        ->set('author_id',$this->auth()->user)
+        ->set('published_at', '')
+        ->set('featured', true)
+        ->set('meta_description', 'This is the meta description')
+        ->call('save') 
+        ->assertSuccessful();
+
+    $this->assertDatabaseCount('posts',1);
+
+});
+
+
 
 
 

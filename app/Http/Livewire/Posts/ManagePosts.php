@@ -12,6 +12,8 @@ class ManagePosts extends Component
     public $title;
     public $slug;
     public $body;
+    public $category_id;
+    public $author_id;
     public $cover_img;
     public $meta_description;
     public $published_at = null;
@@ -28,6 +30,8 @@ class ManagePosts extends Component
         'body'   => 'required|min:20',
         'cover_img'   => 'required',
         'meta_description'   => 'required',
+        'author_id'   => 'required',
+        'category_id'   => 'required',
         'published_at'   => '',
         'featured'   => '',
     
@@ -81,6 +85,9 @@ class ManagePosts extends Component
     public function save()
     {
         $this->validate();
+
+        dd($this->showAddForm);
+        
 
         return view('livewire.posts.manage-posts');
     }

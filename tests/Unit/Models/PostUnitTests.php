@@ -20,6 +20,15 @@ test('A post title is required', function () {
   
   });
 
+test('A post title has a max of 250 chars', function () {
+
+    Livewire::test(ManagePosts::class)
+    ->set('title',str_repeat('s',251))
+    ->call('save')
+    ->assertHasErrors(['title' => 'Max']);
+  
+  });
+
 test('A post slug is required', function () {
 
     Livewire::test(ManagePosts::class)
@@ -38,6 +47,15 @@ test('A post body is required', function () {
   
   });
 
+test('A post body must have min 20 chars', function () {
+
+    Livewire::test(ManagePosts::class)
+    ->set('body',str_repeat('s',19))
+    ->call('save')
+    ->assertHasErrors(['body' => 'Min']);
+  
+  });
+
 test('A post cover_img is required', function () {
 
     Livewire::test(ManagePosts::class)
@@ -47,11 +65,30 @@ test('A post cover_img is required', function () {
   
   });
 
+test('A post author_id is required', function () {
+
+    Livewire::test(ManagePosts::class)
+    ->set('author_id','')
+    ->call('save')
+    ->assertHasErrors(['author_id' => 'required']);
+  
+  });
+
+test('A post category_id is required', function () {
+
+    Livewire::test(ManagePosts::class)
+    ->set('category_id','')
+    ->call('save')
+    ->assertHasErrors(['category_id' => 'required']);
+  
+  });
+
+
 test('A post meta_description is required', function () {
 
     Livewire::test(ManagePosts::class)
-    ->set('meta_description','')
+    ->set('meta_description','qqweqe')
     ->call('save')
-    ->assertHasErrors(['meta_description' => 'required']);
+    ->assertHasErrors(['meta_description' => 'max']);
   
   });

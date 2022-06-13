@@ -24,9 +24,12 @@
                 <div>
                     <x-buk-label for="category" class="block "></x-buk-label>
 
-                <livewire:forms.category-select>
+                    <livewire:forms.category-select wire:model='category_id' />
 
+                    <x-buk-error field="category_id" class="mt-2 text-red-500" />
                 </div>
+
+
 
                 <!-- Schedule Post -->
 
