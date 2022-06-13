@@ -26,12 +26,12 @@ class PostFactory extends Factory
             'cover_image'       => $this->faker->imageUrl(360, 360, 'animals', true, 'dogs', true, 'jpg'),
             'title'             => $title,
             'slug'              => $slug,
-            'body'              => $this->faker->paragraphs(nb: 4, asText: true),
+            'body'              => $this->faker->sentence(20),
             'meta_description'  => $this->faker->paragraph,
             'published_at'      => $this->faker->dateTimeThisMonth(),
             'featured'          => $this->faker->numberBetween(0,1),
             'author_id'         => User::factory()->create(),
-            'category_id'       => Category::factory()->create(),
+            'category_id'       => $this->faker->numberBetween(0,4),
         ];
     }
 }

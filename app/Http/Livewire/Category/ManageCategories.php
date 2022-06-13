@@ -12,7 +12,6 @@ class ManageCategories extends Component
     public $status = '';
     public $category_id = '';
     public $categories;
-    public $showEditModal = false;
     public Category $editing;
 
 
@@ -42,7 +41,7 @@ class ManageCategories extends Component
 
     public function edit(Category $category)
     {
-        //   $this->editing = $category;
+        $this->editing = $category;
 
         $this->showEditModal = true;
     }
