@@ -47,18 +47,19 @@ test('An authorised user can see a list of all posts', function () {
 });
 
 test('An authorised user can add a post', function () {
-   
+   $this->withoutExceptionHandling();
     $this->actingAs(User::factory()->create());
    
     Category::factory()->create();
 
     Livewire::test(ManagePosts::class)
-        ->set('cover_img', 'https://google.com')
+        ->set('uuid', '4d0ccb51-9689-392f-94c5-4557f5a9b816')
+        ->set('cover_image', 'https://google.com')
         ->set('title', 'this is a post')
         ->set('slug', 'this-is-a-post')
         ->set('body', str_repeat('s',100))
         ->set('category_id',1)
-        ->set('author_id',$this->auth()->user)
+        ->set('author_id',1)
         ->set('published_at', '')
         ->set('featured', true)
         ->set('meta_description', 'This is the meta description')

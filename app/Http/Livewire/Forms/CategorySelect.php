@@ -8,6 +8,7 @@ use App\Models\Category;
 class CategorySelect extends Component
 {
     public $categories;
+    public $category_id =0 ;
 
     public function mount()
     {
@@ -18,4 +19,10 @@ class CategorySelect extends Component
     {
         return view('livewire.forms.category-select',compact($this->categories));
     }
+
+    public function updatedCategoryId()
+    {
+        $this->emitUp('category_selected', $this->category_id);
+    }
+
 }

@@ -25,7 +25,8 @@ class Post extends Model
         'published_at',
         'featured',
         'author_id',
-        'category_id'
+        'category_id',
+        'uuid'
     ];
 
 

@@ -37,6 +37,9 @@
                     <x-buk-label class="block"  for="published_at">Scheduled</x-buk-label>
                         
                     <x-buk-pikaday name="published_at" class="rounded" />
+
+                    <x-buk-error field="published_at" class="mt-2 text-red-500" />
+
                 </div>
 
                 <!-- Checkbox for featured -->
@@ -45,6 +48,9 @@
                     <x-buk-label class="mr-4" for="featured">Scheduled</x-buk-label>
 
                     <x-buk-checkbox name="featured"/>
+
+                    <x-buk-error field="featured" class="mt-2 text-red-500" />
+
                 </div>
 
                 <!-- Meta Description -->
@@ -58,7 +64,7 @@
 
                 <!-- this is the save button -->
                 <x-buk-form-button  method="Submit" class="p-4 rounded-lg bg-green-500">
-                    Save post
+                    Save Post
                 </x-buk-form-button>
             </div>
 

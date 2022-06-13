@@ -9,12 +9,14 @@ use App\Models\Category;
 class ManagePosts extends Component
 {
     public $posts;
+
+    public $uuid;
     public $title;
     public $slug;
     public $body;
     public $category_id;
     public $author_id;
-    public $cover_img;
+    public $cover_image;
     public $meta_description;
     public $published_at = null;
     public $featured =0;
@@ -28,12 +30,13 @@ class ManagePosts extends Component
         'title'   => 'required|max:250',
         'slug'    => 'required',
         'body'   => 'required|min:20',
-        'cover_img'   => 'required',
+        'cover_image'   => 'required',
         'meta_description'   => 'required',
         'author_id'   => 'required',
         'category_id'   => 'required',
         'published_at'   => '',
         'featured'   => '',
+        'uuid'   => '',
     
     ];
 
@@ -60,6 +63,23 @@ class ManagePosts extends Component
         $this->showEditForm =true;
         $this->showAddForm = false;
     }
+    public function showTable()
+    {
+        $this->showTable = true;
+        $this->showEditForm =false;
+        $this->showAddForm = false;
+    }
+
+    // listen from event from CategorySelect 
+
+    protected $listeners = [
+        'category_selected'
+    ];
+    
+    public function category_selected($category_id)
+    {
+        $this->category_id = $category_id;
+    }
 
     public function create()
     {
@@ -84,11 +104,11 @@ class ManagePosts extends Component
 
     public function save()
     {
-        $this->validate();
+        $data= $this->validate();
 
-        dd($this->showAddForm);
-        
+        Post::create($data);
 
+        $this->showTable();
         return view('livewire.posts.manage-posts');
     }
 }
