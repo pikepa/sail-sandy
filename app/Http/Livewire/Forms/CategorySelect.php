@@ -8,10 +8,14 @@ use App\Models\Category;
 class CategorySelect extends Component
 {
     public $categories;
-    public $category_id =0 ;
+    public $cat_id;
+    public $category_id = 0 ;
 
-    public function mount()
+    public function mount($cat_id = null)
     {
+       if($cat_id != null){
+            $this->category_id = $cat_id;
+       }
         $this->categories = Category::get();
     }
 
