@@ -28,5 +28,13 @@ class CategorySeeder extends Seeder
             'name' =>'Foreign Correspondence',
             'slug' =>'foreign-correspondence',
         ]);       
+     DB::table('categories')->insert([
+            'name' =>'Highlights',
+            'slug' =>'highlights',
+        ]);       
+     DB::table('categories')->insert([
+            'name' =>'Gallery',
+            'slug' =>'gallery',
+        ]);       
     }
 }
