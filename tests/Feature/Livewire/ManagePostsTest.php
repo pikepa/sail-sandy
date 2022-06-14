@@ -40,12 +40,10 @@ test('An authorised user can see a list of all posts', function () {
         ->assertSee($post1->title)
         ->assertSee($post1->author_id)
         ->assertSee($category->name)
-        ->assertSee($post1->published_at)
         ->assertSee('Home')
         ->assertSee('Bomborra')
         ->assertSee($post2->title)
-        ->assertSee($post2->author_id)
-        ->assertSee($post2->published_at);
+        ->assertSee($post2->author_id);
 });
 
 test('An authorised user can add a post', function () {

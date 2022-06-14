@@ -38,6 +38,12 @@ class Post extends Model
 
             if($value == 1){ return 'True';} 
                 return '';
+            },
+
+            set: function ($value) {
+
+            if($value == "True"){ return 1;} 
+                return 0;
             }
         );
     }
@@ -51,7 +57,11 @@ class Post extends Model
             if ($value !== null) { return Carbon::parse($value)->format('M d, Y');}
 
             return 'Draft';
-        }  
+            },
+            set: function ($value) {
+                if($value == 'Draft'){ return null;}
+                    return now();
+            } 
         );
     }
  

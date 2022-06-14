@@ -16,7 +16,9 @@
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
     <!-- Scripts -->
+    <script src="//unpkg.com/alpinejs" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
+
     @livewireStyles
     @bukStyles
 </head>

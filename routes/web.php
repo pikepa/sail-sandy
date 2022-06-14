@@ -8,6 +8,7 @@ use App\Http\Livewire\Posts\ManagePosts;
 use App\Http\Livewire\Category\ManageCategories;
 use App\Http\Livewire\Subscriber\VerifySubscriber;
 use App\Http\Controllers\ManageSubscriberController;
+Route::get('/test', function () {return view('test');});
 
 /*
 * Guest Routes

@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 class ManagePosts extends Component
 {
     public $posts;
-
+    public $post_id;
     public $uuid = '';
     public $title;
     public $slug;
@@ -26,6 +26,7 @@ class ManagePosts extends Component
     public $showTable = 1;  
     public $categories;
     public $selectedCategory;
+    public $post;
 
     protected $rules  = 
     [
@@ -108,16 +109,33 @@ class ManagePosts extends Component
 
     public function edit($id)
     {
-        $editing = Post::findOrFail($id);
-        $this->title = $editing->title;
-        $this->body = $editing->body;
-        $this->category_id = $editing->category_id;
-        $this->selectedCategory = $editing->category_id;
-        $this->published_at = $editing->published_at;
-        $this->featured = $editing->featured;
-        $this->meta_description = $editing->meta_description;
+        $post = Post::findOrFail($id);
+        $this->post_id=$post->id;
+        $this->title = $post->title;
+        $this->body = $post->body;
+        $this->category_id = $post->category_id;
+        $this->selectedCategory = $post->category_id;
+        $this->published_at = $post->published_at;
+        $this->featured = $post->featured;
+        $this->meta_description = $post->meta_description;
         
         $this->showEditForm();
+
+    }
+    public function update($id)
+    {
+        $post = Post::findOrFail($id);
+//dd($post);
+        $this->author_id = $post->author_id;
+        $this->uuid = $post->uuid;
+        $this->cover_image = $post->cover_image;
+        $this->slug = Str::slug($this->title);
+
+        $data= $this->validate();
+        $post->update($data);
+
+        $this->showTable();
+        return view('livewire.posts.manage-posts');
 
     }
 

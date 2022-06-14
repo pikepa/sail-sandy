@@ -32,18 +32,17 @@
     <div>
         <x-buk-label class="block"  for="published_at">Scheduled</x-buk-label>
             
-        <x-buk-pikaday wire:model='published_at' name="published_at" class="rounded" />
+        <x-buk-pikaday wire:model='published_at' id="published_at" name="published_at" class="rounded" />
 
         <x-buk-error field="published_at" class="mt-2 text-red-500" />
 
     </div>
 
     <!-- Checkbox for featured -->
-
     <div>
         <x-buk-label class="mr-4" for="featured">Scheduled</x-buk-label>
 
-        <x-buk-checkbox wire:model='featured'name="featured"/>
+        <x-buk-checkbox wire:model='featured' name="featured"/>
 
         <x-buk-error field="featured" class="mt-2 text-red-500" />
 
@@ -53,8 +52,7 @@
 
     <div>
         <x-buk-label for="meta_description">Meta Description</x-buk-label>
-        <x-buk-textarea wire:model="meta_description" class="block w-full rounded" name="meta_description"
-            value=""></x-buk-textarea>
+        <textarea wire:model="meta_description" class="block w-full rounded" name="meta_description" id="meta_description">
         <x-buk-error field="meta_description" class="mt-2 text-red-500" />
     </div>
 
