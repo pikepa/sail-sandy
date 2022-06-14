@@ -24,8 +24,8 @@
               </div>
               <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
                 <button wire:click="showAddForm" type="button"
-                  class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add
-                  Post</button>
+                  class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+                  <i class="fa-solid fa-plus"></i>&nbspAdd Post</button>
               </div>
             </div>
 
@@ -59,10 +59,10 @@
                           <x-table.cell class="text-center">{{$post->published_at}}</x-table.cell>
                           <x-table.cell class="text-center">{{$post->featured}}</x-table.cell>
                           <x-table.cell>
-                            <x-button.link wire:click="edit({{ $post->id }})">Edit</x-button.link>
+                            <x-button.link wire:click="edit({{ $post->id }})"><i class="fa-solid fa-pen-to-square"></i></x-button.link>
                           </x-table.cell>
                           <x-table.cell>
-                            <x-button.link wire:click="delete({{ $post->id }})">Delete</x-button.link>
+                            <x-button.link wire:click="delete({{ $post->id }})"><i class="fa-regular fa-trash-can"></i></x-button.link>
                           </x-table.cell>
 
                         </x-table.row>

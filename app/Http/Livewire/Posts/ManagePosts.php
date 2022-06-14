@@ -125,7 +125,6 @@ class ManagePosts extends Component
     public function update($id)
     {
         $post = Post::findOrFail($id);
-//dd($post);
         $this->author_id = $post->author_id;
         $this->uuid = $post->uuid;
         $this->cover_image = $post->cover_image;
@@ -134,6 +133,7 @@ class ManagePosts extends Component
         $data= $this->validate();
         $post->update($data);
 
+        $this->reset();
         $this->showTable();
         return view('livewire.posts.manage-posts');
 
