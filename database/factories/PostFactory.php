@@ -31,7 +31,7 @@ class PostFactory extends Factory
             'published_at'      => $this->faker->dateTimeThisMonth(),
             'featured'          => $this->faker->numberBetween(0,1),
             'author_id'         => User::factory()->create(),
-            'category_id'       => $this->faker->numberBetween(0,4),
+            'category_id'       => Category::factory()->create(),
         ];
     }
 }

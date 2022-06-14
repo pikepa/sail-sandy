@@ -9,14 +9,13 @@
             <!-- This Section allows add ing and update forms -->
 
             <div class="block">
-              @if($showEditForm)
-              @include('livewire.posts.update')
-              @endif
-
-              @if($showAddForm)
-              @include('livewire.posts.create')
-              @endif
+                @if($showAddForm )
+                @include('livewire.posts.create')
+                @elseif($showEditForm)
+                @include('livewire.posts.update') 
+                @endif
             </div>
+
             @if($showTable)
             <div class="sm:flex sm:items-center">
               <div class="sm:flex-auto">
@@ -41,6 +40,7 @@
 
                         <x-table.row>
                           <x-table.heading class="text-left">Title</x-table.heading>
+                          <x-table.heading class="text-left">Category</x-table.heading>
                           <x-table.heading class="text-left">Author</x-table.heading>
                           <x-table.heading class="text-center">Published</x-table.heading>
                           <x-table.heading class="text-center">Featured</x-table.heading>
@@ -54,6 +54,7 @@
                         <x-table.row>
                           <x-table.cell class="text-sky-600 font-bold dark:text-sky-400"><a
                               href="/posts/{{$post->slug}}">{{$post->title}}</a></x-table.cell>
+                          <x-table.cell>{{$post->category->name}}</x-table.cell>
                           <x-table.cell>{{$post->author->name}}</x-table.cell>
                           <x-table.cell class="text-center">{{$post->published_at}}</x-table.cell>
                           <x-table.cell class="text-center">{{$post->featured}}</x-table.cell>
@@ -61,7 +62,7 @@
                             <x-button.link wire:click="edit({{ $post->id }})">Edit</x-button.link>
                           </x-table.cell>
                           <x-table.cell>
-                            <x-button.link wire:click="edit({{ $post->id }})">Delete</x-button.link>
+                            <x-button.link wire:click="delete({{ $post->id }})">Delete</x-button.link>
                           </x-table.cell>
 
                         </x-table.row>
