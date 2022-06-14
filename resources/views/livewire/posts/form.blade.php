@@ -32,7 +32,7 @@
     <div>
         <x-buk-label class="block"  for="published_at">Scheduled</x-buk-label>
             
-        <x-buk-pikaday wire:model='published_at' id="published_at" name="published_at" class="rounded" />
+        <x-buk-pikaday wire:model='published_at' name="published_at" class="rounded" />
 
         <x-buk-error field="published_at" class="mt-2 text-red-500" />
 
@@ -52,7 +52,8 @@
 
     <div>
         <x-buk-label for="meta_description">Meta Description</x-buk-label>
-        <textarea wire:model="meta_description" class="block w-full rounded" name="meta_description" id="meta_description">
+        <x-buk-textarea wire:model="meta_description" class="block w-full rounded" name="meta_description" id="meta_description"
+            value=""></x-buk-textarea>
         <x-buk-error field="meta_description" class="mt-2 text-red-500" />
     </div>
 
