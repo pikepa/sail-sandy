@@ -16,10 +16,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
     <!-- Scripts -->
-    <script src="//unpkg.com/alpinejs" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     @livewireStyles
+   
+    @stack('styles')
+
     @bukStyles
 </head>
 
@@ -33,6 +35,9 @@
         </div>
     </div>
     @livewireScripts
+
+    @stack('scripts')
+
     @bukScripts
 </body>
 

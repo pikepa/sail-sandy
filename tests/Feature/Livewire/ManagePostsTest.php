@@ -16,13 +16,13 @@ test('An authorised user sees the Manage Posts page', function () {
 });
 
 test('A guest can view a published post', function () {
-    Category::factory()->create();
+   // Category::factory()->create();
 
-    $post = Post::factory()->create(['category_id'=>1]);
+    $post = Post::factory()->create();
 
    Livewire::test(ShowPost::class,['slug' => $post->slug])
        ->assertStatus(200)
-        ->assertSee('Home')
+        ->assertSee($post->category->name)
         ->assertSee('Bomborra')
         ->assertSee($post->title)
         ->assertSee($post->body);
@@ -79,7 +79,7 @@ test('An authorised user can delete a post', function () {
     $this->assertDatabaseCount('posts',1);
 
     Livewire::test(ManagePosts::class)
-        ->call('delete', 1) 
+        ->call('delete',$post->id) 
         ->assertSuccessful();
 
     $this->assertDatabaseCount('posts',0);

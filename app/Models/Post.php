@@ -16,6 +16,10 @@ class Post extends Model
 
     protected $table = 'posts';
 
+    protected $casts = [
+        'published_at' => 'date',
+    ];
+
     protected $fillable = [
         'title',
         'cover_image',

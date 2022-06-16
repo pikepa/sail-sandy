@@ -69,8 +69,7 @@
                         @endforeach
                       </x-slot>
                     </x-table>
-                    <table class="min-w-full divide-y divide-gray-300">
-                    </table>
+
 
                   </div>
                 </div>
