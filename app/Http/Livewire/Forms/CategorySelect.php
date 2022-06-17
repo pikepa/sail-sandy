@@ -21,7 +21,7 @@ class CategorySelect extends Component
 
     public function render()
     {
-        return view('livewire.forms.category-select',compact($this->categories));
+        return view('livewire.forms.category-select',$this->categories);
     }
 
     public function updatedCategoryId()

@@ -10,7 +10,7 @@
 
             <div class="block">
                 @if($showAddForm )
-                @include('livewire.posts.create')
+                    @include('livewire.posts.create')
                 @elseif($showEditForm)
                 @include('livewire.posts.update') 
                 @endif
