@@ -39,13 +39,13 @@ class Post extends Model
 
             get: function ($value) {
 
-            if ($value !== null) { return Carbon::parse($value)->format('M d, Y');}
+            if ($value !== null) { return Carbon::parse($value)->format('d-m-Y');}
 
             return 'Draft';
             },
             set: function ($value) {
                 if($value == 'Draft'){ return null;}
-                    return now();
+                    return Carbon::parse($value)->format('Y-m-d  H:m:s');
             } 
         );
     }

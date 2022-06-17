@@ -25,7 +25,7 @@
     <div class=" space-y-6">
         <!-- Post Category -->
         <div>
-            <x-input.group for="category" label="Body" width="full">
+            <x-input.group for="category" label="Catgory" width="full">
                 <livewire:forms.category-select wire:model='category_id' :cat_id="$selectedCategory" />
             </x-input.group>
         </div>
@@ -34,12 +34,7 @@
 
         <label class="block">
             <span class="text-gray-700  font-bold">Published </span>
-            @if($published_at != null)
-            <input wire:model='published_at' type="date" name="published_at" value="{{  $published_at  }}"
-                class="form-input rounded mt-1 block w-full">
-            @else
-            <input wire:model='published_at' type="date" name="published_at" class="form-input rounded mt-1 block w-full">
-            @endif
+            <input wire:model='published_at' type="text" placeholder="DD-MM-YYYY" name="published_at" class="form-input rounded mt-1 block w-full">
         </label>
 
         <!-- Checkbox for Featured Image-->
@@ -63,5 +58,12 @@
                 </button>
             </div>
         </div>
+        <div class="flex text-sm text-gray-600">
+            <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+              <span>Upload a file</span>
+              <input id="file-upload" name="file-upload" type="file" class="sr-only">
+            </label>
+            <p class="pl-1">or drag and drop</p>
+          </div>
     </div>
 </div>
