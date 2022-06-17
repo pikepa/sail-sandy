@@ -110,6 +110,7 @@ class ManagePosts extends Component
         $post = Post::findOrFail($id);
         $this->post_id=$post->id;
         $this->title = $post->title;
+        $this->cover_image = $post->cover_image;
         $this->slug = $post->slug;
         $this->body = $post->body;
         $this->category_id = $post->category_id;

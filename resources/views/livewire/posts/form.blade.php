@@ -41,7 +41,7 @@
         <div>
             <x-input.group label="Featured Image" for="cover_image"></x-input.group>
 
-            <img wire:model='cover_image' class='rounded shadow-lg' src="images/1.jpeg" width="250px" alt="Featured image">
+            <img wire:model='cover_image' class='rounded shadow-lg' src="{{$cover_image}}" width="250px" alt="Featured image">
 
         </div>
 
