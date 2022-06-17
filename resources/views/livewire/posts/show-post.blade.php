@@ -29,7 +29,7 @@
                                 {{$post->title}}
                             </div>
                             <div>
-                                Body: {!!$post->body!!}
+                                {!!$post->body!!}
                             </div>
 
                         </div>
