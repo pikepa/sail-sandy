@@ -14,6 +14,12 @@
             </div>
             <div class="py-2">
                 <div class="max-w-7xl mx-auto ">
+                    @auth
+<div class="text-right mr-4 font-bold text-xl">
+    <a href="/posts">Preview Return</a>
+
+</div>
+                    @endauth
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200">
                             <div style="float:left;" class="mr-6">

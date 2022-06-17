@@ -17,7 +17,7 @@
         <!-- Meta Description -->
 
         <x-input.group for="meta_description" label="Meta Description" width="full">
-            <x-input.textarea wire:model='meta_description' rows=10 type="text" />
+            <x-input.textarea wire:model='meta_description' rows=5 type="text" />
         </x-input.group>
 
 
@@ -52,9 +52,12 @@
                     Save Post
                 </button>
             </div>
+
             <div>
-                <button method="Submit" class="w-28 p-2 rounded-lg bg-orange-500">
+                <button class="w-28 p-2 rounded-lg bg-orange-500">
+                    <a href="posts/{{$slug}}">
                     Preview Post
+                </a>
                 </button>
             </div>
         </div>

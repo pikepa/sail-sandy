@@ -7,10 +7,10 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
 
-
 class ShowPost extends Component
 {
     public $post;
+
 
     public function mount($slug)
     {
