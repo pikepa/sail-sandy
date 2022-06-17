@@ -1,16 +1,17 @@
 @props([
     'label',
     'for',
+    'width' => 'full',
     'error' => false,
     'helpText' => false,
 ])
 
 <div >
-    <label for="{{ $for }}" class="block  font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+    <label for="{{ $for }}" class="block pb-2 font-bold leading-5 text-gray-700">
         {{ $label }}
     </label>
 
-    <div class=" mt-2 sm:mt-0 sm:col-span-2">
+    <div class="w-{{$width}} mt-2 sm:mt-0 sm:col-span-2">
         {{ $slot }}
 
         @if ($error)

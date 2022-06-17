@@ -1,5 +1,5 @@
 <div>
-    <select wire:model="category_id" class="rounded">
+    <select wire:model="category_id" class="w-full rounded">
         <option value=''>Select Category</option>
         @foreach ($categories as $category)
         <option value="{!! $category->id !!}" 

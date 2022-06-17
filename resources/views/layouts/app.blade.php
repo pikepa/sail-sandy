@@ -20,9 +20,8 @@
 
     @livewireStyles
    
-    @stack('styles')
+    @stack('childstyles')
 
-    @bukStyles
 </head>
 
 <body class="font-sans antialiased">
@@ -36,9 +35,8 @@
     </div>
     @livewireScripts
 
-    @stack('scripts')
+    @stack('childscripts')
 
-    @bukScripts
 </body>
 
 </html>

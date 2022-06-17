@@ -60,7 +60,6 @@ test('An authorised user can add a post', function () {
         ->set('category_id',$category->id)
         ->set('author_id', auth()->user()->id)
         ->set('published_at', '')
-        ->set('featured', true)
         ->set('meta_description', 'This is the meta description')
         ->call('save') 
         ->assertSuccessful();

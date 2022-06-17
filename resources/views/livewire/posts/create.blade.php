@@ -1,9 +1,9 @@
 <div>
     <x-forms.card title="Add Post">
-        <x-buk-form wire:submit.prevent="save">
+        <form wire:submit.prevent="save">
  
             @include('livewire.posts.form')
       
-        </x-buk-form>
+        </form>
     </x-forms.card>
 </div>

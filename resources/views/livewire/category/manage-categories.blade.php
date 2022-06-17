@@ -66,8 +66,8 @@
   <x-modal.dialog wire:model="showEditModal">
     <x-slot:title>Edit Category</x-slot>
       <x-slot:content>
-          <x-buk-label  for="name">Name</x-buk-label>
-          <x-buk-input  class="block w-full rounded" name="name" value="{!!$this->name!!}">wire:model="name"</x-buk-input>
+          <label  for="name">Name</label>
+          <input  class="block w-full rounded" name="name" value="{!!$this->name!!}">wire:model="name"</input>
 
       </x-slot>
         <x-slot:footer>

@@ -3,9 +3,9 @@
   <div class="py-2">
     <div class="max-w-7xl mx-auto px-2">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-4 bg-teal-50 border-b border-gray-200">
+        <div class="p-2 bg-teal-50 border-b border-gray-200">
           <!-- This example requires Tailwind CSS v2.0+ -->
-          <div class="px-4 sm:px-6 lg:px-8">
+          <div class="px-2">
             <!-- This Section allows add ing and update forms -->
 
             <div class="block">

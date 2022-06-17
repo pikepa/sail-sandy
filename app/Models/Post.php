@@ -27,30 +27,11 @@ class Post extends Model
         'body',
         'meta_description',
         'published_at',
-        'featured',
         'author_id',
         'category_id',
         'uuid'
     ];
 
-
-    protected function Featured(): Attribute
-    {
-        return Attribute::make(
-
-            get: function ($value) {
-
-            if($value == 1){ return 'True';} 
-                return '';
-            },
-
-            set: function ($value) {
-
-            if($value == "True"){ return 1;} 
-                return 0;
-            }
-        );
-    }
 
     protected function PublishedAt(): Attribute
     {

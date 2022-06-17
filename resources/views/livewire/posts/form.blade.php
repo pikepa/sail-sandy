@@ -1,67 +1,67 @@
-<div class="space-y-6">
+<div class="flex justify-between ">
 
-    <!-- Title -->
+    <div class="flex-1 mr-4 space-y-6">
+        <!-- Post Title -->
 
-    <div>
-        <x-buk-label for="title" class="text-gray-700 font-bold">title</x-buk-label>
-        <x-buk-input wire:model="title" class="form-input block w-full rounded" name="name" value=""></x-buk-input>
-        <x-buk-error field="title" class="mt-2 text-red-500" />
+        <x-input.group for="title" label="Title" width="full">
+            <x-input.text wire:model='title' type="text" class="form-input w-full rounded" name="name">
+            </x-input.text>
+        </x-input.group>
+
+        <!-- Post Body -->
+
+        <x-input.group for="body" label="Body" width="full">
+            <x-input.textarea wire:model='body' rows=10 type="text" />
+        </x-input.group>
+
+        <!-- Meta Description -->
+
+        <x-input.group for="meta_description" label="Meta Description" width="full">
+            <x-input.textarea wire:model='meta_description' rows=10 type="text" />
+        </x-input.group>
+
+
     </div>
+    <div class=" space-y-6">
+        <!-- Post Category -->
+        <div>
+            <x-input.group for="category" label="Body" width="full">
+                <livewire:forms.category-select wire:model='category_id' :cat_id="$selectedCategory" />
+            </x-input.group>
+        </div>
 
-    <!-- Body -->
+        <!-- Schedule Post -->
 
-    <div>
-        <x-buk-label for="body" class="text-gray-700 font-bold">Body</x-buk-label>
-        <x-buk-textarea wire:model="body" class="block w-full rounded" name="body" value=""></x-buk-textarea>
-        <x-buk-error field="body" class="mt-2 text-red-500" />
-    </div>
-
-    <!-- Post Category -->
-    <div>
-        <x-buk-label for="category" class="block text-gray-700 font-bold"></x-buk-label>
-
-        <livewire:forms.category-select wire:model='category_id' :cat_id="$selectedCategory" />
-
-        <x-buk-error field="category_id" class="mt-2 text-red-500" />
-    </div>
-
-    <!-- Schedule Post -->
-
-    <div class="field mb-6">
         <label class="block">
-            <span class="text-gray-700 font-bold">Published </span>
+            <span class="text-gray-700  font-bold">Published </span>
             @if($published_at != null)
             <input wire:model='published_at' type="date" name="published_at" value="{{  $published_at  }}"
-                class="form-input mt-1 block w-full">
+                class="form-input rounded mt-1 block w-full">
             @else
-            <input wire:model='published_at' type="date" name="published_at" class="form-input mt-1 block w-full">
+            <input wire:model='published_at' type="date" name="published_at" class="form-input rounded mt-1 block w-full">
             @endif
         </label>
-    </div>
 
-    <!-- Checkbox for featured -->
-    <div>
-        <x-buk-label class="mr-4 text-gray-700 font-bold" for="featured">Scheduled</x-buk-label>
+        <!-- Checkbox for Featured Image-->
+        <div>
+            <x-input.group label="Featured Image" for="cover_image"></x-input.group>
 
-        <x-buk-checkbox wire:model='featured' name="featured" />
+            <img wire:model='cover_image' class='rounded shadow-lg' src="images/1.jpeg" width="250px" alt="Featured image">
 
-        <x-buk-error field="featured" class="mt-2 text-red-500" />
+        </div>
 
-    </div>
-
-    <!-- Meta Description -->
-
-    <div>
-        <x-buk-label for="meta_description" class="text-gray-700 font-bold">Meta Description</x-buk-label>
-        <x-buk-textarea wire:model="meta_description" class="block w-full rounded" name="meta_description"
-            id="meta_description" value=""></x-buk-textarea>
-        <x-buk-error field="meta_description" class="mt-2 text-red-500" />
-    </div>
-
-    <!-- this is the save button -->
-    <div>
-        <x-buk-form-button method="Submit" class="MT-4 p-4 rounded-lg bg-green-500">
-            Save Post
-        </x-buk-form-button>
+        <!-- this is the save button -->
+        <div class="flex justify-between">
+            <div>
+                <button method="Submit" class="w-28 p-2 rounded-lg bg-green-500">
+                    Save Post
+                </button>
+            </div>
+            <div>
+                <button method="Submit" class="w-28 p-2 rounded-lg bg-orange-500">
+                    Preview Post
+                </button>
+            </div>
+        </div>
     </div>
 </div>

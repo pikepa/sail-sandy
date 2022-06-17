@@ -20,7 +20,6 @@ class ManagePosts extends Component
     public $cover_image;
     public $meta_description;
     public $published_at = null;
-    public $featured =0;
     public $showAddForm = 0;
     public $showEditForm = 0;
     public $showTable = 1;  
@@ -38,7 +37,6 @@ class ManagePosts extends Component
         'author_id'   => 'required',
         'category_id'   => 'required',
         'published_at'   => '',
-        'featured'   => '',
         'uuid'   => 'required',
     
     ];
@@ -116,7 +114,6 @@ class ManagePosts extends Component
         $this->category_id = $post->category_id;
         $this->selectedCategory = $post->category_id;
         $this->published_at = $post->published_at;
-        $this->featured = $post->featured;
         $this->meta_description = $post->meta_description;
         
         $this->showEditForm();

@@ -29,7 +29,6 @@ class PostFactory extends Factory
             'body'              => $this->faker->sentence(20),
             'meta_description'  => $this->faker->paragraph,
             'published_at'      => $this->faker->dateTimeThisMonth(),
-            'featured'          => $this->faker->numberBetween(0,1),
             'author_id'         => User::factory()->create(),
             'category_id'       => Category::factory()->create(),
         ];
