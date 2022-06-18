@@ -9,11 +9,11 @@
             <!-- This Section allows add ing and update forms -->
 
             <div class="block">
-                @if($showAddForm )
-                    @include('livewire.posts.create')
-                @elseif($showEditForm)
-                @include('livewire.posts.update') 
-                @endif
+              @if($showAddForm )
+              @include('livewire.posts.create')
+              @elseif($showEditForm)
+              @include('livewire.posts.update')
+              @endif
             </div>
 
             @if($showTable)
@@ -29,7 +29,12 @@
               </div>
             </div>
 
-
+            <!-- message to go here -->
+            <div>
+              @if($deleted)
+               <x-forms.success />
+              @endif
+            </div>
             <!-- This is the table section of the page -->
             <div class="mt-8 flex flex-col">
               <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -57,10 +62,12 @@
                           <x-table.cell>{{$post->author->name}}</x-table.cell>
                           <x-table.cell class="text-center">{{$post->published_at}}</x-table.cell>
                           <x-table.cell>
-                            <x-button.link wire:click="edit({{ $post->id }})"><i class="fa-solid fa-pen-to-square"></i></x-button.link>
+                            <x-button.link wire:click="edit({{ $post->id }})"><i class="fa-solid fa-pen-to-square"></i>
+                            </x-button.link>
                           </x-table.cell>
                           <x-table.cell>
-                            <x-button.link wire:click="delete({{ $post->id }})"><i class="fa-regular fa-trash-can"></i></x-button.link>
+                            <x-button.link wire:click="delete({{ $post->id }})"><i class="fa-regular fa-trash-can"></i>
+                            </x-button.link>
                           </x-table.cell>
 
                         </x-table.row>

@@ -86,6 +86,20 @@ test('An authorised user can delete a post', function () {
 });
 
 
+test('A message is displayed when a user deletes a post', function () {
+    $this->actingAs(User::factory()->create());
+   
+    $post = Post::factory()->create();
+
+
+    Livewire::test(ManagePosts::class)
+        ->assertDontSee('Post Deleted')
+        ->call('delete',$post->id) 
+        ->assertSee('Post Deleted');
+
+});
+
+
 
 
 

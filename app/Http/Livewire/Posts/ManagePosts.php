@@ -26,6 +26,7 @@ class ManagePosts extends Component
     public $categories;
     public $selectedCategory;
     public $post;
+    public $deleted = false;
 
     protected $rules  = 
     [
@@ -145,7 +146,7 @@ class ManagePosts extends Component
     {
         $post=Post::findOrFail($id);
         $post->delete();
-
+        $this->deleted=true;
         return view('livewire.posts.manage-posts');
 
     }
