@@ -112,7 +112,8 @@ class ManagePosts extends Component
 
         $this->showTable();
 
-        session()->flash('message', 'Post Successfully Added.');
+        session()->put(['alertType' => 'success', 'message' => 'Post Successfully Added.']);
+
     }
 
     public function edit($id)
@@ -144,10 +145,8 @@ class ManagePosts extends Component
 
         $this->reset();
         $this->showTable();
-        session()->flash('message', 'Post Successfully Updated.');
 
-
-        return view('livewire.posts.manage-posts');
+        session()->put(['alertType' => 'success', 'message' => 'Post Successfully Updated.']);
 
     }
 
@@ -159,9 +158,9 @@ class ManagePosts extends Component
         $post=Post::findOrFail($id);
         $post->delete();
         $this->showAlert=true;
-        session()->flash('message', 'Post Successfully deleted.');
 
-        return view('livewire.posts.manage-posts');
+        session()->put(['alertType' => 'success', 'message' => 'Post Successfully Deleted.']);
+
 
     }
 
