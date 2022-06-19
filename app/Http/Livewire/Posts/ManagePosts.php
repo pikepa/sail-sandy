@@ -26,7 +26,7 @@ class ManagePosts extends Component
     public $categories;
     public $selectedCategory;
     public $post;
-    public $deleted = false;
+    public $showAlert = false;
 
     protected $rules  = 
     [
@@ -75,8 +75,16 @@ class ManagePosts extends Component
     // listen from event from CategorySelect 
 
     protected $listeners = [
-        'category_selected'
+        'category_selected',
+        'closeAlert',
     ];
+    
+    public function closeAlert()
+    {
+        $this->showAlert = 'false';
+
+        return view('livewire.posts.manage-posts');
+    }
     
     public function category_selected($category_id)
     {
@@ -103,7 +111,8 @@ class ManagePosts extends Component
         Post::create($data);
 
         $this->showTable();
-        return view('livewire.posts.manage-posts');
+
+        session()->flash('message', 'Post Successfully Added.');
     }
 
     public function edit($id)
@@ -135,6 +144,9 @@ class ManagePosts extends Component
 
         $this->reset();
         $this->showTable();
+        session()->flash('message', 'Post Successfully Updated.');
+
+
         return view('livewire.posts.manage-posts');
 
     }
@@ -146,7 +158,9 @@ class ManagePosts extends Component
     {
         $post=Post::findOrFail($id);
         $post->delete();
-        $this->deleted=true;
+        $this->showAlert=true;
+        session()->flash('message', 'Post Successfully deleted.');
+
         return view('livewire.posts.manage-posts');
 
     }

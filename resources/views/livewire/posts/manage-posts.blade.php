@@ -17,7 +17,15 @@
             </div>
 
             @if($showTable)
+            <div>
+              <div>
+                @if (session()->has('message'))
+                <x-forms.success />
+                @endif
+              </div>
+            </div>
             <div class="sm:flex sm:items-center">
+
               <div class="sm:flex-auto">
                 <h1 class="text-xl font-semibold text-gray-900">Posts</h1>
                 <p class="mt-2 text-sm text-gray-700">A list of all the posts in your account.</p>
@@ -30,11 +38,7 @@
             </div>
 
             <!-- message to go here -->
-            <div>
-              @if($deleted)
-               <x-forms.success />
-              @endif
-            </div>
+
             <!-- This is the table section of the page -->
             <div class="mt-8 flex flex-col">
               <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">

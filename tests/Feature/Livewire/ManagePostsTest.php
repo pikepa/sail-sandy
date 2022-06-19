@@ -93,9 +93,9 @@ test('A message is displayed when a user deletes a post', function () {
 
 
     Livewire::test(ManagePosts::class)
-        ->assertDontSee('Post Deleted')
+        ->assertDontSee('Post Successfully deleted')
         ->call('delete',$post->id) 
-        ->assertSee('Post Deleted');
+        ->assertSee('Post Successfully deleted');
 
 });
 
