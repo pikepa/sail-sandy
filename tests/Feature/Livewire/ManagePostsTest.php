@@ -16,7 +16,8 @@ test('An authorised user sees the Manage Posts page', function () {
 });
 
 test('A guest can view a published post', function () {
-   // Category::factory()->create();
+    Category::factory()->create();
+    User::factory()->create();
 
     $post = Post::factory()->create();
 
@@ -72,7 +73,8 @@ test('An authorised user can add a post', function () {
 
 test('An authorised user can delete a post', function () {
     $this->actingAs(User::factory()->create());
-   
+    Category::factory()->create();
+
     $post = Post::factory()->create();
 
     $this->assertDatabaseCount('posts',1);
@@ -88,7 +90,8 @@ test('An authorised user can delete a post', function () {
 
 test('A message is displayed when a user deletes a post', function () {
     $this->actingAs(User::factory()->create());
-   
+    Category::factory()->create();
+
     $post = Post::factory()->create();
 
 
