@@ -17,7 +17,7 @@
             </div>
 
             @if($showTable)
-            <div>
+            <div >
               <div id="hideMeAfter3Seconds">
                 @if (session()->has('message'))
                 <x-forms.success />
@@ -91,3 +91,5 @@
     </div>
   </div>
 </div>
+
+
