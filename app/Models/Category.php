@@ -18,7 +18,7 @@ class Category extends Model
 
     protected $table = 'categories';
 
-    protected $fillable = ['name', 'slug', 'status','parent_id'];
+    protected $fillable = ['name', 'slug', 'status','type','parent_id'];
 
     public function setNameAttribute($value)
     {

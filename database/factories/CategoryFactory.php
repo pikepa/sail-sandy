@@ -23,6 +23,7 @@ class CategoryFactory extends Factory
         return [
             'name' => $name,
             'slug' => $slug,
+            'type' => 'main',
             'status' =>$this->faker->numberBetween(0,1),
        ];
     }

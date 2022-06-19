@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->required()->unique();
             $table->string('slug')->required();
+            $table->string('type')->required()->default('main');
             $table->smallInteger('status')->required()->default(1);
             $table->foreignId('parent_id')->nullable()->constrained('categories');
             $table->timestamps();

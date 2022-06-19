@@ -10,6 +10,7 @@ class ManageCategories extends Component
     public $name = '';
     public $slug = '';
     public $status = '';
+    public $type = '';
     public $category_id = '';
     public $categories;
     public Category $editing;

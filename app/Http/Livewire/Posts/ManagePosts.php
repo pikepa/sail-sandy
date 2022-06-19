@@ -112,8 +112,8 @@ class ManagePosts extends Component
 
         $this->showTable();
 
-        session()->put(['alertType' => 'success', 'message' => 'Post Successfully Added.']);
-
+        session()->flash('message', 'Post Successfully added.');
+        session()->flash('alertType', 'success');
     }
 
     public function edit($id)
@@ -146,8 +146,8 @@ class ManagePosts extends Component
         $this->reset();
         $this->showTable();
 
-        session()->put(['alertType' => 'success', 'message' => 'Post Successfully Updated.']);
-
+        session()->flash('message', 'Post Successfully Updated.');
+        session()->flash('alertType', 'success');
     }
 
 
@@ -159,7 +159,8 @@ class ManagePosts extends Component
         $post->delete();
         $this->showAlert=true;
 
-        session()->put(['alertType' => 'success', 'message' => 'Post Successfully Deleted.']);
+        session()->flash('message', 'Post Successfully deleted.');
+        session()->flash('alertType', 'success');
 
 
     }
