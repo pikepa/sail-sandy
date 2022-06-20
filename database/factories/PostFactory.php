@@ -22,7 +22,6 @@ class PostFactory extends Factory
         $slug = Str::slug($title,'-');
 
         return [
-            'uuid'              => $this->faker->uuid,
             'cover_image'       => $this->faker->imageUrl(360, 360, 'animals', true, 'dogs', true, 'jpg'),
             'title'             => $title,
             'slug'              => $slug,

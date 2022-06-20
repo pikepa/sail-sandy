@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -28,8 +29,7 @@ class Post extends Model
         'meta_description',
         'published_at',
         'author_id',
-        'category_id',
-        'uuid'
+        'category_id'
     ];
 
 
@@ -44,7 +44,7 @@ class Post extends Model
             return 'Draft';
             },
             set: function ($value) {
-                if($value == 'Draft'){ return null;}
+                if($value == 'Draft' OR $value=='' ){ return null;}
                     return Carbon::parse($value)->format('Y-m-d  H:m:s');
             } 
         );

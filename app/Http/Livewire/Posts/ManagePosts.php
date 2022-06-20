@@ -6,20 +6,20 @@ use App\Models\Post;
 use Livewire\Component;
 use App\Models\Category;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class ManagePosts extends Component
 {
     public $posts;
     public $post_id;
-    public $uuid = '';
     public $title;
     public $slug;
     public $body;
     public $category_id;
-    public $author_id ;
-    public $cover_image;
+    public $author_id;
+    public $cover_image = 'Https://google.com';
     public $meta_description;
-    public $published_at = null;
+    public $published_at = 'Draft';
     public $showAddForm = 0;
     public $showEditForm = 0;
     public $showTable = 1;  
@@ -33,17 +33,17 @@ class ManagePosts extends Component
         'title'   => 'required|max:250',
         'slug'    => 'required',
         'body'   => 'required|min:20',
-        'cover_image'   => 'required',
-        'meta_description'   => 'required',
+        'meta_description'   => 'required|max:250',
         'author_id'   => 'required',
         'category_id'   => 'required',
         'published_at'   => '',
-        'uuid'   => 'required',
+        'cover_image' => 'required | url',
     
     ];
 
     public function mount()
     {
+        $this->author_id = auth()->user()->id;
         $this->categories=Category::get();
     }
 
@@ -76,15 +76,8 @@ class ManagePosts extends Component
 
     protected $listeners = [
         'category_selected',
-        'closeAlert',
     ];
     
-    public function closeAlert()
-    {
-        $this->showAlert = 'false';
-
-        return view('livewire.posts.manage-posts');
-    }
     
     public function category_selected($category_id)
     {
@@ -95,21 +88,18 @@ class ManagePosts extends Component
     {
         $this->showAddForm();
 
-       // return view('livewire.posts.manage-posts');
-
     }
 
 
     public function save()
     {
-        $this->author_id = auth()->user()->id;
-        $this->uuid = (string) Str::uuid();
-        $this->cover_image = "https://google.com";
+
         $this->slug = "this-is-a-test";
 
         $data= $this->validate();
         Post::create($data);
 
+        $this->reset();
         $this->showTable();
 
         session()->flash('message', 'Post Successfully added.');
@@ -135,10 +125,9 @@ class ManagePosts extends Component
     public function update($id)
     {
         $post = Post::findOrFail($id);
-        $this->author_id = $post->author_id;
-        $this->uuid = $post->uuid;
-        $this->cover_image = $post->cover_image;
-        $this->slug = Str::slug($this->title);
+         $this->author_id = $post->author_id;
+        // $this->cover_image = $post->cover_image;
+        // $this->slug = Str::slug($this->title);
 
         $data= $this->validate();
         $post->update($data);
@@ -159,11 +148,26 @@ class ManagePosts extends Component
         $post->delete();
         $this->showAlert=true;
 
-        session()->flash('message', 'Post Successfully deleted.');
+        session()->flash('message', $id.' Post Successfully deleted.');
         session()->flash('alertType', 'success');
 
+        //return redirect('/posts');
 
     }
+
+    
+
+    public function resetBanner()
+    {
+        $this->showAlert=true;
+
+        session()->flash('message', '');
+        session()->flash('alertType', '');
+
+        //return redirect('/posts');
+
+    }
+
 
 
 

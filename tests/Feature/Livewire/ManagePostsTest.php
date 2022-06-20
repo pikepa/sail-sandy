@@ -53,7 +53,6 @@ test('An authorised user can add a post', function () {
     $category = Category::factory()->create();
 
     Livewire::test(ManagePosts::class)
-        ->set('uuid', (string) Str::uuid())
         ->set('cover_image', 'https://google.com')
         ->set('title', 'this is a post')
         ->set('slug', 'this-is-a-post')

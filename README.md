@@ -12,6 +12,7 @@ This is the conversion of a news media site from wordpress to Laravel for Bombor
 - [x] Can retrieve all posts - tests running.
 - [ ] Auth User can create Post with many Categories.
 
+ x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 1500)"
 
 ### Subscriber
 - [x] Subsciber can add email to list.
