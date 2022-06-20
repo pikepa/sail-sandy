@@ -12,7 +12,7 @@
 
     @if($showTable)
     <div>
-      <div >
+      <div>
         @if (session()->has('message') && $showAlert = true)
         <x-forms.success />
         @endif
@@ -21,7 +21,6 @@
     <x-pages.dash-page-sub-head title="Posts" btntext="Add Post">
       A list of all the posts in your account.
     </x-pages.dash-page-sub-head>
-{{$published_at}}
     <!-- This is the table section of the page -->
     <div class="mt-8 flex flex-col">
       <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">

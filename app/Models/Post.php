@@ -44,7 +44,7 @@ class Post extends Model
             return 'Draft';
             },
             set: function ($value) {
-                if($value == 'Draft' OR $value=='' ){ return null;}
+                if($value == 'Draft' OR $value == ''  ){ return null;}
                     return Carbon::parse($value)->format('Y-m-d  H:m:s');
             } 
         );
