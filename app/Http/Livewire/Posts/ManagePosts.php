@@ -53,6 +53,11 @@ class ManagePosts extends Component
         return view('livewire.posts.manage-posts');
     }
 
+    public function updatedTitle($value)
+    {
+        $this->slug = Str::slug($value);
+    }
+
     public function showAddForm()
     {
         $this->showTable = false;
@@ -94,8 +99,6 @@ class ManagePosts extends Component
     public function save()
     {
 
-        $this->slug = "this-is-a-test";
-
         $data= $this->validate();
         Post::create($data);
 
@@ -116,6 +119,7 @@ class ManagePosts extends Component
         $this->body = $post->body;
         $this->category_id = $post->category_id;
         $this->selectedCategory = $post->category_id;
+        $this->author_id = $post->author_id;
         $this->published_at = $post->published_at;
         $this->meta_description = $post->meta_description;
         
@@ -125,11 +129,9 @@ class ManagePosts extends Component
     public function update($id)
     {
         $post = Post::findOrFail($id);
-         $this->author_id = $post->author_id;
-        // $this->cover_image = $post->cover_image;
-        // $this->slug = Str::slug($this->title);
 
         $data= $this->validate();
+
         $post->update($data);
 
         $this->reset();

@@ -2,7 +2,6 @@
 
     <div class="flex-1 mr-4 space-y-6">
         <!-- Post Title -->
-
         <x-input.group for="title" label="Title" width="full">
             <x-input.text wire:model='title' type="text" class="form-input w-full rounded" name="name">
             </x-input.text>

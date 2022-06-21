@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\Post;
+
+
 use App\Models\User;
-
-
 use Livewire\Livewire;
+use App\Models\Category;
 use App\Http\Livewire\Posts\ManagePosts;
 
 beforeEach(function () {
@@ -99,5 +101,18 @@ test('A post meta_description has a max of 100 chars', function () {
     ->set('meta_description',str_repeat('s',251))
     ->call('save')
     ->assertHasErrors(['meta_description' => 'max']);
+  
+  });
+
+test('when the post title is changed the slug changes', function () {
+    Category::factory()->create();
+    $post = Post::factory()->create(['slug' => 'this-is-a-fake-title']);
+
+    Livewire::test(ManagePosts::class)
+    ->call('edit', $post->id)
+    ->set('title','this is a new title')
+    ->call('update',$post->id);
+
+    $this->assertDatabaseHas('posts', ['slug' => 'this-is-a-new-title']);
   
   });

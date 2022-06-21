@@ -49,7 +49,6 @@ class Post extends Model
             } 
         );
     }
- 
 
     public function scopePublished($query)
     {

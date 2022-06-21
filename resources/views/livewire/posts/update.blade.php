@@ -1,8 +1,6 @@
 <div>
         <x-forms.card title="Edit Post">
             <x-forms.errors :errors="$errors"></x-forms.errors>
-            {{$published_at}}
-
             <form wire:submit.prevent="update({{ $this->post_id }})">
                 @include('livewire.posts.form', ['selectedCategory'=>$selectedCategory] )
             </form>

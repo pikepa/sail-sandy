@@ -29,7 +29,7 @@
                                 {{$post->title}}
                             </div>
                             <div>
-                                {!!$post->body!!}
+                                    {!! nl2br($post->body)!!} 
                             </div>
 
                         </div>
