@@ -6,13 +6,11 @@
             <x-input.text wire:model='title' type="text" class="form-input w-full rounded" name="name">
             </x-input.text>
         </x-input.group>
-
-        <livewire:trix></livewire:trix>
-        
+ 
         <!-- Post Body -->
 
         <x-input.group for="body" label="Body" width="full">
-            <x-input.textarea wire:model='body' rows=10 type="text" />
+            <x-input.rich-text wire:model.lazy='body' :initial-value=$body rows=10 type="text" />
         </x-input.group>
 
         <!-- Meta Description -->

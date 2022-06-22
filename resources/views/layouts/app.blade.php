@@ -14,12 +14,12 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/trix@2.0.0-beta.0/dist/trix.css">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
 
     @livewireStyles
-   
+
     @stack('childstyles')
 
 </head>
@@ -34,6 +34,10 @@
         </div>
     </div>
     @livewireScripts
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://unpkg.com/trix@2.0.0-beta.0/dist/trix.umd.js"></script>
 
     @stack('childscripts')
 
