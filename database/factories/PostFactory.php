@@ -4,13 +4,11 @@ namespace Database\Factories;
 
 use App\Models\Category;
 use App\Models\User;
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class PostFactory extends Factory
 {
-
-
     /**
      * Define the model's default state.
      *
@@ -19,10 +17,10 @@ class PostFactory extends Factory
     public function definition()
     {
         $title = $this->faker->sentence;
-        $slug = Str::slug($title,'-');
+        $slug = Str::slug($title, '-');
 
         return [
-            'cover_image'       => 'http://localhost:8000/images/'.rand(1,6).'.jpeg',
+            'cover_image'       => 'http://localhost:8000/images/'.rand(1, 6).'.jpeg',
             'title'             => $title,
             'slug'              => $slug,
             'body'              => $this->faker->paragraph(5),

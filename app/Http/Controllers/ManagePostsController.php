@@ -15,7 +15,8 @@ class ManagePostsController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view("posts.post_main",compact('posts'));
+
+        return view('posts.post_main', compact('posts'));
     }
 
     /**

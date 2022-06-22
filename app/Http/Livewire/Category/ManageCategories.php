@@ -2,26 +2,31 @@
 
 namespace App\Http\Livewire\Category;
 
-use Livewire\Component;
 use App\Models\Category;
+use Livewire\Component;
 
 class ManageCategories extends Component
 {
     public $name = '';
-    public $slug = '';
-    public $status = '';
-    public $type = '';
-    public $category_id = '';
-    public $categories;
-    public Category $editing;
 
+    public $slug = '';
+
+    public $status = '';
+
+    public $type = '';
+
+    public $category_id = '';
+
+    public $categories;
+
+    public Category $editing;
 
     // public function rules()
     // {
     //     return [
     //         'editing.category' => 'required|min:3',
     //         'editing.type' => 'required',
-    //         'editing.status' => 'required',  
+    //         'editing.status' => 'required',
     //         // |in:'.collect(Category::STATUSES)->keys()->implode(','),
     //     ,
     //     ];
@@ -39,7 +44,6 @@ class ManageCategories extends Component
         return view('livewire.category.manage-categories');
     }
 
-
     public function edit(Category $category)
     {
         $this->editing = $category;
@@ -56,21 +60,18 @@ class ManageCategories extends Component
     //     $this->showEditModal = false;
     // }
 
-
-
     public function save()
     {
         $categoryData = $this->validate([
             'name' => 'required|max:50',
             'slug' => 'required',
-            'status' => 'required|numeric|integer'
+            'status' => 'required|numeric|integer',
         ]);
 
         Category::create($categoryData);
 
         return view('livewire.category.manage-categories');
     }
-
 
     public function update()
     {
@@ -79,9 +80,10 @@ class ManageCategories extends Component
         $category->update(
             [
                 'name' => $this->name,
-                'status' => $this->status
+                'status' => $this->status,
             ]
         );
+
         return view('livewire.category.manage-categories');
     }
 

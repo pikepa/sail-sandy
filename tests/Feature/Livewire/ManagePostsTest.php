@@ -1,18 +1,16 @@
 <?php
 
+use App\Http\Livewire\Posts\ManagePosts;
+use App\Http\Livewire\Posts\ShowPost;
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Livewire\Livewire;
-use App\Models\Category;
-use Illuminate\Support\Str;
-use App\Http\Livewire\Posts\ShowPost;
-use App\Http\Livewire\Posts\ManagePosts;
 
 test('An authorised user sees the Manage Posts page', function () {
     $this->signIn();
     Livewire::test(ManagePosts::class)->assertSee('Posts')
     ->assertSee('A list of all the posts in your account.');
-
 });
 
 test('A guest can view a published post', function () {
@@ -21,7 +19,7 @@ test('A guest can view a published post', function () {
 
     $post = Post::factory()->create();
 
-   Livewire::test(ShowPost::class,['slug' => $post->slug])
+    Livewire::test(ShowPost::class, ['slug' => $post->slug])
        ->assertStatus(200)
         ->assertSee($post->category->name)
         ->assertSee('Bomborra')
@@ -30,7 +28,6 @@ test('A guest can view a published post', function () {
 });
 
 test('An authorised user can see a list of all posts', function () {
-    
     $this->signIn();
     $category = Category::factory()->create();
 
@@ -49,26 +46,24 @@ test('An authorised user can see a list of all posts', function () {
 
 test('An authorised user can add a post', function () {
     $this->actingAs(User::factory()->create());
-   
+
     $category = Category::factory()->create();
 
     Livewire::test(ManagePosts::class)
         ->set('cover_image', 'https://google.com')
         ->set('title', 'this is a post')
         ->set('slug', 'this-is-a-post')
-        ->set('body', str_repeat('s',100))
-        ->set('category_id',$category->id)
+        ->set('body', str_repeat('s', 100))
+        ->set('category_id', $category->id)
         ->set('author_id', auth()->user()->id)
         ->set('published_at', '')
         ->set('meta_description', 'This is the meta description')
-        ->call('save') 
+        ->call('save')
         ->assertSuccessful();
 
-    $this->assertDatabaseCount('posts',1)
-    ->assertDatabaseHas('posts',['title' =>'this is a post'] );
-
+    $this->assertDatabaseCount('posts', 1)
+    ->assertDatabaseHas('posts', ['title' =>'this is a post']);
 });
-
 
 test('An authorised user can delete a post', function () {
     $this->actingAs(User::factory()->create());
@@ -76,16 +71,14 @@ test('An authorised user can delete a post', function () {
 
     $post = Post::factory()->create();
 
-    $this->assertDatabaseCount('posts',1);
+    $this->assertDatabaseCount('posts', 1);
 
     Livewire::test(ManagePosts::class)
-        ->call('delete',$post->id) 
+        ->call('delete', $post->id)
         ->assertSuccessful();
 
-    $this->assertDatabaseCount('posts',0);
-
+    $this->assertDatabaseCount('posts', 0);
 });
-
 
 test('A message is displayed when a user deletes a post', function () {
     $this->actingAs(User::factory()->create());
@@ -93,15 +86,8 @@ test('A message is displayed when a user deletes a post', function () {
 
     $post = Post::factory()->create();
 
-
     Livewire::test(ManagePosts::class)
         ->assertDontSee('Post Successfully deleted')
-        ->call('delete',$post->id) 
+        ->call('delete', $post->id)
         ->assertSee('Post Successfully deleted');
-
 });
-
-
-
-
-

@@ -1,16 +1,14 @@
 <?php
 
-use App\Models\Subscriber;
 use App\Mail\SubscribedEmail;
-use function Pest\Faker\faker;
-use function Pest\Laravel\get;
-use function Pest\Laravel\post;
+use App\Models\Subscriber;
 use Illuminate\Support\Facades\Mail;
+use function Pest\Faker\faker;
+use function Pest\Laravel\post;
 
 test('an email is sent when a subscriber is created', function () {
-     
     Mail::fake();
-        
+
     $email = faker()->email;
 
     post('/subscribers', ['email' => $email, 'name' => 'Peter Piper']);
@@ -19,9 +17,8 @@ test('an email is sent when a subscriber is created', function () {
 });
 
 test('an email is not sent if subscriber is not created', function () {
-
     Mail::fake();
-        
+
     $email = faker()->email;
 
     post('/subscribers', ['email' => 'asdaddaddasdadsa']);
@@ -29,18 +26,14 @@ test('an email is not sent if subscriber is not created', function () {
     Mail::AssertNotSent(SubscribedEmail::class);
 });
 
-
 test('an OTP is stored in Cache for the subscriber', function () {
-
     Mail::fake();
-        
+
     $email = faker()->email;
 
     post('/subscribers', ['email' => $email, 'name' => 'Peter Piper']);
 
     $subscriber = Subscriber::get()->first();
-    
+
     $this->assertNotNull($subscriber->OTP());
-
 });
-

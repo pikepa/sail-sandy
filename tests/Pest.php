@@ -1,12 +1,10 @@
 <?php
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
- 
+use Tests\TestCase;
+
 // Uses the given test case and trait in the current folder recursively
 uses(TestCase::class, RefreshDatabase::class)->in(__DIR__);
-
-
 
 /*
 |--------------------------------------------------------------------------

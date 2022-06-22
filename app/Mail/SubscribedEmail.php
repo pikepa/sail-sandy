@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -12,6 +11,7 @@ class SubscribedEmail extends Mailable
     use Queueable, SerializesModels;
 
     public $OTP;
+
     public $ID;
 
     /**
@@ -32,6 +32,6 @@ class SubscribedEmail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.subscribed-email',['OTP' => $this->OTP, 'ID'=>$this->ID]);
+        return $this->markdown('mail.subscribed-email', ['OTP' => $this->OTP, 'ID'=>$this->ID]);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
@@ -18,13 +18,13 @@ class CategoryFactory extends Factory
     public function definition()
     {
         $name = $this->faker->sentence;
-        $slug = Str::slug($name,'-');
+        $slug = Str::slug($name, '-');
 
         return [
             'name' => $name,
             'slug' => $slug,
             'type' => 'main',
-            'status' =>$this->faker->numberBetween(0,1),
-       ];
+            'status' =>$this->faker->numberBetween(0, 1),
+        ];
     }
 }

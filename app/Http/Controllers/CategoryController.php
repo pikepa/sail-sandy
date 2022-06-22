@@ -12,35 +12,32 @@ class CategoryController extends Controller
         $this->middleware('auth');
     }
 
-
     public function index()
     {
         $categories = Category::get();
-        return view("categories.index",compact('categories'));
+
+        return view('categories.index', compact('categories'));
     }
-
-
 
     public function store(Request $request)
     {
         $validated = $request->validate([
             'name' => 'required|unique:categories',
             'slug' => 'required',
-            'status'   => 'required|integer|between:0,1'
+            'status'   => 'required|integer|between:0,1',
         ]);
 
-       $catin = Category::create($validated);
-        
-       $categories = Category::get();
+        $catin = Category::create($validated);
 
-        return view("categories.index",compact('categories'));
+        $categories = Category::get();
+
+        return view('categories.index', compact('categories'));
     }
 
     public function destroy(Category $category)
-    {        
-
+    {
         $category->delete();
 
-        return view("categories.index");
+        return view('categories.index');
     }
 }

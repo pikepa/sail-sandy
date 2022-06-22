@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 
 class Category extends Model
 {
@@ -18,7 +18,7 @@ class Category extends Model
 
     protected $table = 'categories';
 
-    protected $fillable = ['name', 'slug', 'status','type','parent_id'];
+    protected $fillable = ['name', 'slug', 'status', 'type', 'parent_id'];
 
     public function setNameAttribute($value)
     {
@@ -54,7 +54,7 @@ class Category extends Model
 
     public function subsCategories(): HasMany
     {
-        return $this->hasMany(Category::class,'parent_id')
+        return $this->hasMany(self::class, 'parent_id')
         ->with('categories');
     }
 }

@@ -8,7 +8,6 @@ use Illuminate\Support\ServiceProvider;
 
 class ObservableServiceProvider extends ServiceProvider
 {
-
     /**
      * Bootstrap services.
      *
@@ -16,6 +15,6 @@ class ObservableServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        User::observe(classes: UserObserver::class );
+        User::observe(classes: UserObserver::class);
     }
 }

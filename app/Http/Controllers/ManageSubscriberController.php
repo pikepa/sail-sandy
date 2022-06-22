@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\SubsConfMail;
 use App\Models\Subscriber;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Cache;
-use App\Http\Livewire\Subscriber\CreateSubscriber;
 
 class ManageSubscriberController extends Controller
 {
@@ -29,7 +24,7 @@ class ManageSubscriberController extends Controller
      */
     public function create()
     {
-        return view("livewire.subscriber.create-subscriber");
+        return view('livewire.subscriber.create-subscriber');
     }
 
     /**
@@ -49,13 +44,11 @@ class ManageSubscriberController extends Controller
         $subscriber = Subscriber::create($validated);
 
         if ($subscriber) {
-
             $subscriber->sendOTP();
         }
 
-    return redirect('/subscribers/thankyou');
-    
-}
+        return redirect('/subscribers/thankyou');
+    }
 
     /**
      * Display the specified resource.
@@ -65,7 +58,7 @@ class ManageSubscriberController extends Controller
      */
     public function show()
     {
-       return view("livewire.subscriber.thank-you");
+        return view('livewire.subscriber.thank-you');
     }
 
     /**

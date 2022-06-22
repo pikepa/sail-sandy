@@ -21,6 +21,6 @@ class SubscriberFactory extends Factory
             'name'        => $this->faker->unique()->name(),
             'validation_key' => '',
             'validated_at' => '',
-       ];
+        ];
     }
 }
