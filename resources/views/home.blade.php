@@ -19,38 +19,14 @@
                     Featured Articles
                 </div>
                 <div class="grid grid-cols-3 gap-2">
-<x-posts.card/>
-
-                    <div class=" bg-teal-100">
-                        <img class="rounded-t-lg" src="images/2.jpeg" alt="placeimg">
-                        <div class="p-2 font-bold text-center text-xl">Title 1</div>
-                        <p class="p-2 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                    <div class=" bg-teal-100">
-                        <img class="rounded-t-lg" src="images/3.jpeg" alt="placeimg">
-                        <div class="p-2 font-bold text-center text-xl">Title 1</div>
-                        <p class="p-2 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                    <div class=" bg-teal-100">
-                        <img class="rounded-t-lg" src="images/4.jpeg" alt="placeimg">
-                        <div class="p-2 font-bold text-center text-xl">Title 1</div>
-                        <p class="p-2 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                    <div class=" bg-teal-100">
-                        <img class="rounded-t-lg" src="images/5.jpeg" alt="placeimg">
-                        <div class="p-2 font-bold text-center text-xl">Title 1</div>
-                        <p class="p-2 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                    <div class=" bg-teal-100">
-                        <img class="rounded-t-lg" src="images/6.jpeg" alt="placeimg">
-                        <div class="p-2 font-bold text-center text-xl">Title 1</div>
-                        <p class="p-2 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
+                    
+                    <x-posts.card img='images/1.jpeg'/>
+                    <x-posts.card img='images/2.jpeg'/>
+                    <x-posts.card img='images/3.jpeg'/>
+                    <x-posts.card img='images/4.jpeg'/>
+                    <x-posts.card img='images/5.jpeg'/>
+                    <x-posts.card img='images/6.jpeg'/>
+                    
                 </div>
             </div>
             <div class="w-1/4  bg-white border-2 p-1">

@@ -22,10 +22,10 @@ class PostFactory extends Factory
         $slug = Str::slug($title,'-');
 
         return [
-            'cover_image'       => $this->faker->imageUrl(360, 360, 'animals', true, 'dogs', true, 'jpg'),
+            'cover_image'       => 'http://localhost:8000/images/'.rand(1,6).'.jpeg',
             'title'             => $title,
             'slug'              => $slug,
-            'body'              => $this->faker->sentence(20),
+            'body'              => $this->faker->paragraph(5),
             'meta_description'  => $this->faker->paragraph,
             'published_at'      => $this->faker->dateTimeThisMonth(),
             'author_id'         => User::inRandomOrder()->first(),

@@ -831,9 +831,6 @@ select {
 .ml-2 {
   margin-left: 0.5rem;
 }
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
 .mr-2 {
   margin-right: 0.5rem;
 }
@@ -1302,10 +1299,6 @@ select {
 .bg-red-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(254 226 226 / var(--tw-bg-opacity));
-}
-.bg-gray-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 .fill-current {
   fill: currentColor;

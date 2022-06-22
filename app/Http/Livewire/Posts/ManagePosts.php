@@ -102,7 +102,7 @@ class ManagePosts extends Component
         $data= $this->validate();
         Post::create($data);
 
-        $this->reset();
+        $this->resetExcept('author_id');
         $this->showTable();
 
         session()->flash('message', 'Post Successfully added.');
@@ -134,7 +134,7 @@ class ManagePosts extends Component
 
         $post->update($data);
 
-        $this->reset();
+        $this->resetExcept('author_id');
         $this->showTable();
 
         session()->flash('message', 'Post Successfully Updated.');
@@ -150,7 +150,7 @@ class ManagePosts extends Component
         $post->delete();
         $this->showAlert=true;
 
-        session()->flash('message', $id.' Post Successfully deleted.');
+        session()->flash('message',' Post Successfully deleted.');
         session()->flash('alertType', 'success');
 
         //return redirect('/posts');

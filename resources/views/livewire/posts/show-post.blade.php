@@ -23,7 +23,7 @@
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200">
                             <div style="float:left;" class="mr-6">
-                                <img src="{{$post->cover_image}}" width='400px' alt="Cover Image">
+                                <img src="/images/1.jpeg" width='400px' alt="Cover Image">
                             </div>
                             <div class="text-3xl font-semibold">
                                 {{$post->title}}

@@ -7,6 +7,8 @@
             </x-input.text>
         </x-input.group>
 
+        <livewire:trix></livewire:trix>
+        
         <!-- Post Body -->
 
         <x-input.group for="body" label="Body" width="full">
@@ -18,6 +20,7 @@
         <x-input.group for="meta_description" label="Meta Description" width="full">
             <x-input.textarea wire:model='meta_description' rows=5 type="text" />
         </x-input.group>
+
 
 
     </div>
