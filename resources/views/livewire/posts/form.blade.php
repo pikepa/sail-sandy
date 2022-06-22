@@ -10,13 +10,13 @@
         <!-- Post Body -->
 
         <x-input.group for="body" label="Body" width="full">
-            <x-input.rich-text wire:model.lazy='body' :initial-value=$body rows=10 type="text" />
+            <x-input.rich-text wire:model.lazy='body' :initial-value=$body  type="text" />
         </x-input.group>
 
         <!-- Meta Description -->
 
         <x-input.group for="meta_description" label="Meta Description" width="full">
-            <x-input.textarea wire:model='meta_description' rows=5 type="text" />
+            <x-input.rich-text wire:model.lazy='meta_description' :initial-value="$meta_description" type="text" />
         </x-input.group>
 
 
