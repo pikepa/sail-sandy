@@ -6,9 +6,9 @@
 
                     <livewire:menus.menu-top />
 
-                    <x-menus.menu-middle />
+                    <!-- <x-menus.menu-middle />
 
-                    <x-menus.menu-bottom />
+                    <x-menus.menu-bottom /> -->
 
                 </menus>
             </div>

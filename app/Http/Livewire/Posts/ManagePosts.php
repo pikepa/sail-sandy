@@ -10,7 +10,6 @@ use Livewire\WithFileUploads;
 
 class ManagePosts extends Component
 {
-
     use WithFileUploads;
 
     public $posts;
@@ -83,7 +82,6 @@ class ManagePosts extends Component
     {
         $this->validate(['newImage' => 'image|max:5000']);
         $this->cover_image = $this->newImage->temporaryUrl();
-
     }
 
     public function showAddForm()
@@ -197,12 +195,11 @@ class ManagePosts extends Component
 
     public function storeFile()
     {
-        if($this->newImage){
+        if ($this->newImage) {
             $filename = $this->newImage->store('/featured', 'featured');
             $this->cover_image = env('AWS_URL').'/'. $filename ;
-        }else{
+        } else {
             return;
         }
-
     }
 }

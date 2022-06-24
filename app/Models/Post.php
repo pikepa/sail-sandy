@@ -35,7 +35,6 @@ class Post extends Model
     protected function PublishedAt(): Attribute
     {
         return Attribute::make(
-
             get: function ($value) {
                 if ($value !== null) {
                     return Carbon::parse($value)->format('d-m-Y');

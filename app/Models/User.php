@@ -51,7 +51,6 @@ class User extends Authenticatable
         return $this->hasOne(
             related: Profile::class,
             foreignKey: 'user_id',
-
         );
     }
 
