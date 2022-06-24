@@ -38,10 +38,14 @@
         </label>
 
         <!-- Checkbox for Featured Image-->
+        {{$cover_image}}
         <div>
             <x-input.group label="Featured Image" for="cover_image"></x-input.group>
 
-            <img wire:model='cover_image' class='rounded shadow-lg' src="{{$cover_image}}" width="250px" alt="Featured image">
+            <img class='rounded shadow-lg' src="{!!$cover_image!!}" width="250px" alt="Featured image">
+        </div>
+        <div>
+            <input wire:model='newImage' type="file"/>
 
         </div>
 

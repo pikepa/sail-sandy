@@ -25,11 +25,10 @@ Route::get('/posts/{slug}', ShowPost::class)->name('showpost');
 * App Routes
 */
 Route::middleware('auth')->group(function () {
-    Route::get('/posts', ManagePosts::class);
-    Route::get('/pages', ManagePages::class);
-    Route::get('/categories', ManageCategories::class);
-    Route::get('/dashboard', function () {
-        return view('dashboard');
+    Route::get('/posts', ManagePosts::class)->name('posts.index');
+    Route::get('/pages', ManagePages::class)->name('pages.index');
+    Route::get('/categories', ManageCategories::class)->name('categories.index');
+    Route::get('/dashboard', function () {return view('dashboard');
     })->name('dashboard');
 });
 

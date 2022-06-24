@@ -6,9 +6,13 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Str;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class ManagePosts extends Component
 {
+
+    use WithFileUploads;
+
     public $posts;
 
     public $post_id;
@@ -23,7 +27,7 @@ class ManagePosts extends Component
 
     public $author_id;
 
-    public $cover_image = 'Https://google.com';
+    public $cover_image;
 
     public $meta_description;
 
@@ -42,6 +46,8 @@ class ManagePosts extends Component
     public $post;
 
     public $showAlert = false;
+    public $newImage;
+
 
     protected $rules =
     [
@@ -53,7 +59,6 @@ class ManagePosts extends Component
         'category_id'   => 'required',
         'published_at'   => '',
         'cover_image' => 'required | url',
-
     ];
 
     public function mount()
@@ -72,6 +77,13 @@ class ManagePosts extends Component
     public function updatedTitle($value)
     {
         $this->slug = Str::slug($value);
+    }
+
+    public function updatedNewImage()
+    {
+        $this->validate(['newImage' => 'image|max:5000']);
+        $this->cover_image = $this->newImage->temporaryUrl();
+
     }
 
     public function showAddForm()
@@ -113,7 +125,11 @@ class ManagePosts extends Component
 
     public function save()
     {
+        $this->storeFile();
+
         $data = $this->validate();
+
+
         Post::create($data);
 
         $this->resetExcept('author_id');
@@ -142,9 +158,11 @@ class ManagePosts extends Component
 
     public function update($id)
     {
-        $post = Post::findOrFail($id);
+        $this->storeFile();
 
         $data = $this->validate();
+
+        $post = Post::findOrFail($id);
 
         $post->update($data);
 
@@ -175,5 +193,16 @@ class ManagePosts extends Component
         session()->flash('alertType', '');
 
         //return redirect('/posts');
+    }
+
+    public function storeFile()
+    {
+        if($this->newImage){
+            $filename = $this->newImage->store('/featured', 'featured');
+            $this->cover_image = env('AWS_URL').'/'. $filename ;
+        }else{
+            return;
+        }
+
     }
 }

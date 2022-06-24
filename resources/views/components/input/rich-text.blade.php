@@ -8,5 +8,5 @@
 
     <input id="x" value="{{ $initialValue }}" type="hidden">
 
-    <trix-editor input="x"></trix-editor>
+    <trix-editor class="trix-content" input="x"></trix-editor>
 </div>

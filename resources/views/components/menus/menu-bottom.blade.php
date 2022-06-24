@@ -6,7 +6,7 @@
     </ul>
     <div>
         @auth
-        <a class="uppercase text-gray-100 pr-4 " href="/posts">Dashboard</a>
+        <a class="uppercase text-gray-100 pr-4 " href="{!! route('dashboard')!!}">Dashboard</a>
         @endauth
         @guest
         <a class="uppercase text-gray-100 pr-4 " href="/login">Login</a>
