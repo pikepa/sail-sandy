@@ -50,11 +50,9 @@ return [
             'secret' => env('AWS_SECRET_ACCESS_KEY'),
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
-            'url' => env('AWS_URL'). '/featured/',
+            'url' => env('AWS_URL').'/featured/',
             'endpoint' => env('AWS_ENDPOINT'),
         ],
-
-
 
         's3' => [
             'driver' => 's3',

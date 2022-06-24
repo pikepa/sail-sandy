@@ -26,7 +26,7 @@
         <!-- Post Category -->
         <div>
             <x-input.group for="category" label="Catgory" width="full">
-                <livewire:forms.category-select wire:model='category_id' :cat_id="$selectedCategory" />
+                <livewire:forms.category-select  :cat_id="$selectedCategory" />
             </x-input.group>
         </div>
 
@@ -38,7 +38,6 @@
         </label>
 
         <!-- Checkbox for Featured Image-->
-        {{$cover_image}}
         <div>
             <x-input.group label="Featured Image" for="cover_image"></x-input.group>
 
@@ -50,7 +49,7 @@
         </div>
 
         <!-- this is the save button -->
-        <div class="flex justify-between">
+        <div class="flex justify-around">
             <div>
                 <button method="Submit" class="w-28 p-2 rounded-lg bg-green-500">
                     Save Post
@@ -59,18 +58,12 @@
 
             <div>
                 <button class="w-28 p-2 rounded-lg bg-orange-500">
-                    <a href="posts/{{$slug}}">
-                    Preview Post
+                    <a href="{!!route('posts.index')!!}">
+                    Cancel
                 </a>
                 </button>
             </div>
         </div>
-        <div class="flex text-sm text-gray-600">
-            <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-              <span>Upload a file</span>
-              <input id="file-upload" name="file-upload" type="file" class="sr-only">
-            </label>
-            <p class="pl-1">or drag and drop</p>
-          </div>
+
     </div>
 </div>

@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 class Category extends Model
 {
     use HasFactory;
+
     public const STATUSES = [
         '0' => 'Inactive',
         '1' => 'Active',

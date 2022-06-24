@@ -45,8 +45,8 @@ class ManagePosts extends Component
     public $post;
 
     public $showAlert = false;
-    public $newImage;
 
+    public $newImage;
 
     protected $rules =
     [
@@ -127,7 +127,6 @@ class ManagePosts extends Component
 
         $data = $this->validate();
 
-
         Post::create($data);
 
         $this->resetExcept('author_id');
@@ -197,7 +196,7 @@ class ManagePosts extends Component
     {
         if ($this->newImage) {
             $filename = $this->newImage->store('/featured', 'featured');
-            $this->cover_image = env('AWS_URL').'/'. $filename ;
+            $this->cover_image = env('AWS_URL').'/'.$filename;
         } else {
             return;
         }
