@@ -15,19 +15,7 @@
 
         <main class="mt-1 flex flex-row space-x-1 justify-between ">
             <div class="w-3/4 p-1 border-2 border-gray-200 bg-white">
-                <div class="text-4xl Font-bold text-teal-900 pb-4">
-                    Featured Articles
-                </div>
-                <div class="grid grid-cols-3 gap-2">
-                    
-                    <x-posts.card img='images/1.jpeg'/>
-                    <x-posts.card img='images/2.jpeg'/>
-                    <x-posts.card img='images/3.jpeg'/>
-                    <x-posts.card img='images/4.jpeg'/>
-                    <x-posts.card img='images/5.jpeg'/>
-                    <x-posts.card img='images/6.jpeg'/>
-                    
-                </div>
+<livewire:home.main-body />
             </div>
             <div class="w-1/4  bg-white border-2 p-1">
                 <div class="text-center font-semibold text-3xl">Newsletter</div>

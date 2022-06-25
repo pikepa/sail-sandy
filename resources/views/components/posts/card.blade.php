@@ -1,10 +1,18 @@
-<div class="bg-teal-100">
-    <a href="/posts/id-culpa-magni-qui-placeat-sapiente-in-voluptas">
-        <div class="flex flex-col  justify-around ">
-            <div><img class="rounded-t-lg" src='{{$img}}' alt="placeimg"></div>
-            <div class="p-2 font-bold text-center text-xl">Title 1</div>
-            <div class="flex-1" ><p class="p-2 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor i Lorem ipsum dolor sit amet,.</p></div>
+<div class="bg-teal-100 rounded h-96 overflow-hidden shadow-lg">
+    <a href="/posts/{{$post->slug}}">
+        <div class="flex flex-col ">
+            <div class="">
+                <img class="object-cover h-52 w-full rounded-md " src='{{$post->cover_image}}' alt="placeimg">
+            </div>
+            <div class=" max-h-36 overflow-hidden">
+                <div class="px-2 pt-2 font-bold text-base ">{{$post->title}}</div>
+                <div class="p-2  trix-content text-sm text-clip">
+                    {!! $post->body!!}
+                </div>
+            </div>
+            <div class="px-2 font-semibold text-xsm">
+                ... more
+            </div>
         </div>
     </a>
 </div>
