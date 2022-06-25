@@ -74,9 +74,9 @@ test('A post meta_description is required', function () {
     ->assertHasErrors(['meta_description' => 'required']);
 });
 
-test('A post meta_description has a max of 100 chars', function () {
+test('A post meta_description has a max of 300 chars', function () {
     Livewire::test(ManagePosts::class)
-    ->set('meta_description', str_repeat('s', 251))
+    ->set('meta_description', str_repeat('s', 301))
     ->call('save')
     ->assertHasErrors(['meta_description' => 'max']);
 });

@@ -4,17 +4,22 @@ namespace App\Http\Livewire\Home;
 
 use App\Models\Post;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class MainBody extends Component
-{   public $posts;
+{   
+    use WithPagination;
+    
 
     public function mount()
     {
-        $this->posts = Post::limit(6)->orderBy('published_at', 'desc')->get();
+     //   $this->posts = Post::orderBy('published_at', 'desc')->paginate(6);
     }
 
     public function render()
     {
-        return view('livewire.home.main-body');
+        return view('livewire.home.main-body', [
+            'posts' => Post::orderBy('published_at','desc')->paginate(6),
+        ]);
     }
 }

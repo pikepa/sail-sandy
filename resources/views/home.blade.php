@@ -15,7 +15,7 @@
 
         <main class="mt-1 flex flex-row space-x-1 justify-between ">
             <div class="w-3/4 p-1 border-2 border-gray-200 bg-white">
-<livewire:home.main-body />
+                <livewire:home.main-body />
             </div>
             <div class="w-1/4  bg-white border-2 p-1">
                 <div class="text-center font-semibold text-3xl">Newsletter</div>
