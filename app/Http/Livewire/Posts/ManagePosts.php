@@ -66,7 +66,6 @@ class ManagePosts extends Component
     public function mount()
     {
         $this->author_id = auth()->user()->id;
-        $this->categories = Category::get();
     }
 
     public function render()
