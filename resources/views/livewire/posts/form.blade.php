@@ -10,13 +10,13 @@
         <!-- Post Body -->
 
         <x-input.group for="body" label="Body" width="full">
-            <x-input.rich-text wire:model.lazy='body' :initial-value=$body  type="text" />
+            <x-input.rich-text wire:model.lazy='body' :initial-value=$body unique="body" type="text" />
         </x-input.group>
 
         <!-- Meta Description -->
 
         <x-input.group for="meta_description" label="Meta Description" width="full">
-            <x-input.rich-text wire:model.lazy='meta_description' :initial-value="$meta_description" type="text" />
+            <x-input.rich-text wire:model.lazy='meta_description' :initial-value="$meta_description" unique='meta' type="text" />
         </x-input.group>
 
 
@@ -27,6 +27,13 @@
         <div>
             <x-input.group for="category" label="Catgory" width="full">
                 <livewire:forms.category-select  :cat_id="$selectedCategory" />
+            </x-input.group>
+        </div>
+
+        <!-- Post is in the Vault -->
+        <div>
+            <x-input.group for="is_in_vault" label="Post is in our Vault" width="full">
+                <input wire:model='is_in_vault' type="checkbox" class="ml-2" > 
             </x-input.group>
         </div>
 

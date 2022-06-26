@@ -56,6 +56,7 @@ test('An authorised user can add a post', function () {
         ->set('title', 'this is a post')
         ->set('slug', 'this-is-a-post')
         ->set('body', str_repeat('s', 100))
+        ->set('is_in_vault', false)
         ->set('category_id', $category->id)
         ->set('author_id', auth()->user()->id)
         ->set('published_at', '')
@@ -64,7 +65,8 @@ test('An authorised user can add a post', function () {
         ->assertSuccessful();
 
     $this->assertDatabaseCount('posts', 1)
-    ->assertDatabaseHas('posts', ['title' =>'this is a post']);
+    ->assertDatabaseHas('posts', ['title' =>'this is a post',
+                                'is_in_vault' => false]);
 });
 
 test('An authorised user can delete a post', function () {
@@ -92,4 +94,21 @@ test('A message is displayed when a user deletes a post', function () {
         ->assertDontSee('Post Successfully deleted')
         ->call('delete', $post->id)
         ->assertSee('Post Successfully deleted');
+});
+
+test('An authorised User can mark a post as being in the vault', function (){
+    $this->signIn();
+    Category::factory()->create();
+    $post = Post::factory()->create(['is_in_vault' => false]);
+
+    Livewire::test(ManagePosts::class)
+        ->call('edit', $post->id)
+        ->assertDontSee('Post Successfully Updated')
+        ->set('is_in_vault', true)
+        ->set('meta_description', 'this is a new meta_description')
+        ->call('update', $post->id)
+        ->assertSee('Post Successfully Updated');
+
+        $this->assertDatabaseHas('posts', ['is_in_vault' => true,
+    'meta_description' => 'this is a new meta_description']);
 });

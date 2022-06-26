@@ -22,11 +22,13 @@ class ManagePosts extends Component
 
     public $body;
 
+    public $is_in_vault =false;
+
     public $category_id;
 
     public $author_id;
 
-    public $cover_image;
+    public $cover_image =null;
 
     public $meta_description;
 
@@ -54,10 +56,11 @@ class ManagePosts extends Component
         'slug'    => 'required',
         'body'   => 'required|min:20',
         'meta_description'   => 'required|max:300',
+        'is_in_vault'   => 'required',
         'author_id'   => 'required',
         'category_id'   => 'required',
         'published_at'   => '',
-        'cover_image' => 'required | url',
+        'cover_image' => 'required|url',
     ];
 
     public function mount()
@@ -144,6 +147,7 @@ class ManagePosts extends Component
         $this->cover_image = $post->cover_image;
         $this->slug = $post->slug;
         $this->body = $post->body;
+        $this->is_in_vault = $post->is_in_vault;
         $this->category_id = $post->category_id;
         $this->selectedCategory = $post->category_id;
         $this->author_id = $post->author_id;
@@ -158,11 +162,10 @@ class ManagePosts extends Component
         $this->storeFile();
 
         $data = $this->validate();
-
         $post = Post::findOrFail($id);
 
         $post->update($data);
-
+        
         $this->resetExcept('author_id');
         $this->showTable();
 

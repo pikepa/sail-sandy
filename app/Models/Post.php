@@ -26,6 +26,7 @@ class Post extends Model
         'cover_image',
         'slug',
         'body',
+        'is_in_vault',
         'meta_description',
         'published_at',
         'author_id',

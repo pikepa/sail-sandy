@@ -92,3 +92,10 @@ test('when the post title is changed the slug changes', function () {
 
     $this->assertDatabaseHas('posts', ['slug' => 'this-is-a-new-title']);
 });
+
+test('A post is_in_vault flag is required', function () {
+    Livewire::test(ManagePosts::class)
+    ->set('is_in_vault', '')
+    ->call('save')
+    ->assertHasErrors(['is_in_vault' => 'Required']);
+});

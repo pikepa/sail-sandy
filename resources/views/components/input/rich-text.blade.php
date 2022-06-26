@@ -1,4 +1,6 @@
-@props(['initialValue' => ''])
+@props([
+'initialValue' => '',
+'unique'=> ''])
 
 
 <div class="rounded " {{$attributes}}
@@ -6,7 +8,7 @@
         x-data 
         @trix-blur="$dispatch('change', $event.target.value)">
 
-    <input id="x" value="{{ $initialValue }}" type="hidden">
+    <input id="{{$unique}}" value="{{ $initialValue }}" type="hidden">
 
-    <trix-editor class="trix-content" input="x"></trix-editor>
+    <trix-editor class="trix-content" input="{{$unique}}"></trix-editor>
 </div>

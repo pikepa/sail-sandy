@@ -19,6 +19,7 @@ return new class() extends Migration {
             $table->string('title');
             $table->string('slug');
             $table->longText('body');
+            $table->boolean('is_in_vault')->required()->default(false);
             $table->text('meta_description')->nullable();
             $table->timestamp('published_at')->nullable();
 

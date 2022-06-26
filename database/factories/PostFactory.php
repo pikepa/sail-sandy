@@ -24,6 +24,7 @@ class PostFactory extends Factory
             'title'             => $title,
             'slug'              => $slug,
             'body'              => $this->faker->paragraph(5),
+            'is_in_vault'       => false,
             'meta_description'  => $this->faker->paragraph,
             'published_at'      => $this->faker->dateTimeThisMonth(),
             'author_id'         => User::inRandomOrder()->first(),
