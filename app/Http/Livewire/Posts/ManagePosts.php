@@ -131,6 +131,10 @@ class ManagePosts extends Component
 
         Post::create($data);
 
+// dd($this->newImage->getClientOriginalName());
+// dd(env('AWS_URL').'/'.$this->newImage->getRealPath());
+
+
         $this->resetExcept('author_id');
         $this->showTable();
 

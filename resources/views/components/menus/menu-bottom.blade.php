@@ -2,7 +2,8 @@
     <ul class="uppercase flex text-gray-100 justify-left items-center p-2 ">
         <li class="mr-6">About Us</li>
         <li class="mr-6">Correspondents</li>
-        <li>Broadcasts</li>
+        <li class="mr-6">Broadcasts</li>
+        <li>The Vault</li>
     </ul>
     <div>
         @auth
