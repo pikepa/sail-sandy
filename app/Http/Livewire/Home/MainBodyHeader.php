@@ -2,15 +2,16 @@
 
 namespace App\Http\Livewire\Home;
 
-use Livewire\Component;
 use App\Models\Category;
+use Livewire\Component;
 
 class MainBodyHeader extends Component
 {
     public $category;
 
-    public function mount($cat_id = null){
-        if($cat_id){
+    public function mount($cat_id = null)
+    {
+        if ($cat_id) {
             $this->category = Category::find($cat_id);
         }
     }

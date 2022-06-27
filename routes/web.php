@@ -5,9 +5,8 @@ use App\Http\Controllers\ManageSubscriberController;
 use App\Http\Livewire\Category\ManageCategories;
 use App\Http\Livewire\Pages\ManagePages;
 use App\Http\Livewire\Posts\ManagePosts;
-use App\Http\Livewire\Posts\ShowPost;
-use App\Http\Livewire\Posts\ShowCaategoryPosts;
 use App\Http\Livewire\Posts\ShowCategoryPosts;
+use App\Http\Livewire\Posts\ShowPost;
 use App\Http\Livewire\Subscriber\VerifySubscriber;
 use Illuminate\Support\Facades\Route;
 

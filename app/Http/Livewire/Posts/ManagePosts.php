@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Posts;
 
-use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -22,13 +21,13 @@ class ManagePosts extends Component
 
     public $body;
 
-    public $is_in_vault =false;
+    public $is_in_vault = false;
 
     public $category_id;
 
     public $author_id;
 
-    public $cover_image =null;
+    public $cover_image = null;
 
     public $meta_description;
 
@@ -131,9 +130,8 @@ class ManagePosts extends Component
 
         Post::create($data);
 
-// dd($this->newImage->getClientOriginalName());
-// dd(env('AWS_URL').'/'.$this->newImage->getRealPath());
-
+        // dd($this->newImage->getClientOriginalName());
+        // dd(env('AWS_URL').'/'.$this->newImage->getRealPath());
 
         $this->resetExcept('author_id');
         $this->showTable();
@@ -168,7 +166,7 @@ class ManagePosts extends Component
         $post = Post::findOrFail($id);
 
         $post->update($data);
-        
+
         $this->resetExcept('author_id');
         $this->showTable();
 

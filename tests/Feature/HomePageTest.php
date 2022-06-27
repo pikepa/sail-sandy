@@ -1,16 +1,15 @@
 <?php
 
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
-use Livewire\Livewire;
-use App\Models\Category;
 use function Pest\Laravel\get;
 
 it('can load the home page', function () {
     get('/')
         ->assertStatus(200)
         ->assertSee('Bomborra Media Productions')
-        ->assertSee('Featured Articles')
+        ->assertSee('Latest Articles')
         ->assertSee('Podcasts');
 });
 
@@ -23,5 +22,5 @@ test('A guest can view a posts on the home page', function () {
     ->assertStatus(200)
     ->assertSee($post->title)
     ->assertSee('... more')
-    ->assertSee(subStr($post->description. 0,50));
+    ->assertSee(substr($post->description. 0, 50));
 });

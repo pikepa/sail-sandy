@@ -1,13 +1,11 @@
 <?php
 
+use App\Http\Livewire\Posts\ManagePosts;
+use App\Http\Livewire\Posts\ShowPost;
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Livewire\Livewire;
-use App\Models\Category;
-use Illuminate\Http\UploadedFile;
-use App\Http\Livewire\Posts\ShowPost;
-use Illuminate\Support\Facades\Storage;
-use App\Http\Livewire\Posts\ManagePosts;
 
 test('An authorised user sees the Manage Posts page', function () {
     $this->signIn();
@@ -66,7 +64,7 @@ test('An authorised user can add a post', function () {
 
     $this->assertDatabaseCount('posts', 1)
     ->assertDatabaseHas('posts', ['title' =>'this is a post',
-                                'is_in_vault' => false]);
+        'is_in_vault' => false, ]);
 });
 
 test('An authorised user can delete a post', function () {
@@ -96,7 +94,7 @@ test('A message is displayed when a user deletes a post', function () {
         ->assertSee('Post Successfully deleted');
 });
 
-test('An authorised User can mark a post as being in the vault', function (){
+test('An authorised User can mark a post as being in the vault', function () {
     $this->signIn();
     Category::factory()->create();
     $post = Post::factory()->create(['is_in_vault' => false]);
@@ -109,6 +107,6 @@ test('An authorised User can mark a post as being in the vault', function (){
         ->call('update', $post->id)
         ->assertSee('Post Successfully Updated');
 
-        $this->assertDatabaseHas('posts', ['is_in_vault' => true,
-    'meta_description' => 'this is a new meta_description']);
+    $this->assertDatabaseHas('posts', ['is_in_vault' => true,
+        'meta_description' => 'this is a new meta_description', ]);
 });

@@ -18,7 +18,7 @@ class CategorySelect extends Component
         if ($cat_id != null) {
             $this->category_id = $cat_id;
         }
-        $this->categories = Category::where('status','1')->get();
+        $this->categories = Category::where('status', '1')->get();
     }
 
     public function render()
