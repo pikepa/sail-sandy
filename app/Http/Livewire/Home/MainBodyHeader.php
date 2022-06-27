@@ -21,7 +21,7 @@ class MainBodyHeader extends Component
              @if(!$this->category)
                  <div class='flex justify-between items-center'>
                     <div class="w-1/2 text-4xl Font-bold text-teal-900 pb-2">
-                        Featured Articles
+                        Latest Articles
                     </div>
                     <div class='w-1/2 text-sm text-teal-900 mr-4'>
                         These articles are the latest stories, features, opinion and analysis from journalists around Southeast Asia. 

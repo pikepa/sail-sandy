@@ -21,7 +21,7 @@ class MainBody extends Component
     public function render()
     {
         return view('livewire.home.main-body', [
-            'posts' => Post::inRandomOrder()
+            'posts' => Post::orderBy('published_at','desc')
             ->limit(12)
             ->paginate(6),
         ]);
