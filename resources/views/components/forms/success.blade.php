@@ -20,6 +20,9 @@
         <div>
             {{ session('message') }}
         </div>
+        <div>
+            <button wire:click="resetBanner">X</button>
+        </div>
     </div>
     @endif
 </div>

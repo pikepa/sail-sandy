@@ -64,8 +64,8 @@
             </div>
 
             <div>
-                <button class="w-28 p-2 rounded-lg bg-orange-500">
-                    <a href="{!!route('posts.index')!!}">
+                <button wire:click='cancel' class="w-28 p-2 rounded-lg bg-orange-500">
+                    <!-- <a href="{!!route('posts.index')!!}"> -->
                     Cancel
                 </a>
                 </button>

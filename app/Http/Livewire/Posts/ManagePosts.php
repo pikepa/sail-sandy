@@ -186,21 +186,25 @@ class ManagePosts extends Component
         //return redirect('/posts');
     }
 
+    public function cancel()
+    {
+        $this->resetBanner();
+        $this->showTable();
+    }
+
     public function resetBanner()
     {
-        $this->showAlert = true;
+        $this->showAlert = false;
 
         session()->flash('message', '');
         session()->flash('alertType', '');
-
-        //return redirect('/posts');
     }
 
     public function storeFile()
     {
         if ($this->newImage) {
             $filename = $this->newImage->store('/featured', 'featured');
-            $this->cover_image = env('AWS_URL').'/'.$filename;
+            $this->cover_image = env('AWS_URL') . '/' . $filename;
         } else {
             return;
         }
