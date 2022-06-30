@@ -1,4 +1,3 @@
-<x-pages.dash-standard-page>
   <div class="px-2">
     <!-- This Section allows add ing and update forms -->
 
@@ -65,4 +64,3 @@
     </div>
     @endif
   </div>
-</x-pages.dash-standard-page>
