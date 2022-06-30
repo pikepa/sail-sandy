@@ -1,6 +1,5 @@
 <x-app-layout>
-    <div>
-        <x-dash-header />
+    <x-pages.dash-standard-page>
         <div class="py-2">
             <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -15,6 +14,5 @@
                 </div>
             </div>
         </div>
-    </div>
-
+    </x-pages.dash-standard-page>
 </x-app-layout>
