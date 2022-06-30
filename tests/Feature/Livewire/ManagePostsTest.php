@@ -50,6 +50,8 @@ test('An authorised user can add a post', function () {
     $category = Category::factory()->create();
 
     Livewire::test(ManagePosts::class)
+        ->call('create')
+        ->assertSee('Title')
         ->set('cover_image', 'https://google.com')
         ->set('title', 'this is a post')
         ->set('slug', 'this-is-a-post')
@@ -65,6 +67,20 @@ test('An authorised user can add a post', function () {
     $this->assertDatabaseCount('posts', 1)
     ->assertDatabaseHas('posts', ['title' =>'this is a post',
         'is_in_vault' => false, ]);
+});
+
+test('an authorised user can update a post', function () {
+    $this->actingAs(User::factory()->create());
+    $category = Category::factory()->create();
+    $post = Post::factory()->create();
+
+    Livewire::test(ManagePosts::class)
+    ->call('edit', $post->id)
+    ->set('title', 'New Title')
+    ->call('update',$post->id)
+    ->assertSuccessful();
+
+    expect(Post::latest()->first()->title)->toBe('New Title');
 });
 
 test('An authorised user can delete a post', function () {
