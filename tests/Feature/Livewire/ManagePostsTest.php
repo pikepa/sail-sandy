@@ -72,6 +72,7 @@ test('An authorised user can add a post', function () {
 test('an authorised user can update a post', function () {
     $this->actingAs(User::factory()->create());
     $category = Category::factory()->create();
+    
     $post = Post::factory()->create();
 
     Livewire::test(ManagePosts::class)
