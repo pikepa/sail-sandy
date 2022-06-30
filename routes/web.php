@@ -28,13 +28,9 @@ Route::get('/category/posts/{cat_slug}', ShowCategoryPosts::class)->name('catego
 * App Routes
 */
 Route::middleware('auth')->group(function () {
-    Route::get('/posts', ManagePosts::class)->name('posts.index');
-    Route::get('/pages', ManagePages::class)->name('pages.index');
-    Route::get('/categories', ManageCategories::class)->name('categories.index');
+
     Route::get('/dashboard', DashStandardPage::class)->name('dashboard');
-    // Route::get('/dashboard', function () {
-    //     return view('dashboard');
-    // })->name('dashboard');
+
 });
 
 // ---------

@@ -50,15 +50,10 @@ class ManageCategories extends Component
 
         $this->showEditModal = true;
     }
-
-    // public function save()
-    // {
-    //     $this->validate();
-
-    //     $this->editing->save();
-
-    //     $this->showEditModal = false;
-    // }
+public function create()
+{
+    
+}
 
     public function save()
     {

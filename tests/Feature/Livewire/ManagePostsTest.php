@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Livewire\Posts\ManagePosts;
-use App\Http\Livewire\Posts\ShowPost;
-use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Livewire\Livewire;
+use App\Models\Category;
+use App\Http\Livewire\Posts\ShowPost;
+use App\Http\Livewire\Posts\ManagePosts;
+
 
 test('An authorised user sees the Manage Posts page', function () {
     $this->signIn();
@@ -34,12 +35,11 @@ test('An authorised user can see a list of all posts', function () {
     $post1 = Post::factory()->create(['category_id'=>1]);
     $post2 = Post::factory()->create(['category_id'=>1]);
 
-    $this->get('/posts/')
+Livewire::test(ManagePosts::class)
+        ->set('showTable',true)
+        ->call('render')
         ->assertSee($post1->title)
         ->assertSee($post1->author_id)
-        ->assertSee($category->name)
-        ->assertSee('Home')
-        ->assertSee('Bomborra')
         ->assertSee($post2->title)
         ->assertSee($post2->author_id);
 });

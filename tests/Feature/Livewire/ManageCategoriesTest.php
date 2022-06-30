@@ -1,29 +1,28 @@
 <?php
 
-use App\Http\Livewire\Category\ManageCategories;
-use App\Models\Category;
 use App\Models\User;
 use Livewire\Livewire;
+use App\Models\Category;
+use App\Http\Livewire\Pages\DashStandardPage;
+use App\Http\Livewire\Category\ManageCategories;
 
 beforeEach(function () {
     $this->user = User::factory()->create();
 });
 
-test('a guest cannot access the category index')
-            ->get('/categories')
-            ->assertDontSeeLivewire('category.manage-categories')
+test('a guest cannot access the category index', function () {
+    $this->get('/dashboard')
             ->assertRedirect('/login');
-
-test('an authorised user can see the manage-categories page', function () {
-    $this->actingAs($this->user)->get('/categories')
-         ->assertSuccessful()
-         ->assertSeeLivewire('category.manage-categories');
 });
+
+
 
 test('an authorised user can create a category', function () {
     $this->signIn($this->user);
 
     Livewire::test(ManageCategories::class)
+    ->call('create')
+    ->assertSee('Category Name')
     ->set('name', 'FOOBAR')
     ->set('slug', 'foobar')
     ->set('status', 1)
@@ -31,7 +30,7 @@ test('an authorised user can create a category', function () {
     ->assertSuccessful();
 
     expect(Category::latest()->first()->name)->toBe('FOOBAR');
-});
+})->skip('Not complete, testing for create form');
 
 test('an authorised user can update a category', function () {
     $this->signIn($this->user);
