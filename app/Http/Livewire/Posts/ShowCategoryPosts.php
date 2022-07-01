@@ -20,7 +20,8 @@ class ShowCategoryPosts extends Component
 
     public function render()
     {
-        return view('livewire.posts.show-category-posts', ['posts'=> Post::where('category_id', $this->category->id)
-        ->orderBy('published_at', 'desc')->paginate(12), ]);
+        return view('livewire.posts.show-category-posts', 
+        ['posts'=> Post::where('category_id', $this->category->id)
+                        ->orderBy('published_at', 'desc')->paginate(12), ]);
     }
 }

@@ -3,7 +3,7 @@
         <li class="mr-6">About Us</li>
         <li class="mr-6">Correspondents</li>
         <li class="mr-6">Broadcasts</li>
-        <li>The Vault</li>
+        <a href="/vault/">The Vault</a>
     </ul>
     <div>
         @auth
