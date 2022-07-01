@@ -10,6 +10,11 @@
 
 
   @if($showTable)
+    <div>
+      @if (session()->has('message') && $showAlert = true)
+      <x-forms.success />
+      @endif
+    </div>
   <div class="px-2">
     <x-pages.dash-page-sub-head title="Categories" btntext="Add Category">
       A list of all the categories in your account.
@@ -39,7 +44,7 @@
                 <x-table.cell>{{$category->name}}</x-table.cell>
                 <x-table.cell>{{$category->slug}}</x-table.cell>
                 <x-table.cell>{{$category->type}}</x-table.cell>
-                <x-table.cell>{{$category->status}}</x-table.cell>
+                <x-table.cell>{{$category->display_status}}</x-table.cell>
                 <x-table.cell>
                   <x-button.link wire:click="edit({{ $category->id }})"><i class="fa-solid fa-pen-to-square"></i>
                   </x-button.link>

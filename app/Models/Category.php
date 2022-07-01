@@ -30,12 +30,14 @@ class Category extends Model
         $this->attributes['slug'] = Str::slug($value);
     }
 
-    public function getStatusAttribute($status)
+    public function getDisplayStatusAttribute($status)
     {
-        return [
-            '0' => 'Inactive',
-            '1' => 'Active',
-        ][$status] ?? 'Not Stated';
+            if($this->status == true){
+                return "Active";
+            }else{
+                return "Inactive";
+            }
+
     }
 
     public function path()

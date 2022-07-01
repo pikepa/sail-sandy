@@ -30,21 +30,6 @@ class ManageCategories extends Component
 
     public $showAlert=false;
 
-    // public function rules()
-    // {
-    //     return [
-    //         'editing.category' => 'required|min:3',
-    //         'editing.type' => 'required',
-    //         'editing.status' => 'required',
-    //         // |in:'.collect(Category::STATUSES)->keys()->implode(','),
-    //     ,
-    //     ];
-    // }
-
-    public function mount()
-    {
-        $this->editing = Category::make(['type' => 'gen']);
-    }
 
     public function render()
     {
@@ -98,20 +83,24 @@ class ManageCategories extends Component
 
         Category::create($categoryData);
 
+        $this->reset();
         $this->showTable();
+
+        session()->flash('message', 'Category Successfully added.');
+        session()->flash('alertType', 'success');
     }
 
 
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-
         $this->name = $category->name;
         $this->slug = $category->slug;
         $this->status= $category->status;
         $this->type = $category->type;
         $this->parent_id = $category->parent_id;
         $this->category_id = $category->id;
+
         $this->showEditForm();
 
     }
@@ -129,8 +118,11 @@ class ManageCategories extends Component
 
         $category->update($categoryData);
 
+        $this->reset();
         $this->showTable();
 
+        session()->flash('message', 'Category Successfully updated.');
+        session()->flash('alertType', 'success');
     }
 
     public function delete($id)
@@ -139,7 +131,11 @@ class ManageCategories extends Component
 
         $category->delete();
 
-        return view('livewire.category.manage-categories');
+        $this->reset();
+        $this->showTable();
+
+        session()->flash('message', 'Category Successfully deleted.');
+        session()->flash('alertType', 'success');
     }
 
     public function cancel()

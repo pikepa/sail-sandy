@@ -194,7 +194,7 @@ class ManagePosts extends Component
 
     public function resetBanner()
     {
-        $this->showAlert = false;
+        $this->showAlert = true;
 
         session()->flash('message', '');
         session()->flash('alertType', '');
