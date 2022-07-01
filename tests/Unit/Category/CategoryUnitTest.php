@@ -38,12 +38,12 @@ test('A status is required', function () {
   ->assertHasErrors(['status' => 'required']);
 });
 
-test('A status is an integer', function () {
+test('A status is a boolean', function () {
     $this->signIn($this->user);
 
     Livewire::test(ManageCategories::class)
   ->set('name', 'Foo bar')
   ->set('status', '32.2')
   ->call('save')
-  ->assertHasErrors(['status' => 'integer']);
+  ->assertHasErrors(['status' => 'boolean']);
 });

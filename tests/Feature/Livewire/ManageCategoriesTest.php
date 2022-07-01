@@ -22,14 +22,20 @@ test('an authorised user can create a category', function () {
 
     Livewire::test(ManageCategories::class)
     ->call('create')
-    ->assertSee('Category Name')
+    ->assertSee('Add Category')
+    ->assertSee('Category')
     ->set('name', 'FOOBAR')
-    ->set('slug', 'foobar')
-    ->set('status', 1)
+   // ->set('slug', 'foobar')
+    ->set('type', 'main')
+    ->set('parent_id', '')
+    ->set('status', true)
     ->call('save')
     ->assertSuccessful();
+    
+     $this->assertDatabaseCount('categories', 1);
 
-    expect(Category::latest()->first()->name)->toBe('FOOBAR');
+
+     expect(Category::latest()->first()->slug)->toBe('foobar');
 });
 
 test('an authorised user can update a category', function () {
@@ -37,10 +43,10 @@ test('an authorised user can update a category', function () {
     $category = Category::factory()->create();
 
     Livewire::test(ManageCategories::class)
-    ->set('category_id', '1')
+    ->call('edit', $category->id)
     ->set('name', 'FOOBAR')
     ->set('status', 1)
-    ->call('update')
+    ->call('update',$category->id)
     ->assertSuccessful();
 
     expect(Category::latest()->first()->name)->toBe('FOOBAR');
@@ -51,9 +57,7 @@ test('an authorised user can delete a category', function () {
     $category = Category::factory()->create();
 
     Livewire::test(ManageCategories::class)
-    ->set('category_id', $category->id)
-
-    ->call('destroy')
+    ->call('delete', $category->id)
     ->assertSuccessful();
 
     $this->assertDatabaseCount('categories', 0);

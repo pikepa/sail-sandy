@@ -21,21 +21,21 @@
                     <option value=''>Select Type</option>
                     <option value="main">Main Menu </option>
                     <option value="gen">General Classification </option>
-                </select>   
-     </x-input.group>
+                </select>
+            </x-input.group>
         </div>
-     
+
         <!-- Category Status -->
         <div>
             <x-input.group for="status" label="Active Status" width="full">
-                <input wire:model='status' type="checkbox" class="ml-2" > 
+                <input wire:model='status' type="checkbox" class="ml-2">
             </x-input.group>
         </div>
 
         <!-- this is the save button -->
         <div class="flex justify-around">
             <div>
-                <button method="Submit" class="w-28 p-2 rounded-lg bg-green-500">
+                <button type="submit" class="w-28 p-2 rounded-lg bg-green-500">
                     Save Post
                 </button>
             </div>
@@ -43,7 +43,7 @@
             <div>
                 <button wire:click='cancel' class="w-28 p-2 rounded-lg bg-orange-500">
                     Cancel
-                </a>
+                    </a>
                 </button>
             </div>
         </div>

@@ -12,7 +12,7 @@ class ManageCategories extends Component
 
     public $slug = '';
 
-    public $status = '';
+    public $status = false;
 
     public $type = '';
 
@@ -91,23 +91,27 @@ class ManageCategories extends Component
         $categoryData = $this->validate([
             'name' => 'required|max:50',
             'slug' => 'required',
-            'status' => 'required|numeric|integer',
+            'type' => 'required',
+            'status' => 'required|boolean',
+            'parent_id' => '',
         ]);
 
         Category::create($categoryData);
 
-        return view('livewire.category.manage-categories');
+        $this->showTable();
     }
 
 
-    public function edit(Category $category)
+    public function edit($id)
     {
-        $this->category=$category;
+        $category = Category::findOrFail($id);
+
         $this->name = $category->name;
         $this->slug = $category->slug;
         $this->status= $category->status;
         $this->type = $category->type;
         $this->parent_id = $category->parent_id;
+        $this->category_id = $category->id;
         $this->showEditForm();
 
     }
@@ -115,22 +119,23 @@ class ManageCategories extends Component
     public function update($id)
     {
         $category = Category::find($id);
-dd($category);
         $categoryData = $this->validate([
             'name' => 'required|max:50',
             'slug' => 'required',
             'type' => 'required',
-            'status' => 'required|numeric|integer',
+            'status' => 'required |boolean',
             'parent_id' => '',
         ]);
 
         $category->update($categoryData);
 
+        $this->showTable();
+
     }
 
-    public function destroy()
+    public function delete($id)
     {
-        $category = Category::find($this->category_id);
+        $category = Category::find($id);
 
         $category->delete();
 
