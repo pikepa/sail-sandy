@@ -2,8 +2,9 @@
 
 namespace App\Http\Livewire\Category;
 
-use App\Models\Category;
 use Livewire\Component;
+use App\Models\Category;
+use Illuminate\Support\Str;
 
 class ManageCategories extends Component
 {
@@ -15,11 +16,19 @@ class ManageCategories extends Component
 
     public $type = '';
 
+    public $parent_id = '';
+
     public $category_id = '';
 
     public $categories;
 
-    public Category $editing;
+    public $showTable = true;
+
+    public $showEditForm = false;
+
+    public $showAddForm = false;
+
+    public $showAlert=false;
 
     // public function rules()
     // {
@@ -44,16 +53,38 @@ class ManageCategories extends Component
         return view('livewire.category.manage-categories');
     }
 
-    public function edit(Category $category)
-    {
-        $this->editing = $category;
+    //  Switching Forms on Master Screen
 
-        $this->showEditModal = true;
+    public function showAddForm()
+    {
+        $this->showTable = false;
+        $this->showEditForm = false;
+        $this->showAddForm = true;
     }
-public function create()
-{
-    
-}
+
+    public function showEditForm()
+    {
+        $this->showTable = false;
+        $this->showEditForm = true;
+        $this->showAddForm = false;
+    }
+
+    public function showTable()
+    {
+        $this->showTable = true;
+        $this->showEditForm = false;
+        $this->showAddForm = false;
+    }
+
+    public function updatedName($value)
+    {
+        $this->slug = Str::slug($value);
+    }
+
+    public function create()
+    {
+        $this->showAddForm();
+    }
 
     public function save()
     {
@@ -68,18 +99,33 @@ public function create()
         return view('livewire.category.manage-categories');
     }
 
-    public function update()
+
+    public function edit(Category $category)
     {
-        $category = Category::find($this->category_id);
+        $this->category=$category;
+        $this->name = $category->name;
+        $this->slug = $category->slug;
+        $this->status= $category->status;
+        $this->type = $category->type;
+        $this->parent_id = $category->parent_id;
+        $this->showEditForm();
 
-        $category->update(
-            [
-                'name' => $this->name,
-                'status' => $this->status,
-            ]
-        );
+    }
 
-        return view('livewire.category.manage-categories');
+    public function update($id)
+    {
+        $category = Category::find($id);
+dd($category);
+        $categoryData = $this->validate([
+            'name' => 'required|max:50',
+            'slug' => 'required',
+            'type' => 'required',
+            'status' => 'required|numeric|integer',
+            'parent_id' => '',
+        ]);
+
+        $category->update($categoryData);
+
     }
 
     public function destroy()
@@ -89,5 +135,19 @@ public function create()
         $category->delete();
 
         return view('livewire.category.manage-categories');
+    }
+
+    public function cancel()
+    {
+        $this->resetBanner();
+        $this->showTable();
+    }
+
+    public function resetBanner()
+    {
+        $this->showAlert = false;
+
+        session()->flash('message', '');
+        session()->flash('alertType', '');
     }
 }

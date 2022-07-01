@@ -30,7 +30,7 @@ test('an authorised user can create a category', function () {
     ->assertSuccessful();
 
     expect(Category::latest()->first()->name)->toBe('FOOBAR');
-})->skip('Not complete, testing for create form');
+});
 
 test('an authorised user can update a category', function () {
     $this->signIn($this->user);

@@ -1,4 +1,15 @@
 <div>
+  @if($showAddForm)
+  @include('livewire.category.create')
+  @endif
+
+  @if($showEditForm)
+  @include('livewire.category.update')
+  @endif
+
+
+
+  @if($showTable)
   <div class="px-2">
     <x-pages.dash-page-sub-head title="Categories" btntext="Add Category">
       A list of all the categories in your account.
@@ -14,6 +25,7 @@
 
               <x-table.row>
                 <x-table.heading class="text-left">Category</x-table.heading>
+                <x-table.heading class="text-left">slug</x-table.heading>
                 <x-table.heading class="text-left">Type</x-table.heading>
                 <x-table.heading class="text-left">Status</x-table.heading>
                 <x-table.heading class="text-left"></x-table.heading>
@@ -25,13 +37,16 @@
               @forEach($categories as $category)
               <x-table.row>
                 <x-table.cell>{{$category->name}}</x-table.cell>
+                <x-table.cell>{{$category->slug}}</x-table.cell>
                 <x-table.cell>{{$category->type}}</x-table.cell>
                 <x-table.cell>{{$category->status}}</x-table.cell>
                 <x-table.cell>
-                  <x-button.link wire:click="edit({{ $category->id }})">Edit</x-button.link>
+                  <x-button.link wire:click="edit({{ $category }})"><i class="fa-solid fa-pen-to-square"></i>
+                  </x-button.link>
                 </x-table.cell>
                 <x-table.cell>
-                  <x-button.link wire:click="edit({{ $category->id }})">Delete</x-button.link>
+                  <x-button.link wire:click="delete({{ $category->id }})"><i class="fa-regular fa-trash-can"></i>
+                  </x-button.link>
                 </x-table.cell>
 
               </x-table.row>
@@ -45,4 +60,5 @@
       </div>
     </div>
   </div>
+  @endif
 </div>
