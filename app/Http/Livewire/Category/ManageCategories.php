@@ -12,6 +12,8 @@ class ManageCategories extends Component
 
     public $slug = '';
 
+    public $description;
+
     public $status = false;
 
     public $type = '';
@@ -21,6 +23,9 @@ class ManageCategories extends Component
     public $category_id = '';
 
     public $categories;
+
+    public $types=[];
+    public $statuses = [];
 
     public $showTable = true;
 
@@ -35,6 +40,8 @@ class ManageCategories extends Component
     {
         $this->categories = Category::orderBy('name', 'asc')->get();
 
+        $this->types = Category::TYPES;
+        
         return view('livewire.category.manage-categories');
     }
 
@@ -76,6 +83,7 @@ class ManageCategories extends Component
         $categoryData = $this->validate([
             'name' => 'required|max:50',
             'slug' => 'required',
+            'description' => 'required',
             'type' => 'required',
             'status' => 'required|boolean',
             'parent_id' => '',
@@ -96,6 +104,7 @@ class ManageCategories extends Component
         $category = Category::findOrFail($id);
         $this->name = $category->name;
         $this->slug = $category->slug;
+        $this->description = $category->description;
         $this->status= $category->status;
         $this->type = $category->type;
         $this->parent_id = $category->parent_id;
@@ -111,6 +120,7 @@ class ManageCategories extends Component
         $categoryData = $this->validate([
             'name' => 'required|max:50',
             'slug' => 'required',
+            'description' => 'required',
             'type' => 'required',
             'status' => 'required |boolean',
             'parent_id' => '',

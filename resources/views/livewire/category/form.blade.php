@@ -14,13 +14,20 @@
         </x-input.group>
 
 
+        <x-input.group for="description" label="Description" width="full">
+            <x-input.rich-text wire:model.lazy='description' :initial-value=$description unique="body" type="text" />
+        </x-input.group>
+
+
         <!-- Category Type -->
+
         <div>
-            <x-input.group for="type" label="Type" width="full">
+            <x-input.group for="type" label="Test Type" width="full">
                 <select wire:model="type" class="w-full text-lg rounded">
                     <option value=''>Select Type</option>
-                    <option value="main">Main Menu </option>
-                    <option value="gen">General Classification </option>
+                    @foreach($types as $key => $type)
+                    <option value="{{$key}}">{{$type}}</option>
+                    @endforeach
                 </select>
             </x-input.group>
         </div>

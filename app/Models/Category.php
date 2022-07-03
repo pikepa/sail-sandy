@@ -11,14 +11,15 @@ class Category extends Model
 {
     use HasFactory;
 
-    public const STATUSES = [
-        '0' => 'Inactive',
-        '1' => 'Active',
+    public const TYPES = [
+        'main' => 'Top Menu',
+        'sub' => 'Bottom Menu',
+        'pages' => 'Pages',
     ];
 
     protected $table = 'categories';
 
-    protected $fillable = ['name', 'slug', 'status', 'type', 'parent_id'];
+    protected $fillable = ['name', 'slug', 'description','status', 'type', 'parent_id'];
 
     public function setNameAttribute($value)
     {
