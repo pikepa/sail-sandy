@@ -45,7 +45,7 @@
               <x-table.row>
                 <x-table.cell>{{$category->name}}</x-table.cell>
                 <x-table.cell>{{$category->slug}}</x-table.cell>
-                <x-table.cell>{{$category->type}}</x-table.cell>
+                <x-table.cell>{{$category->display_type}}</x-table.cell>
                 <x-table.cell>{{$category->display_status}}</x-table.cell>
                 <x-table.cell>
                   <x-button.link wire:click="edit({{ $category->id }})"><i class="fa-solid fa-pen-to-square"></i>

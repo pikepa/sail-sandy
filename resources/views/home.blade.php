@@ -7,7 +7,7 @@
 
             <x-menus.menu-middle />
 
-            <x-menus.menu-bottom />
+            <livewire:menus.menu-bottom />
 
             <x-menus.ticker />
 

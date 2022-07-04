@@ -21,7 +21,7 @@
     <!-- Category Type -->
 
     <div>
-        <x-input.group for="type" label="Test Type" width="full">
+        <x-input.group for="type" label="Type" width="full">
             <select wire:model="type" class="w-full text-lg rounded">
                 <option value=''>Select Type</option>
                 @foreach($types as $key => $type)

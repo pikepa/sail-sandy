@@ -8,7 +8,7 @@
 
                     <x-menus.menu-middle />
 
-                    <x-menus.menu-bottom />
+                    <livewire:menus.menu-bottom />
 
                 </menus>
             </div>
