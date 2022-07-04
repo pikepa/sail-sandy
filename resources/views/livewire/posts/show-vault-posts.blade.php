@@ -14,8 +14,19 @@
             </div>
             <div class="py-2">
                 <div class="max-w-7xl mx-auto ">
-                    <div class="text-right  mr-4 font-bold text-xl">
-                        <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i> Back</a>
+                    <div class=" flex flex-row justify-between items-center">
+                        <div class="">
+                            <div class="ml-4  font-bold text-3xl">
+                                The Vault
+                            </div>
+
+                        </div>
+                        <div class="text-right  mr-4 font-bold text-xl">
+                            <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i> Back</a>
+                        </div>
+                    </div>
+                    <div class="ml-4 text-base">
+                        The Vault is a collection of memorable stories, photographs and videos, which continue to resonate long after publication, including obituaries.
                     </div>
 
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
