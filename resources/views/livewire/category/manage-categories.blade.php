@@ -1,4 +1,5 @@
 <div>
+<div class="w-1/2 mx-auto">
   @if($showAddForm)
   @include('livewire.category.create')
   @endif
@@ -7,6 +8,7 @@
   @include('livewire.category.update')
   @endif
 
+</div>
 
 
   @if($showTable)

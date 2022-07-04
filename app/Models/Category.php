@@ -40,6 +40,12 @@ class Category extends Model
             }
 
     }
+    public function getDisplayTypeAttribute()
+    {
+        $types = Category::TYPES;
+        return $types[$this->type];
+
+    }
 
     public function path()
     {
