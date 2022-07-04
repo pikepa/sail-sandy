@@ -7,8 +7,11 @@ use Livewire\Component;
 class ManageDashboard extends Component
 {
     public $vDash = false;
+
     public $vPost = true;
+
     public $vPage = false;
+
     public $vCategory = false;
 
     public function toPosts()
@@ -18,6 +21,7 @@ class ManageDashboard extends Component
         $this->vPage = false;
         $this->vCategory = false;
     }
+
     public function toDash()
     {
         $this->vPost = false;

@@ -19,7 +19,7 @@ class Category extends Model
 
     protected $table = 'categories';
 
-    protected $fillable = ['name', 'slug', 'description','status', 'type', 'parent_id'];
+    protected $fillable = ['name', 'slug', 'description', 'status', 'type', 'parent_id'];
 
     public function setNameAttribute($value)
     {
@@ -33,18 +33,18 @@ class Category extends Model
 
     public function getDisplayStatusAttribute($status)
     {
-            if($this->status == true){
-                return "Active";
-            }else{
-                return "Inactive";
-            }
-
+        if ($this->status == true) {
+            return 'Active';
+        } else {
+            return 'Inactive';
+        }
     }
+
     public function getDisplayTypeAttribute()
     {
         $types = Category::TYPES;
-        return $types[$this->type];
 
+        return $types[$this->type];
     }
 
     public function path()

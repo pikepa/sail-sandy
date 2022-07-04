@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Livewire\Category\ManageCategories;
+use App\Models\Category;
 use App\Models\User;
 use Livewire\Livewire;
-use App\Models\Category;
-use App\Http\Livewire\Pages\DashStandardPage;
-use App\Http\Livewire\Category\ManageCategories;
 
 beforeEach(function () {
     $this->user = User::factory()->create();
@@ -14,8 +13,6 @@ test('a guest cannot access the category index', function () {
     $this->get('/dashboard')
             ->assertRedirect('/login');
 });
-
-
 
 test('an authorised user can create a category', function () {
     $this->signIn($this->user);
@@ -33,11 +30,9 @@ test('an authorised user can create a category', function () {
     ->assertSuccessful()
     ->assertSee('Category Successfully added.');
 
-    
-     $this->assertDatabaseCount('categories', 1);
+    $this->assertDatabaseCount('categories', 1);
 
-
-     expect(Category::latest()->first()->slug)->toBe('foobar');
+    expect(Category::latest()->first()->slug)->toBe('foobar');
 });
 
 test('an authorised user can update a category', function () {
@@ -49,10 +44,9 @@ test('an authorised user can update a category', function () {
     ->set('name', 'FOOBAR')
     ->set('description', 'Any new description')
     ->set('status', 1)
-    ->call('update',$category->id)
+    ->call('update', $category->id)
     ->assertSuccessful()
     ->assertSee('Category Successfully updated.');
-    ;
 
     expect(Category::latest()->first()->name)->toBe('FOOBAR');
 });
@@ -71,7 +65,7 @@ test('an authorised user can delete a category', function () {
 
 test('an authorised user can see a category listing', function () {
     $this->signIn($this->user);
-    $category = Category::factory()->create(['status' => true ]);
+    $category = Category::factory()->create(['status' => true]);
 
     Livewire::test(ManageCategories::class)
     ->assertSee($category->name)

@@ -204,7 +204,7 @@ class ManagePosts extends Component
     {
         if ($this->newImage) {
             $filename = $this->newImage->store('/featured', 'featured');
-            $this->cover_image = env('AWS_URL') . '/' . $filename;
+            $this->cover_image = env('AWS_URL').'/'.$filename;
         } else {
             return;
         }

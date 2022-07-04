@@ -10,11 +10,10 @@ class ShowVaultPosts extends Component
 {
     use WithPagination;
 
-
     public function render()
     {
-        return view('livewire.posts.show-vault-posts', 
-        ['posts'=> Post::where('is_in_vault',true)
+        return view('livewire.posts.show-vault-posts',
+        ['posts'=> Post::where('is_in_vault', true)
                         ->orderBy('published_at', 'desc')->paginate(12), ]);
     }
 }

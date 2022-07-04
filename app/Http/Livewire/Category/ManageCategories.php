@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Category;
 
-use Livewire\Component;
 use App\Models\Category;
 use Illuminate\Support\Str;
+use Livewire\Component;
 
 class ManageCategories extends Component
 {
@@ -24,7 +24,8 @@ class ManageCategories extends Component
 
     public $categories;
 
-    public $types=[];
+    public $types = [];
+
     public $statuses = [];
 
     public $showTable = true;
@@ -33,15 +34,14 @@ class ManageCategories extends Component
 
     public $showAddForm = false;
 
-    public $showAlert=false;
-
+    public $showAlert = false;
 
     public function render()
     {
         $this->categories = Category::orderBy('name', 'asc')->get();
 
         $this->types = Category::TYPES;
-        
+
         return view('livewire.category.manage-categories');
     }
 
@@ -98,20 +98,18 @@ class ManageCategories extends Component
         session()->flash('alertType', 'success');
     }
 
-
     public function edit($id)
     {
         $category = Category::findOrFail($id);
         $this->name = $category->name;
         $this->slug = $category->slug;
         $this->description = $category->description;
-        $this->status= $category->status;
+        $this->status = $category->status;
         $this->type = $category->type;
         $this->parent_id = $category->parent_id;
         $this->category_id = $category->id;
 
         $this->showEditForm();
-
     }
 
     public function update($id)

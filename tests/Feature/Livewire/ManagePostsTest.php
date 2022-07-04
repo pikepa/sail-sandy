@@ -1,12 +1,11 @@
 <?php
 
+use App\Http\Livewire\Posts\ManagePosts;
+use App\Http\Livewire\Posts\ShowPost;
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Livewire\Livewire;
-use App\Models\Category;
-use App\Http\Livewire\Posts\ShowPost;
-use App\Http\Livewire\Posts\ManagePosts;
-
 
 test('An authorised user sees the Manage Posts page', function () {
     $this->signIn();
@@ -35,8 +34,8 @@ test('An authorised user can see a list of all posts', function () {
     $post1 = Post::factory()->create(['category_id'=>1]);
     $post2 = Post::factory()->create(['category_id'=>1]);
 
-Livewire::test(ManagePosts::class)
-        ->set('showTable',true)
+    Livewire::test(ManagePosts::class)
+        ->set('showTable', true)
         ->call('render')
         ->assertSee($post1->title)
         ->assertSee($post1->author_id)
@@ -72,13 +71,13 @@ test('An authorised user can add a post', function () {
 test('an authorised user can update a post', function () {
     $this->actingAs(User::factory()->create());
     $category = Category::factory()->create();
-    
+
     $post = Post::factory()->create();
 
     Livewire::test(ManagePosts::class)
     ->call('edit', $post->id)
     ->set('title', 'New Title')
-    ->call('update',$post->id)
+    ->call('update', $post->id)
     ->assertSuccessful();
 
     expect(Post::latest()->first()->title)->toBe('New Title');

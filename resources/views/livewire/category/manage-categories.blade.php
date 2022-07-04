@@ -1,22 +1,22 @@
 <div>
-<div class="w-1/2 mx-auto">
-  @if($showAddForm)
-  @include('livewire.category.create')
-  @endif
+  <div class="w-1/2 mx-auto">
+    @if($showAddForm)
+    @include('livewire.category.create')
+    @endif
 
-  @if($showEditForm)
-  @include('livewire.category.update')
-  @endif
+    @if($showEditForm)
+    @include('livewire.category.update')
+    @endif
 
-</div>
+  </div>
 
 
   @if($showTable)
-    <div>
-      @if (session()->has('message') && $showAlert = true)
-      <x-forms.success />
-      @endif
-    </div>
+  <div>
+    @if (session()->has('message') && $showAlert = true)
+    <x-forms.success />
+    @endif
+  </div>
   <div class="px-2">
     <x-pages.dash-page-sub-head title="Categories" btntext="Add Category">
       A list of all the categories in your account.
