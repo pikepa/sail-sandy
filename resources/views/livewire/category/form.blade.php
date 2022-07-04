@@ -1,4 +1,4 @@
-<div class="p-4 space-y-6">
+<div class="p-4 space-y-6 rounded-lg border-2">
 
     <!-- Post Name -->
     <x-input.group for="name" label="Category" width="full">

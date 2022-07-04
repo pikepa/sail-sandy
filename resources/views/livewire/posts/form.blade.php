@@ -1,4 +1,4 @@
-<div class="flex justify-between ">
+<div class="flex justify-between border-2 rounded-lg p-4">
 
     <div class="flex-1 mr-4 space-y-6">
         <!-- Post Title -->
