@@ -24,7 +24,7 @@
 
 </div>
                     <div class="bg-cyan-100 overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6  border-b border-gray-200">
+                        <div class="p-4  border-b border-gray-200">
                             <div style="float:left;" class="mr-6">
                                 <img src="{{$post->cover_image}}" width='400px' alt="Cover Image">
                             </div>
