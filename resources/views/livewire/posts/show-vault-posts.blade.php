@@ -12,10 +12,10 @@
 
                 </menus>
             </div>
-            <div class="py-2">
-                <div class="max-w-7xl mx-auto ">
+            <div class="">
+                <div class="max-w-7xl bg-cyan-100 mx-auto ">
                     <div class=" flex flex-row justify-between items-center">
-                        <div class="">
+                        <div class="pt-2">
                             <div class="ml-4  font-bold text-3xl">
                                 The Vault
                             </div>
@@ -29,10 +29,10 @@
                         The Vault is a collection of memorable stories, photographs and videos, which continue to resonate long after publication, including obituaries.
                     </div>
 
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-2 bg-white border-b border-gray-200">
+                    <div class=" overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-2 bg-cyan-100 border-b border-gray-200">
                             @foreach($posts as $post)
-                            <div class="flex flex-row border-2 border-gray-200 rounded-md mb-2 p-2">
+                            <div class="flex flex-row border-2 border-gray-300 shadow-md rounded-md mb-2 p-2">
                                 <div class="w-1/5">
                                     <img class="object-cover h-44 w-full rounded-md " src='{{$post->cover_image}}'
                                         alt="placeimg">
