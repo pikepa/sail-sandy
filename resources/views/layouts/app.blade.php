@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://unpkg.com/trix@2.0.0-beta.0/dist/trix.css">
 
 
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     @livewireStyles
 

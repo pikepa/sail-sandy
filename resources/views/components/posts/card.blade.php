@@ -1,4 +1,4 @@
-<div class="bg-teal-100 rounded h-96 overflow-hidden shadow-lg">
+<div class="bg-cyan-100 rounded h-96 overflow-hidden shadow-lg">
     <a href="/posts/{{$post->slug}}">
         <div class="flex flex-col ">
             <div class="">

@@ -1,4 +1,4 @@
-<div class="rounded-t-lg p-2 text-gray-100  bg-gray-900 ">
+<div class="rounded-t-lg p-2 text-gray-100  bg-cyan-900 ">
     <div class="uppercase flex flex-row justify-between items-center p-2 ">
         <a href="/"><div>Home</div></a>
         @foreach($categories as $category)

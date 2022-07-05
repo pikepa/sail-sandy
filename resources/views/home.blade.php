@@ -22,7 +22,7 @@
                 <div class="p-2  pb-4 rounded-lg border-2 border-gray-200">
                     <a href="/subscribers/create">
                         <button
-                            class="rounded text-center text-xl font-bold text-teal-900  bg-teal-400 p-2 mt-2">Subscribe
+                            class="rounded text-center text-xl font-bold text-teal-900  bg-cyan-400 p-2 mt-2">Subscribe
                             to our Newsletter</button>
                     </a>
                 </div>
@@ -43,31 +43,31 @@
                     Podcasts
                 </div>
                 <div class="grid grid-cols-6 gap-2">
-                    <div class=" bg-teal-100">
+                    <div class="bg-cyan-100">
                         <img class="rounded-lg" src="images/1.jpeg" alt="placeimg">
                         <div class="p-2 font-bold text-center text-xl">Title 1</div>
                     </div>
-                    <div class=" bg-teal-100">
+                    <div class="bg-cyan-100">
                         <img class="rounded-lg" src="images/2.jpeg" alt="placeimg">
                         <div class="p-2 font-bold text-center text-xl">Title 1</div>
 
                     </div>
-                    <div class=" bg-teal-100">
+                    <div class="bg-cyan-100">
                         <img class="rounded-lg" src="images/3.jpeg" alt="placeimg">
                         <div class="p-2 font-bold text-center text-xl">Title 1</div>
 
                     </div>
-                    <div class=" bg-teal-100">
+                    <div class="bg-cyan-100">
                         <img class="rounded-lg" src="images/4.jpeg" alt="placeimg">
                         <div class="p-2 font-bold text-center text-xl">Title 1</div>
 
                     </div>
-                    <div class=" bg-teal-100">
+                    <div class="bg-cyan-100">
                         <img class="rounded-lg" src="images/5.jpeg" alt="placeimg">
                         <div class="p-2 font-bold text-center text-xl">Title 1</div>
 
                     </div>
-                    <div class=" bg-teal-100">
+                    <div class="bg-cyan-100">
                         <img class="rounded-lg" src="images/6.jpeg" alt="placeimg">
                         <div class="p-2 font-bold text-center text-xl">Title 1</div>
 
@@ -75,7 +75,7 @@
                 </div>
             </div>
         </pods>
-        <footer class="grid grid-cols-1 gap-2 bg-gray-600 p-4 text-gray-100 rounded-b-lg">
+        <footer class="grid grid-cols-1 gap-2 bg-cyan-700 p-4 text-gray-100 rounded-b-lg">
             <div class="mt-2 grid grid-cols-3 gap-2 ">
                 <div class="p-4">
                     <h5 class=" font-semibold border-b-4 border-gray-100">Recent Posts</h5>
