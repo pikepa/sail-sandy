@@ -1,7 +1,7 @@
-<div>
+<div class="bg-cyan-100">
     <livewire:home.main-body-header />
     
-    <div class="grid grid-cols-3 gap-2">
+    <div class="grid grid-cols-3 bg-cyan-100 gap-2">
         @foreach($posts as $post)
 
         <x-posts.card :post="$post" />

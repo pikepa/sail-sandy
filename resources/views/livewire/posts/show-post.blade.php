@@ -12,20 +12,23 @@
 
                 </menus>
             </div>
-            <div class="py-2">
+            <div class="py-2 bg-cyan-100" >
                 <div class="max-w-7xl mx-auto ">
-                        <div class="text-right mr-4 font-bold text-xl">
-                            <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i> Back</a>
-                        </div>
+<div class="flex flex-row justify-between items-center">
+    <div class="ml-4 pt-2 text-3xl font-semibold">
+        {{$post->title}}
+    </div>
+    <div class="text-right mr-4 font-bold text-xl">
+        <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i> Back</a>
+    </div>
 
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6 bg-white border-b border-gray-200">
+</div>
+                    <div class="bg-cyan-100 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6  border-b border-gray-200">
                             <div style="float:left;" class="mr-6">
                                 <img src="{{$post->cover_image}}" width='400px' alt="Cover Image">
                             </div>
-                            <div class="text-3xl font-semibold">
-                                {{$post->title}}
-                            </div>
+
                             <div class="trix-content">
                                     {!!$post->body!!}
                             </div>
