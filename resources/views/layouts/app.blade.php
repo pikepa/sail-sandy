@@ -16,8 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/trix@2.0.0-beta.0/dist/trix.css">
 
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
 
     @livewireStyles
 
