@@ -47,3 +47,14 @@ test('A status is a boolean', function () {
   ->call('save')
   ->assertHasErrors(['status' => 'boolean']);
 });
+
+
+test('A category type is required', function () {
+  $this->signIn($this->user);
+
+  Livewire::test(ManageCategories::class)
+->set('name', 'Foo bar')
+->set('type', '')
+->call('save')
+->assertHasErrors(['type' => 'required']);
+});

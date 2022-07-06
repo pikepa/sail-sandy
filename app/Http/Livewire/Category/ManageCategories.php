@@ -36,6 +36,15 @@ class ManageCategories extends Component
 
     public $showAlert = false;
 
+    protected $rules =[
+        'name' => 'required|max:50',
+        'slug' => 'required',
+        'description' => 'required',
+        'type' => 'required',
+        'status' => 'required|boolean',
+        'parent_id' => '',
+    ];
+
     public function render()
     {
         $this->categories = Category::orderBy('name', 'asc')->get();
@@ -80,14 +89,7 @@ class ManageCategories extends Component
 
     public function save()
     {
-        $categoryData = $this->validate([
-            'name' => 'required|max:50',
-            'slug' => 'required',
-            'description' => 'required',
-            'type' => 'required',
-            'status' => 'required|boolean',
-            'parent_id' => '',
-        ]);
+        $categoryData = $this->validate();
 
         Category::create($categoryData);
 
@@ -115,14 +117,7 @@ class ManageCategories extends Component
     public function update($id)
     {
         $category = Category::find($id);
-        $categoryData = $this->validate([
-            'name' => 'required|max:50',
-            'slug' => 'required',
-            'description' => 'required',
-            'type' => 'required',
-            'status' => 'required |boolean',
-            'parent_id' => '',
-        ]);
+        $categoryData = $this->validate();
 
         $category->update($categoryData);
 
