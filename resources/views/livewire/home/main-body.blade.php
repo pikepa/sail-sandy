@@ -1,4 +1,4 @@
-<div class="bg-cyan-100">
+<div class="bg-cyan-100 p-2">
     <livewire:home.main-body-header />
     
     <div class="grid grid-cols-3 bg-cyan-100 gap-2">

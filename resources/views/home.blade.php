@@ -14,10 +14,10 @@
         </menus>
 
         <main class="mt-1 flex flex-row space-x-1 justify-between ">
-            <div class="w-3/4 p-1 border-2 border-gray-200 bg-white">
+            <div class="w-3/4 rounded-lg border-2 border-gray-200 bg-white">
                 <livewire:home.main-body />
             </div>
-            <div class="w-1/4  bg-white border-2 p-1">
+            <div class="w-1/4  bg-cyan-100 border-2 rounded-lg p-1">
                 <div class="text-center font-semibold text-3xl">Newsletter</div>
                 <div class="p-2  pb-4 rounded-lg border-2 border-gray-200">
                     <a href="/subscribers/create">
@@ -38,7 +38,7 @@
             </div>
         </main>
         <pods>
-            <div class="p-1 border-2 border-gray-200 bg-white">
+            <div class="mt-1 p-1 border-2 border-gray-200 bg-cyan-100">
                 <div class="text-3xl Font-bold text-teal-900 pb-4">
                     Podcasts
                 </div>

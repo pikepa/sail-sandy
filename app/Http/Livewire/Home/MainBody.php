@@ -10,13 +10,6 @@ class MainBody extends Component
 {
     use WithPagination;
 
-    public function mount()
-    {
-        //   $this->posts = Post::inRandomOrder()
-                // ->limit(12)
-                // ->paginate(6);
-    }
-
     public function render()
     {
         return view('livewire.home.main-body', [
