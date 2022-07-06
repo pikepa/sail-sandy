@@ -42,7 +42,7 @@
     <div class="flex justify-around">
         <div>
             <button type="submit" class="w-28 p-2 rounded-lg bg-green-500">
-                Save Post
+                Save
             </button>
         </div>
 

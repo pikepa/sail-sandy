@@ -36,7 +36,7 @@ class ManageCategories extends Component
 
     public $showAlert = false;
 
-    protected $rules =[
+    protected $rules = [
         'name' => 'required|max:50',
         'slug' => 'required',
         'description' => 'required',
@@ -103,6 +103,7 @@ class ManageCategories extends Component
     public function edit($id)
     {
         $category = Category::findOrFail($id);
+
         $this->name = $category->name;
         $this->slug = $category->slug;
         $this->description = $category->description;

@@ -143,6 +143,7 @@ class ManagePosts extends Component
     public function edit($id)
     {
         $post = Post::findOrFail($id);
+
         $this->post_id = $post->id;
         $this->title = $post->title;
         $this->cover_image = $post->cover_image;
@@ -182,8 +183,6 @@ class ManagePosts extends Component
 
         session()->flash('message', ' Post Successfully deleted.');
         session()->flash('alertType', 'success');
-
-        //return redirect('/posts');
     }
 
     public function cancel()

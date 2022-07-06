@@ -99,3 +99,25 @@ test('A post is_in_vault flag is required', function () {
     ->call('save')
     ->assertHasErrors(['is_in_vault' => 'Required']);
 });
+
+test('When a user hits the add button the create form is shown', function () {
+    Livewire::test(ManagePosts::class)
+      ->call('showAddForm')
+      ->assertSee('Add Post')
+      ->assertSee('Save');
+});
+
+  test('When a user hits the edit button the update form is shown', function () {
+      Livewire::test(ManagePosts::class)
+      ->call('showEditForm')
+      ->assertSee('Edit Post')
+      ->assertSee('Save');
+  });
+
+  test('When a user hits the show table button the main table is shown', function () {
+      Livewire::test(ManagePosts::class)
+      ->call('showTable')
+      ->assertSee('Posts')
+      ->assertDontSee('Edit Post')
+      ->assertSee('Add Post');
+  });
