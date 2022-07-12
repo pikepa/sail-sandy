@@ -3,9 +3,12 @@
 namespace App\Http\Livewire\Posts;
 
 use App\Models\Post;
-use Illuminate\Support\Str;
 use Livewire\Component;
+use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\Support\RemoteFile;
 
 class ManagePosts extends Component
 {
@@ -27,7 +30,7 @@ class ManagePosts extends Component
 
     public $author_id;
 
-    public $cover_image = null;
+    public $cover_image = ' ';
 
     public $meta_description;
 
@@ -59,7 +62,7 @@ class ManagePosts extends Component
         'author_id'   => 'required',
         'category_id'   => 'required',
         'published_at'   => '',
-        'cover_image' => 'required|url',
+        'cover_image' => '',
     ];
 
     public function mount()
@@ -124,14 +127,16 @@ class ManagePosts extends Component
 
     public function save()
     {
-        $this->storeFile();
 
         $data = $this->validate();
 
-        Post::create($data);
+        $this->post = Post::create($data);
+
+        $this->storeFile();
+
 
         // dd($this->newImage->getClientOriginalName());
-        // dd(env('AWS_URL').'/'.$this->newImage->getRealPath());
+       //  dd(env('AWS_URL').'/'.$this->newImage->getRealPath());
 
         $this->resetExcept('author_id');
         $this->showTable();
@@ -201,9 +206,16 @@ class ManagePosts extends Component
 
     public function storeFile()
     {
-        if ($this->newImage) {
-            $filename = $this->newImage->store('/featured', 'featured');
-            $this->cover_image = env('AWS_URL').'/'.$filename;
+        if ($this->newImage) 
+        {
+            $this->post->addMedia($this->newImage->getRealPath())
+            ->setFile(new RemoteFile($this->newImage->getRealPath(), 's3'))
+            ->usingName($this->newImage->getClientOriginalName())
+            ->toMediaCollection('featured');
+
+           $this->cover_image = $this->post->getFirstMediaUrl('featured');
+           $this->post->update(['cover_image' => $this->cover_image]);
+
         } else {
             return;
         }
