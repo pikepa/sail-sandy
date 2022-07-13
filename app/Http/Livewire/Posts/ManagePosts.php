@@ -9,6 +9,7 @@ use Livewire\WithFileUploads;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\Support\RemoteFile;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ManagePosts extends Component
 {
@@ -51,6 +52,7 @@ class ManagePosts extends Component
     public $showAlert = false;
 
     public $newImage;
+    public $mediaItems =[];
 
     protected $rules =
     [
@@ -85,7 +87,16 @@ class ManagePosts extends Component
     public function updatedNewImage()
     {
         $this->validate(['newImage' => 'image|max:5000']);
-        $this->cover_image = $this->newImage->temporaryUrl();
+    }
+
+    public function deleteImage($id)
+    {
+        $image = Media::findOrFail($id);
+        $image->delete();
+        $this->showAlert = true;
+
+        session()->flash('message', ' Image Successfully deleted.');
+        session()->flash('alertType', 'success');
     }
 
     public function showAddForm()
@@ -113,11 +124,18 @@ class ManagePosts extends Component
 
     protected $listeners = [
         'category_selected',
+        'make_featured',
     ];
 
     public function category_selected($category_id)
     {
         $this->category_id = $category_id;
+    }
+
+
+    public function make_featured($url)
+    {
+       $this->cover_image = $url;
     }
 
     public function create()
@@ -144,6 +162,8 @@ class ManagePosts extends Component
     public function edit($id)
     {
         $post = Post::findOrFail($id);
+
+        $this->mediaItems = $post->getMedia('featured');
 
         $this->post_id = $post->id;
         $this->title = $post->title;
@@ -210,8 +230,8 @@ class ManagePosts extends Component
             ->usingName($this->newImage->getClientOriginalName())
             ->toMediaCollection('featured','s3-featured');
 
-           $this->cover_image = $this->post->getFirstMediaUrl('featured');
-           $this->post->update(['cover_image' => $this->cover_image]);
+        //   $this->cover_image = $this->post->getFirstMediaUrl('featured');
+        //   $this->post->update(['cover_image' => $this->cover_image]);
 
             return; 
         } else {
