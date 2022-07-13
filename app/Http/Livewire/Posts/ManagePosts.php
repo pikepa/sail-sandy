@@ -50,7 +50,7 @@ class ManagePosts extends Component
 
     public $showAlert = false;
 
-    public $newImages;
+    public $newImage;
 
     protected $rules =
     [
@@ -82,10 +82,10 @@ class ManagePosts extends Component
         $this->slug = Str::slug($value);
     }
 
-    public function updatedNewImages()
+    public function updatedNewImage()
     {
-        $this->validate(['newImages' => 'image|max:5000']);
-        $this->cover_image = $this->newImages->temporaryUrl();
+        $this->validate(['newImage' => 'image|max:5000']);
+        $this->cover_image = $this->newImage->temporaryUrl();
     }
 
     public function showAddForm()
@@ -203,7 +203,7 @@ class ManagePosts extends Component
 
     public function storeFile()
     {
-        if ($this->newImages) 
+        if ($this->newImage) 
         {
             $this->post->addMedia($this->newImage->getRealPath())
             ->setFile(new RemoteFile($this->newImage->getRealPath(), 's3-featured'))

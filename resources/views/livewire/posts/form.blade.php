@@ -6,7 +6,7 @@
             <x-input.text wire:model='title' type="text" class="form-input w-full rounded" name="name">
             </x-input.text>
         </x-input.group>
- 
+
         <!-- Post Body -->
 
         <x-input.group for="body" label="Body" width="full">
@@ -16,13 +16,22 @@
         <!-- Meta Description -->
 
         <x-input.group for="meta_description" label="Meta Description" width="full">
-            <x-input.rich-text wire:model.lazy='meta_description' :initial-value="$meta_description" unique='meta' type="text" />
+            <x-input.rich-text wire:model.lazy='meta_description' :initial-value="$meta_description" unique='meta'
+                type="text" />
         </x-input.group>
 
         <!-- This is the spot for the Post Gallery -->
+        @isset($post_media)
+            @empty($post_media)
+            <div class="pt-2">
+                There are no related image files
+            </div>
+            @endEmpty
 
+
+        @endisset
         <div>
-            <input wire:model='newImages' type="file" multiple/>
+            <input wire:model='newImage' type="file"  />
 
         </div>
 
@@ -32,14 +41,14 @@
         <!-- Post Category -->
         <div>
             <x-input.group for="category" label="Catgory" width="full">
-                <livewire:forms.category-select  :cat_id="$selectedCategory" />
+                <livewire:forms.category-select :cat_id="$selectedCategory" />
             </x-input.group>
         </div>
 
         <!-- Post is in the Vault -->
         <div>
             <x-input.group for="is_in_vault" label="Post is in our Vault" width="full">
-                <input wire:model='is_in_vault' type="checkbox" class="ml-2" > 
+                <input wire:model='is_in_vault' type="checkbox" class="ml-2">
             </x-input.group>
         </div>
 
@@ -47,7 +56,8 @@
 
         <label class="block">
             <span class="text-gray-700  font-bold">Published </span>
-            <input wire:model='published_at' type="text" placeholder="DD-MM-YYYY" name="published_at" class="form-input rounded mt-1 block w-full">
+            <input wire:model='published_at' type="text" placeholder="DD-MM-YYYY" name="published_at"
+                class="form-input rounded mt-1 block w-full">
         </label>
 
         <!-- Checkbox for Featured Image-->
@@ -72,7 +82,7 @@
             <div>
                 <button wire:click='cancel' class="w-28 p-2 rounded-lg bg-orange-500">
                     Cancel
-                </a>
+                    </a>
                 </button>
             </div>
         </div>
