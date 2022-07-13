@@ -19,6 +19,12 @@
             <x-input.rich-text wire:model.lazy='meta_description' :initial-value="$meta_description" unique='meta' type="text" />
         </x-input.group>
 
+        <!-- This is the spot for the Post Gallery -->
+
+        <div>
+            <input wire:model='newImages' type="file" multiple/>
+
+        </div>
 
 
     </div>
@@ -45,15 +51,15 @@
         </label>
 
         <!-- Checkbox for Featured Image-->
+        @isset($cover_image)
         <div>
             <x-input.group label="Featured Image" for="cover_image"></x-input.group>
 
             <img class='rounded shadow-lg' src="{!!$cover_image!!}" width="250px" alt="Featured image">
         </div>
-        <div>
-            <input wire:model='newImage' type="file"/>
+        @endisset
 
-        </div>
+
 
         <!-- this is the save button -->
         <div class="flex justify-around">

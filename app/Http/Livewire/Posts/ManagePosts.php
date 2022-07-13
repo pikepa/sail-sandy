@@ -30,7 +30,7 @@ class ManagePosts extends Component
 
     public $author_id;
 
-    public $cover_image = ' ';
+    public $cover_image = null;
 
     public $meta_description;
 
@@ -50,7 +50,7 @@ class ManagePosts extends Component
 
     public $showAlert = false;
 
-    public $newImage;
+    public $newImages;
 
     protected $rules =
     [
@@ -82,10 +82,10 @@ class ManagePosts extends Component
         $this->slug = Str::slug($value);
     }
 
-    public function updatedNewImage()
+    public function updatedNewImages()
     {
-        $this->validate(['newImage' => 'image|max:5000']);
-        $this->cover_image = $this->newImage->temporaryUrl();
+        $this->validate(['newImages' => 'image|max:5000']);
+        $this->cover_image = $this->newImages->temporaryUrl();
     }
 
     public function showAddForm()
@@ -134,10 +134,6 @@ class ManagePosts extends Component
 
         $this->storeFile();
 
-
-        // dd($this->newImage->getClientOriginalName());
-       //  dd(env('AWS_URL').'/'.$this->newImage->getRealPath());
-
         $this->resetExcept('author_id');
         $this->showTable();
 
@@ -166,12 +162,13 @@ class ManagePosts extends Component
 
     public function update($id)
     {
-        $this->storeFile();
 
         $data = $this->validate();
-        $post = Post::findOrFail($id);
+        $this->post = Post::findOrFail($id);
 
-        $post->update($data);
+        $this->post->update($data);
+
+        $this->storeFile();
 
         $this->resetExcept('author_id');
         $this->showTable();
@@ -206,16 +203,17 @@ class ManagePosts extends Component
 
     public function storeFile()
     {
-        if ($this->newImage) 
+        if ($this->newImages) 
         {
             $this->post->addMedia($this->newImage->getRealPath())
-            ->setFile(new RemoteFile($this->newImage->getRealPath(), 's3'))
-            ->usingName($this->newImage->getClientOriginalName())
+            ->setFile(new RemoteFile($this->newImage->getRealPath(), 's3-featured'))
+          //  ->usingName($this->newImage->getClientOriginalName())
             ->toMediaCollection('featured');
 
            $this->cover_image = $this->post->getFirstMediaUrl('featured');
            $this->post->update(['cover_image' => $this->cover_image]);
 
+            return;
         } else {
             return;
         }
