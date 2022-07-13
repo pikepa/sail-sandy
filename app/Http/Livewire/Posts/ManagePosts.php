@@ -206,14 +206,14 @@ class ManagePosts extends Component
         if ($this->newImage) 
         {
             $this->post->addMedia($this->newImage->getRealPath())
-            ->setFile(new RemoteFile($this->newImage->getRealPath(), 's3-featured'))
-          //  ->usingName($this->newImage->getClientOriginalName())
-            ->toMediaCollection('featured');
+            ->setFile(new RemoteFile($this->newImage->getRealPath(), 's3'))
+            ->usingName($this->newImage->getClientOriginalName())
+            ->toMediaCollection('featured','s3-featured');
 
            $this->cover_image = $this->post->getFirstMediaUrl('featured');
            $this->post->update(['cover_image' => $this->cover_image]);
 
-            return;
+            return; 
         } else {
             return;
         }
