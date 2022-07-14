@@ -6,22 +6,22 @@
                 <x-input.text wire:model='title' type="text" class="form-input w-full rounded" name="name">
                 </x-input.text>
             </x-input.group>
-    
+
             <!-- Post Body -->
-    
+
             <x-input.group for="body" label="Body" width="full">
                 <x-input.rich-text wire:model.lazy='body' :initial-value=$body unique="body" type="text" />
             </x-input.group>
-    
+
             <!-- Meta Description -->
-    
+
             <x-input.group for="meta_description" label="Meta Description" width="full">
                 <x-input.rich-text wire:model.lazy='meta_description' :initial-value="$meta_description" unique='meta'
                     type="text" />
             </x-input.group>
-    
-    
-    
+
+
+
         </div>
         <div class=" space-y-6">
             <!-- Post Category -->
@@ -30,33 +30,33 @@
                     <livewire:forms.category-select :cat_id="$selectedCategory" />
                 </x-input.group>
             </div>
-    
+
             <!-- Post is in the Vault -->
             <div>
                 <x-input.group for="is_in_vault" label="Post is in our Vault" width="full">
                     <input wire:model='is_in_vault' type="checkbox" class="ml-2">
                 </x-input.group>
             </div>
-    
+
             <!-- Schedule Post -->
-    
+
             <label class="block">
                 <span class="text-gray-700  font-bold">Published </span>
                 <input wire:model='published_at' type="text" placeholder="DD-MM-YYYY" name="published_at"
                     class="form-input rounded mt-1 block w-full">
             </label>
-    
+
             <!-- Checkbox for Featured Image-->
             @isset($cover_image)
             <div>
                 <x-input.group label="Featured Image" for="cover_image"></x-input.group>
-    
+
                 <img class='rounded shadow-lg' src="{!!$cover_image!!}" width="250px" alt="Featured image">
             </div>
             @endisset
-    
-    
-    
+
+
+
             <!-- this is the save button -->
             <div class="flex justify-around">
                 <div>
@@ -64,49 +64,55 @@
                         Save Post
                     </button>
                 </div>
-    
+
                 <div>
                     <button wire:click='cancel' class="w-28 p-2 rounded-lg bg-orange-500">
                         Cancel
                     </button>
                 </div>
             </div>
-     
+
         </div>
-    
+
     </div>
-    
-        <!-- This is the spot for the Post Gallery -->
-    
+
+    <!-- This is the spot for the Post Gallery -->
+
     <div>
-    <div class="text-xl font-bold pt-2 pl-4 bg-cyan-50">
-        Post Gallery
-    </div>
+        <div class="text-xl font-bold pt-2 pl-4 bg-cyan-50">
+            Post Gallery
+        </div>
         @isset($mediaItems)
         @empty($mediaItems)
         <div class="pt-2">
             There are no related image files
         </div>
         @endEmpty
-    
-        <div class="border-2 p-4 rounded-lg mt-2 flex flex-row flex-wrap justify-between">
-            @foreach($mediaItems as $item)
-            <div class="">
-                <img class="w-36 " src="{{$item->getFullUrl()}}" alt="{{$item->name}}" height="200px">
-                <div class="px-4 mt-2 flex flex-row justify-between">
-                    <button wire:click.ignore="make_featured('{{ $item->getFullUrl() }}')"><i class="fa-solid fa-bolt-lightning"></i></button>
-                    <button wire:click="deleteImage({{ $item->id }})"><i class="fa-regular fa-trash-can"></i></button>
+
+        <!-- <div class="border-2 p-4 rounded-lg mt-2 flex flex-row flex-wrap justify-between"> -->
+        <div class="border-2 p-4 rounded-lg ">
+            <div class="grid grid-cols-3 gap-2 ">
+                @foreach($mediaItems as $item)
+                <div class="mx-auto w-full text-center bg-red-200">
+                    <img class="rounded-lg object-cover object-centre w-full" src="{{$item->getFullUrl()}}" style="height:325px" alt="{{$item->name}}" >
+                    <div class="px-4 mt-2 flex flex-row justify-between">
+                        <button wire:click="make_featured('{{ $item->getFullUrl() }}')"><i
+                                class="fa-solid fa-bolt-lightning"></i></button>
+                        <button wire:click="deleteImage({{ $item->id }})"><i
+                                class="fa-regular fa-trash-can"></i></button>
+                    </div>
                 </div>
+                @endforeach
+
             </div>
-    
-            @endforeach
+
         </div>
-    
-    
+
+
         @endisset
         <div>
             <input wire:model='newImage' type="file" />
-    
+
         </div>
     </div>
 </div>

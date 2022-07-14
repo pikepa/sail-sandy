@@ -190,11 +190,11 @@ class ManagePosts extends Component
 
         $this->storeFile();
 
-        $this->resetExcept('author_id');
-        $this->showTable();
+        // $this->resetExcept('author_id');
+        // $this->showTable();
 
-        session()->flash('message', 'Post Successfully Updated.');
-        session()->flash('alertType', 'success');
+        // session()->flash('message', 'Post Successfully Updated.');
+        // session()->flash('alertType', 'success');
     }
 
     public function delete($id)
