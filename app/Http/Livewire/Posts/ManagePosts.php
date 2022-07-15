@@ -3,13 +3,11 @@
 namespace App\Http\Livewire\Posts;
 
 use App\Models\Post;
-use Livewire\Component;
 use Illuminate\Support\Str;
+use Livewire\Component;
 use Livewire\WithFileUploads;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\MediaLibrary\Support\RemoteFile;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\Support\RemoteFile;
 
 class ManagePosts extends Component
 {
@@ -52,7 +50,8 @@ class ManagePosts extends Component
     public $showAlert = false;
 
     public $newImage;
-    public $mediaItems =[];
+
+    public $mediaItems = [];
 
     protected $rules =
     [
@@ -64,7 +63,7 @@ class ManagePosts extends Component
         'author_id'   => 'required',
         'category_id'   => 'required',
         'published_at'   => '',
-        'cover_image' => '',
+        'cover_image' => 'nullable|url',
     ];
 
     public function mount()
@@ -132,10 +131,9 @@ class ManagePosts extends Component
         $this->category_id = $category_id;
     }
 
-
     public function make_featured($url)
     {
-       $this->cover_image = $url;
+        $this->cover_image = $url;
     }
 
     public function create()
@@ -145,14 +143,13 @@ class ManagePosts extends Component
 
     public function save()
     {
-
         $data = $this->validate();
 
         $this->post = Post::create($data);
 
         $this->storeFile();
 
-        $this->resetExcept('author_id');
+        $this->resetExcept(['author_id']);
         $this->showTable();
 
         session()->flash('message', 'Post Successfully added.');
@@ -162,6 +159,7 @@ class ManagePosts extends Component
     public function edit($id)
     {
         $post = Post::findOrFail($id);
+        $this->post = $post;
 
         $this->mediaItems = $post->getMedia('featured');
 
@@ -182,7 +180,6 @@ class ManagePosts extends Component
 
     public function update($id)
     {
-
         $data = $this->validate();
         $this->post = Post::findOrFail($id);
 
@@ -190,11 +187,11 @@ class ManagePosts extends Component
 
         $this->storeFile();
 
-        // $this->resetExcept('author_id');
-        // $this->showTable();
+        $this->resetExcept('author_id');
+        $this->showTable();
 
-        // session()->flash('message', 'Post Successfully Updated.');
-        // session()->flash('alertType', 'success');
+        session()->flash('message', 'Post Successfully Updated.');
+        session()->flash('alertType', 'success');
     }
 
     public function delete($id)
@@ -223,17 +220,15 @@ class ManagePosts extends Component
 
     public function storeFile()
     {
-        if ($this->newImage) 
-        {
+        if ($this->newImage) {
             $this->post->addMedia($this->newImage->getRealPath())
             ->setFile(new RemoteFile($this->newImage->getRealPath(), 's3'))
             ->usingName($this->newImage->getClientOriginalName())
-            ->toMediaCollection('featured','s3-featured');
+            ->toMediaCollection('featured', 's3-featured');
 
-        //   $this->cover_image = $this->post->getFirstMediaUrl('featured');
-        //   $this->post->update(['cover_image' => $this->cover_image]);
+            $this->newImage = '';
 
-            return; 
+            $this->showEditForm;
         } else {
             return;
         }

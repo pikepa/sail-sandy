@@ -58,6 +58,7 @@
 
 
             <!-- this is the save button -->
+            @empty($newImage)
             <div class="flex justify-around">
                 <div>
                     <button method="Submit" class="w-28 p-2 rounded-lg bg-green-500">
@@ -71,6 +72,7 @@
                     </button>
                 </div>
             </div>
+            @endempty
 
         </div>
 
@@ -83,18 +85,20 @@
             Post Gallery
         </div>
         @isset($mediaItems)
-        @empty($mediaItems)
-        <div class="pt-2">
-            There are no related image files
-        </div>
-        @endEmpty
+
 
         <!-- <div class="border-2 p-4 rounded-lg mt-2 flex flex-row flex-wrap justify-between"> -->
         <div class="border-2 p-4 rounded-lg ">
+            @empty($mediaItems)
+            <div class="pt-2">
+                There are no related image files
+            </div>
+            @endEmpty
             <div class="grid grid-cols-3 gap-2 ">
                 @foreach($mediaItems as $item)
-                <div class="mx-auto w-full text-center bg-red-200">
-                    <img class="rounded-lg object-cover object-centre w-full" src="{{$item->getFullUrl()}}" style="height:325px" alt="{{$item->name}}" >
+                <div class="mx-auto w-full rounded-lg border text-center">
+                    <img class="rounded-t-lg object-cover object-centre w-full" src="{{$item->getFullUrl()}}"
+                        style="height:325px" alt="{{$item->name}}">
                     <div class="px-4 mt-2 flex flex-row justify-between">
                         <button wire:click="make_featured('{{ $item->getFullUrl() }}')"><i
                                 class="fa-solid fa-bolt-lightning"></i></button>
@@ -110,9 +114,15 @@
 
 
         @endisset
-        <div>
-            <input wire:model='newImage' type="file" />
-
+        @isset($post_id)
+        <div class="">
+            <div class="pt-4 ml-4">
+                <input wire:model='newImage' type="file" />
+            </div>
+            <div class="mt-4 ml-4">
+                <button class="w-28 p-2 rounded-lg bg-green-500 font-semibold" wire:click="storeFile">Upload</button>
+            </div>
         </div>
+        @endisset
     </div>
 </div>

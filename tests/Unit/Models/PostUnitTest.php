@@ -39,16 +39,9 @@ test('A post body must have min 20 chars', function () {
     ->assertHasErrors(['body' => 'Min']);
 });
 
-test('A post cover_image is required', function () {
-    Livewire::test(ManagePosts::class)
-    ->set('cover_image', '')
-    ->call('save')
-    ->assertHasErrors(['cover_image' => 'required']);
-});
-
 test('A post cover_image is an url', function () {
     Livewire::test(ManagePosts::class)
-    ->set('cover_image', 'https')
+    ->set('cover_image', 'aviator')
     ->call('save')
     ->assertHasErrors(['cover_image' => 'url']);
 });
