@@ -58,7 +58,7 @@ class Post extends Model implements HasMedia
 
     public function scopePublished($query)
     {
-        return $query->where('published_at', 'ne', null);
+        return $query->where('published_at', '!=', null);
     }
 
     public function setSlugAttribute($value)

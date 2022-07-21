@@ -34,6 +34,10 @@
                             </div>
 
                         </div>
+
+                        <livewire:posts.display-post-gallery :post='$post'/>
+
+                        
                     </div>
                 </div>
             </div>
