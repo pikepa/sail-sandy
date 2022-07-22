@@ -40,7 +40,9 @@
                                 <div class="w-4/5 ml-4 max-h-36 overflow-hidden">
                                     <a href="../../posts/{{$post->slug}}" ;
                                         class="block text-lg leading-tight font-bold text-gray-900 hover:underline">{{$post->title}}</a>
-                                    <p class="mt-2 text-gray-600">{!!$post->body!!}.</p>
+                                        @isset($post->published_at) <p class="text-xs font-bold text-gray-600">Published on {{$post->published_at->toFormattedDateString()}} by {{$post->author->name}}</p>@endisset
+                                        @empty($post->published_at) <p class="text-xs font-bold text-gray-600">Not Published - Draft by {{$post->author->name}}</p>@endempty
+                                     <p class="mt-2 text-gray-600">{!!$post->body!!}.</p>
                                 </div>
                             </div>
                             @endforeach
