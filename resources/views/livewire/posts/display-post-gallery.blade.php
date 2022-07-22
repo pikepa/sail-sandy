@@ -1,7 +1,7 @@
 <!-- This is the spot for the Post Gallery -->
 
 <div>
-    @isset($mediaItems)
+    @if($mediaItems->count()>1)
     <div class="text-xl font-bold pt-2 pl-4 bg-cyan-50">
         Post Gallery
     </div>
@@ -14,11 +14,11 @@
             <div class="mx-auto w-full rounded-lg border text-center">
                 <img class="rounded-t-lg object-cover object-centre w-full" src="{{$item->getFullUrl()}}"
                     style="height:325px" alt="{{$item->name}}">
-                <div class="px-4 mt-2 flex flex-row justify-between">
+                <!-- <div class="px-4 mt-2 flex flex-row justify-between">
                     <button wire:click="make_featured('{{ $item->getFullUrl() }}')"><i
                             class="fa-solid fa-bolt-lightning"></i></button>
                     <button wire:click="deleteImage({{ $item->id }})"><i class="fa-regular fa-trash-can"></i></button>
-                </div>
+                </div> -->
             </div>
             @endif
             @endforeach
@@ -27,7 +27,7 @@
 
     </div>
 
-
+<!-- 
     <div>
         @isset($post_id)
         <div class="">
@@ -39,7 +39,6 @@
             </div>
         </div>
         @endisset
-    </div>
-
-    @endisset
+    </div> -->
+    @endif
 </div>

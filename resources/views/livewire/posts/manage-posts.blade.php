@@ -33,7 +33,7 @@
                   <x-table.heading class="text-left">Title</x-table.heading>
                   <x-table.heading class="text-left">Category</x-table.heading>
                   <x-table.heading class="text-left">Author</x-table.heading>
-                  <x-table.heading class="text-center">Published</x-table.heading>
+                  <x-table.heading class="text-left">Published</x-table.heading>
                   <x-table.heading class="text-left"></x-table.heading>
                   <x-table.heading class="text-left"></x-table.heading>
                 </x-table.row>
@@ -45,7 +45,8 @@
                       href="/posts/{{$post->slug}}">{{$post->title}}</a></x-table.cell>
                   <x-table.cell>{{$post->category->name}}</x-table.cell>
                   <x-table.cell>{{$post->author->name}}</x-table.cell>
-                  <x-table.cell class="text-center">{{$post->published_at}}</x-table.cell>
+                  @isset($post->published_at)<x-table.cell class="text-left">{{$post->published_at->toFormattedDateString()}}</x-table.cell>@endisset
+                  @empty($post->published_at)<x-table.cell class="text-left">Draft</x-table.cell>@endempty
                   <x-table.cell>
                     <x-button.link wire:click="edit({{ $post->id }})"><i class="fa-solid fa-pen-to-square"></i>
                     </x-button.link>

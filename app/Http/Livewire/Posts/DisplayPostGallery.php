@@ -20,5 +20,6 @@ class DisplayPostGallery extends Component
     public function render()
     {
         return view('livewire.posts.display-post-gallery');
+        
     }
 }

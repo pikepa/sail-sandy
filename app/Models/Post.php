@@ -36,25 +36,25 @@ class Post extends Model implements HasMedia
         'category_id',
     ];
 
-    protected function PublishedAt(): Attribute
-    {
-        return Attribute::make(
-            get: function ($value) {
-                if ($value !== null) {
-                    return Carbon::parse($value)->format('d-m-Y');
-                }
+    // protected function PublishedAt(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: function ($value) {
+    //             if ($value !== null) {
+    //                 return Carbon::parse($value)->format('d-m-Y');
+    //             }
 
-                return 'Draft';
-            },
-            set: function ($value) {
-                if ($value == 'Draft' or $value == '') {
-                    return null;
-                }
+    //             return 'Draft';
+    //         },
+    //         set: function ($value) {
+    //             if ($value == 'Draft' or $value == '') {
+    //                 return null;
+    //             }
 
-                return Carbon::parse($value)->format('Y-m-d  H:m:s');
-            }
-        );
-    }
+    //             return Carbon::parse($value)->format('Y-m-d  H:m:s');
+    //         }
+    //     );
+    // }
 
     public function scopePublished($query)
     {

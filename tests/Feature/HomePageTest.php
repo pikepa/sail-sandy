@@ -13,14 +13,25 @@ it('can load the home page', function () {
         ->assertSee('Podcasts');
 });
 
-test('A guest can view a posts on the home page', function () {
+test('A guest can view a published post on the home page', function () {
     Category::factory()->create();
     User::factory()->create();
-    $post = Post::factory()->create();
+    $post = Post::factory()->create(['published_at'=>now()]);
 
     $this->get('/')
     ->assertStatus(200)
     ->assertSee($post->title)
     ->assertSee('... more')
     ->assertSee(substr($post->description. 0, 50));
+});
+
+test('A guest can not view an unpublished post on the home page', function () {
+    Category::factory()->create();
+    User::factory()->create();
+    $post = Post::factory()->create(['published_at'=>null]);
+
+    $response = $this->get('/')
+    ->assertStatus(200)
+    ->assertDontSee($post->title);
+
 });
