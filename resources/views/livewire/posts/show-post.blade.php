@@ -18,13 +18,8 @@
                         <div class="flex flex-row justify-between items-center">
                             <div class="ml-4 pt-2  text-3xl font-semibold">
                                 {{$post->title}}
-                                @isset($post->published_at) <p class="text-xs font-bold text-gray-600">Published on
-                                    {{$post->published_at->toFormattedDateString()}} by {{$post->author->name}}</p>
-                                @endisset
-                                @empty($post->published_at) <p class="text-xs font-bold text-gray-600">Not Published -
-                                    Draft
-                                    by {{$post->author->name}}</p>@endempty
-
+                                @isset($post->published_at) <p class="text-xs font-bold text-gray-600">Published on {{$post->published_at->toFormattedDateString()}} by {{$post->author->name}}</p>@endisset
+                                @empty($post->published_at) <p class="text-xs font-bold text-gray-600">Not Published - Draft by {{$post->author->name}}</p>@endempty
                             </div>
                             <div class="text-right mr-4 font-bold text-xl">
                                 <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i> Back</a>
