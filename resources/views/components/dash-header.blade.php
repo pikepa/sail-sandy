@@ -3,6 +3,7 @@
         <div class="text-2xl font-semibold rounded-xl py-2 px-4 bg-cyan-200">Dashboard</div>
         <div class="inline p-2 cursor-pointer"><a href='/'>Home</a></div>
         <div class="inline p-2 cursor-pointer"wire:click="setShow('pages') "> Pages </div>
+        <div class="inline p-2 cursor-pointer"wire:click="setShow('links') "> Links </div>
         <div class="inline p-2 cursor-pointer"wire:click="setShow('posts') "> Posts </div>
         <div class="inline p-2 cursor-pointer"wire:click="setShow('categories') "> Categories </div>
         <div class="inline p-2 cursor-pointer"wire:click="setShow('dash') "> Dashboard </div>

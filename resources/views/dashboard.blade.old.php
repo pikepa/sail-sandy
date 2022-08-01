@@ -7,6 +7,7 @@
                         <ul>
                             <li class="list-disc"><a href="{!!route('posts.index')!!}">Posts</a></li>
                             <li class="list-disc"><a href="{!!route('categories.index')!!}">Categories</a></li>
+                            <li class="list-disc"><a href="{!!route('categories.index')!!}">Categories</a></li>
                             <li class="list-disc"><a href="#">Pages</a></li>
                             <li class="list-disc"><a href="#">Podcasts</a></li>
                         </ul>

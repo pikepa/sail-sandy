@@ -16,6 +16,10 @@
                     <livewire:pages.manage-pages />
                     @endif
 
+                    @if($show =='links')
+                    <livewire:links.manage-links />
+                    @endif
+
                     @if($show =='dash')
                     <x-pages.dashboard />
                     @endif

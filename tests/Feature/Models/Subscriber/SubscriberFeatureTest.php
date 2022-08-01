@@ -5,6 +5,8 @@ use function Pest\Faker\faker;
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
 
+
+
 test('anyone can subscribe to the Newsletter', function () {
     $email = faker()->email;
 
@@ -54,4 +56,9 @@ test('a guest user can see the create subscriber page', function () {
          ->assertSee('Newsletter Registration')
          ->assertSee('Name')
          ->assertSee('Email');
+});
+test('the create subscriber page contains the livewire menu components', function () {
+    $this->get('/subscribers/create')
+         ->assertSeeLivewire('menus.menu-bottom')
+         ->assertSeeLivewire('menus.menu-top');
 });

@@ -43,12 +43,10 @@ class ManageSubscriberController extends Controller
 
         $subscriber = Subscriber::create($validated);
 
-        if ($subscriber) {
-            $subscriber->sendOTP();
-        }
-
+        $subscriber->sendOTP();
         return redirect('/subscribers/thankyou');
-    }
+        
+        }
 
     /**
      * Display the specified resource.
