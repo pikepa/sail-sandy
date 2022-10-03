@@ -21,5 +21,4 @@ test('any user can view published posts by category', function () {
     ->assertSee('by')
     ->assertSee($post->author->name)
     ->assertSee($post->body);
-    
 });

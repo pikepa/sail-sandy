@@ -33,5 +33,4 @@ test('A guest can not view an unpublished post on the home page', function () {
     $response = $this->get('/')
     ->assertStatus(200)
     ->assertDontSee($post->title);
-
 });

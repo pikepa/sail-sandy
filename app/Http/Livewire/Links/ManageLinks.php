@@ -11,7 +11,7 @@ class ManageLinks extends Component
 
     public function render()
     {
-   //     $this->links = Link::with('author')->orderBy('created_at', 'desc')->get();
+        //     $this->links = Link::with('author')->orderBy('created_at', 'desc')->get();
 
         return view('livewire.links.manage-links');
     }
