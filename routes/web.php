@@ -19,7 +19,7 @@ Route::get('/test', function () {
 */
 Route::get('/', HomeController::class)->name('home');
 Route::resource('/subscribers', ManageSubscriberController::class);
-Route::get('/verifyOTP/{id}/{otp}', VerifySubscriber::class);
+Route::post('/verifyOTP/{id}/{otp}', VerifySubscriber::class);
 Route::get('/posts/{slug}', ShowPost::class)->name('showpost');
 Route::get('/category/posts/{cat_slug}', ShowCategoryPosts::class)->name('categoryposts');
 Route::get('/vault/', ShowVaultPosts::class)->name('posts.vault');

@@ -3,11 +3,11 @@
         <div onclick="location.href='/';" class="cursor-pointer>
             <menus class=" grid grid-cols-1 border-b-2 ">
 
-                <x-menus.menu-top />
+                <Livewire:menus.menu-top />
 
                 <x-menus.menu-middle />
 
-                <x-menus.menu-bottom />
+                <Livewire:menus.menu-bottom />
             </menus>
         </div>
         <div >
