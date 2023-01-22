@@ -20,7 +20,7 @@ class PostFactory extends Factory
         $slug = Str::slug($title, '-');
 
         return [
-            'cover_image'       => 'http://localhost:8000/images/'.rand(1, 6).'.jpeg',
+            'cover_image'       => 'http://localhost/images/'.rand(1, 6).'.jpeg',
             'title'             => $title,
             'slug'              => $slug,
             'body'              => $this->faker->paragraph(5),
