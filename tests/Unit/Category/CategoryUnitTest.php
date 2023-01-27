@@ -12,22 +12,39 @@ beforeEach(function () {
 test('A category name is required', function () {
     Livewire::test(ManageCategories::class)
     ->set('name', '')
-    ->set('status', 1)
     ->call('save')
     ->assertHasErrors(['name' => 'required']);
 });
 
-test('A category has max chars 50', function () {
+test('A category name has max chars 50', function () {
     Livewire::test(ManageCategories::class)
     ->set('name', str_repeat('s', 51))
-    ->set('status', 1)
     ->call('save')
     ->assertHasErrors(['name' => 'max']);
+});
+test('A category description is required', function () {
+    Livewire::test(ManageCategories::class)
+    ->set('description', '')
+    ->call('save')
+    ->assertHasErrors(['description' => 'required']);
+});
+
+test('A category description has min chars 10', function () {
+    Livewire::test(ManageCategories::class)
+    ->set('description', str_repeat('s', 1))
+    ->call('save')
+    ->assertHasErrors(['description' => 'min']);
+});
+
+test('A category description has max chars 144', function () {
+    Livewire::test(ManageCategories::class)
+    ->set('description', str_repeat('s', 145))
+    ->call('save')
+    ->assertHasErrors(['description' => 'max']);
 });
 
 test('A status is required', function () {
     Livewire::test(ManageCategories::class)
-    ->set('name', 'Foo bar')
     ->set('status', '')
     ->call('save')
     ->assertHasErrors(['status' => 'required']);
@@ -35,7 +52,6 @@ test('A status is required', function () {
 
 test('A status is a boolean', function () {
     Livewire::test(ManageCategories::class)
-    ->set('name', 'Foo bar')
     ->set('status', '32.2')
     ->call('save')
     ->assertHasErrors(['status' => 'boolean']);
@@ -43,7 +59,6 @@ test('A status is a boolean', function () {
 
 test('A category type is required', function () {
     Livewire::test(ManageCategories::class)
-    ->set('name', 'Foo bar')
     ->set('type', '')
     ->call('save')
     ->assertHasErrors(['type' => 'required']);

@@ -24,7 +24,7 @@ class CategoryController extends Controller
         $validated = $request->validate([
             'name' => 'required|unique:categories',
             'slug' => 'required',
-            'status'   => 'required|integer|between:0,1',
+            'status' => 'required|integer|between:0,1',
         ]);
 
         $catin = Category::create($validated);

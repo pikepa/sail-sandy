@@ -15,31 +15,38 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            'name' =>'Asia Watch',
-            'slug' =>'asia-watch',
-            'type' =>'main',
+            'name' => 'AsiaWatch',
+            'slug' => 'asia-watch',
+            'type' => 'main',
+            'status' => '1',
         ]);
 
         DB::table('categories')->insert([
-            'name' =>'The Vault',
-            'slug' =>'the-vault',
-            'type' =>'main',
+            'name' => 'The Vault',
+            'slug' => 'the-vault',
+            'type' => 'main',
+            'status' => '1',
         ]);
         DB::table('categories')->insert([
-            'name' =>'Foreign Correspondence',
-            'slug' =>'foreign-correspondence',
-            'type' =>'main',
+            'name' => 'Foreign Correspondence',
+            'slug' => 'foreign-correspondence',
+            'type' => 'main',
+            'status' => '1',
 
         ]);
         DB::table('categories')->insert([
-            'name' =>'Highlights',
-            'slug' =>'highlights',
-            'type' =>'main',
+            'name' => 'Highlights',
+            'slug' => 'highlights',
+            'type' => 'main',
+            'status' => '1',
+
         ]);
         DB::table('categories')->insert([
-            'name' =>'Gallery',
-            'slug' =>'gallery',
-            'type' =>'main',
+            'name' => 'Gallery',
+            'slug' => 'gallery',
+            'type' => 'main',
+            'status' => '1',
+
         ]);
     }
 }

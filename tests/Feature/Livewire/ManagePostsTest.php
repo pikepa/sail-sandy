@@ -31,8 +31,8 @@ test('An authorised user can see a list of all posts', function () {
     $this->signIn();
     $category = Category::factory()->create();
 
-    $post1 = Post::factory()->create(['category_id'=>1]);
-    $post2 = Post::factory()->create(['category_id'=>1]);
+    $post1 = Post::factory()->create(['category_id' => 1]);
+    $post2 = Post::factory()->create(['category_id' => 1]);
 
     Livewire::test(ManagePosts::class)
         ->set('showTable', true)
@@ -64,7 +64,7 @@ test('An authorised user can add a post', function () {
         ->assertSuccessful();
 
     $this->assertDatabaseCount('posts', 1)
-    ->assertDatabaseHas('posts', ['title' =>'this is a post',
+    ->assertDatabaseHas('posts', ['title' => 'this is a post',
         'is_in_vault' => false, ]);
 });
 

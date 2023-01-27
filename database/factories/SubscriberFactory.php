@@ -17,8 +17,8 @@ class SubscriberFactory extends Factory
     public function definition()
     {
         return [
-            'email'        => $this->faker->unique()->safeEmail(),
-            'name'        => $this->faker->unique()->name(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'name' => $this->faker->unique()->name(),
             'validation_key' => '',
             'validated_at' => '',
         ];

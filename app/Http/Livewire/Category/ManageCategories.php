@@ -39,7 +39,7 @@ class ManageCategories extends Component
     protected $rules = [
         'name' => 'required|max:50',
         'slug' => 'required',
-        'description' => 'required',
+        'description' => 'required|min:5|max:144',
         'type' => 'required',
         'status' => 'required|boolean',
         'parent_id' => '',

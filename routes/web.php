@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Livewire\Posts\ShowPost;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Livewire\Posts\ShowVaultPosts;
+use App\Http\Controllers\ManageSubscriberController;
+use App\Http\Livewire\Links\ManageLinks;
 use App\Http\Livewire\Pages\DashStandardPage;
 use App\Http\Livewire\Posts\ShowCategoryPosts;
-use App\Http\Livewire\Links\ManageLinks;
+use App\Http\Livewire\Posts\ShowPost;
+use App\Http\Livewire\Posts\ShowVaultPosts;
 use App\Http\Livewire\Subscriber\VerifySubscriber;
-use App\Http\Controllers\ManageSubscriberController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/test', function () {
     return view('test');

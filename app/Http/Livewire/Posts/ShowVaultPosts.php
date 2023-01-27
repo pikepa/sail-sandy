@@ -14,7 +14,7 @@ class ShowVaultPosts extends Component
     {
         return view(
             'livewire.posts.show-vault-posts',
-            ['posts'=> Post::where('is_in_vault', true)
+            ['posts' => Post::where('is_in_vault', true)
                         ->orderBy('published_at', 'desc')->paginate(12), ]
         );
     }

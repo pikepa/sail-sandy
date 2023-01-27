@@ -55,14 +55,14 @@ class ManagePosts extends Component
 
     protected $rules =
     [
-        'title'   => 'required|max:250',
-        'slug'    => 'required',
-        'body'   => 'required|min:20',
-        'meta_description'   => 'required|max:300',
-        'is_in_vault'   => 'required',
-        'author_id'   => 'required',
-        'category_id'   => 'required',
-        'published_at'   => '',
+        'title' => 'required|max:250',
+        'slug' => 'required',
+        'body' => 'required|min:20',
+        'meta_description' => 'required|max:300',
+        'is_in_vault' => 'required',
+        'author_id' => 'required',
+        'category_id' => 'required',
+        'published_at' => '',
         'cover_image' => 'nullable|url',
     ];
 

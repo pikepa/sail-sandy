@@ -16,7 +16,7 @@ it('can load the home page', function () {
 test('A guest can view a published post on the home page', function () {
     Category::factory()->create();
     User::factory()->create();
-    $post = Post::factory()->create(['published_at'=>now()]);
+    $post = Post::factory()->create(['published_at' => now()]);
 
     $this->get('/')
     ->assertStatus(200)
@@ -28,7 +28,7 @@ test('A guest can view a published post on the home page', function () {
 test('A guest can not view an unpublished post on the home page', function () {
     Category::factory()->create();
     User::factory()->create();
-    $post = Post::factory()->create(['published_at'=>null]);
+    $post = Post::factory()->create(['published_at' => null]);
 
     $response = $this->get('/')
     ->assertStatus(200)

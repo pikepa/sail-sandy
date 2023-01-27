@@ -23,7 +23,7 @@ class VerifySubscriber extends Component
         $subscriber = Subscriber::find($this->subscriber_id);
 
         if ($this->otp === $subscriber->validation_key) {
-            $subscriber->update(['validated_at' => now(), 'validation_key'=> '']);
+            $subscriber->update(['validated_at' => now(), 'validation_key' => '']);
             $this->isVerified = true;
         // return response(null,201);
         } else {

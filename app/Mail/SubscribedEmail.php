@@ -33,6 +33,6 @@ class SubscribedEmail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.subscribed-email', ['OTP' => $this->OTP, 'ID'=>$this->ID]);
+        return $this->markdown('mail.subscribed-email', ['OTP' => $this->OTP, 'ID' => $this->ID]);
     }
 }

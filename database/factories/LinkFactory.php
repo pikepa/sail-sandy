@@ -13,9 +13,9 @@ class LinkFactory extends Factory
     public function definition()
     {
         return [
-            'title'             => $this->faker->sentence,
-            'url'               => $this->faker->url,
-            'author_id'         => User::inRandomOrder()->first(),
+            'title' => $this->faker->sentence,
+            'url' => $this->faker->url,
+            'author_id' => User::inRandomOrder()->first(),
         ];
     }
 }

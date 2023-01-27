@@ -8,7 +8,7 @@ use function Pest\Laravel\post;
 test('anyone can subscribe to the Newsletter', function () {
     $email = faker()->email;
 
-    post('/subscribers', ['email' => $email, 'name'=> 'Peter Piper'])->assertValid();
+    post('/subscribers', ['email' => $email, 'name' => 'Peter Piper'])->assertValid();
 
     expect(Subscriber::latest()->first()->email)->toBe($email);
 });
@@ -16,7 +16,7 @@ test('anyone can subscribe to the Newsletter', function () {
 test('an new email must be unique on the subscribers table', function () {
     $email = faker()->email;
 
-    Subscriber::create(['email'=>$email]);
+    Subscriber::create(['email' => $email]);
 
     post('/subscribers', ['email' => $email])
 

@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class ManageLinks extends Component
 {
-    public $links =[];
+    public $links = [];
 
     public function render()
     {

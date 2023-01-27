@@ -20,15 +20,15 @@ class PostFactory extends Factory
         $slug = Str::slug($title, '-');
 
         return [
-            'cover_image'       => 'http://localhost/images/'.rand(1, 6).'.jpeg',
-            'title'             => $title,
-            'slug'              => $slug,
-            'body'              => $this->faker->paragraph(5),
-            'is_in_vault'       => false,
-            'meta_description'  => $this->faker->paragraph,
-            'published_at'      => $this->faker->dateTimeThisMonth(),
-            'author_id'         => User::inRandomOrder()->first(),
-            'category_id'       => Category::inRandomOrder()->first(),
+            'cover_image' => 'http://localhost/images/'.rand(1, 6).'.jpeg',
+            'title' => $title,
+            'slug' => $slug,
+            'body' => $this->faker->paragraph(5),
+            'is_in_vault' => false,
+            'meta_description' => $this->faker->paragraph,
+            'published_at' => $this->faker->dateTimeThisMonth(),
+            'author_id' => User::inRandomOrder()->first(),
+            'category_id' => Category::inRandomOrder()->first(),
         ];
     }
 }

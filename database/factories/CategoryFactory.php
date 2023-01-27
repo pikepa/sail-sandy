@@ -25,7 +25,7 @@ class CategoryFactory extends Factory
             'slug' => $slug,
             'description' => $this->faker->sentence,
             'type' => 'main',
-            'status' =>$this->faker->numberBetween(0, 1),
+            'status' => $this->faker->numberBetween(0, 1),
         ];
     }
 }

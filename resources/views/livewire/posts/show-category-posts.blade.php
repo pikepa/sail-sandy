@@ -29,8 +29,9 @@
                         {!!$category->description!!}
                     </div>
                     <div class=" overflow-hidden shadow-sm sm:rounded-lg">
-
                         <div class="p-2 bg-cyan-100 border-b border-gray-200">
+                            @if($posts->count() == 0 )
+
                             @foreach($posts as $post)
                             <div class="bg-cyan-100 flex flex-row border-2 border-gray-300 shadow-md rounded-md mb-2 p-2">
                                 <div class="w-1/5">
@@ -46,7 +47,11 @@
                                 </div>
                             </div>
                             @endforeach
+                            @else
+                            <div class="p-2">No Posts within this Category</div>
+                            @endif
                         </div>
+
                     </div>
                 </div>
             </div>
