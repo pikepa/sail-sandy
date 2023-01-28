@@ -9,7 +9,7 @@
 
             <livewire:menus.menu-bottom />
 
-            <x-menus.ticker />
+            <!-- <x-menus.ticker /> -->
 
         </menus>
 

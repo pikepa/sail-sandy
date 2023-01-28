@@ -23,15 +23,15 @@ test('any user can view published posts by category', function () {
     ->assertSee($post->body);
 });
 
-// test('displays "No Posts within this Category" if colllection is empty', function () {
-//     //Set up
-//     $user=User::factory()->create();
-//     $category=Category::factory()->create();
-//    // $post=Post::factory()->create(['published_at'=>now()]);
+test('displays "No Posts within this Category" if colllection is empty', function () {
+    //Set up
+    $user=User::factory()->create();
+    $category=Category::factory()->create();
+   // $post=Post::factory()->create(['published_at'=>now()]);
 
-//     //act and Assert
-//     Livewire::test(ShowCategoryPosts::class, ['cat_slug'=>$category->slug])
-//     ->assertStatus(200)
-//     ->assertSee("No Posts within this Category");
+    //act and Assert
+    Livewire::test(ShowCategoryPosts::class, ['cat_slug'=>$category->slug])
+    ->assertStatus(200)
+    ->assertSee("Sorry, there are currently no Posts within this Category");
 
-// });
+});      
