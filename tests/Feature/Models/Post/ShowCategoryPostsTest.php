@@ -32,6 +32,6 @@ test('displays "No Posts within this Category" if colllection is empty', functio
     //act and Assert
     Livewire::test(ShowCategoryPosts::class, ['cat_slug'=>$category->slug])
     ->assertStatus(200)
-    ->assertSee("Sorry, there are currently no Posts within this Category");
+    ->assertSee("Sorry, there are currently no Articles within this Category");
 
 });      

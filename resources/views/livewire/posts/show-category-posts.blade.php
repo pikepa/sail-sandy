@@ -47,7 +47,7 @@
                                 </div>
                             @endforeach
                         @else
-                                <div class="p-2">Sorry, there are currently no Posts within this Category</div>
+                                <div class="p-2">Sorry, there are currently no Articles within this Category</div>
                         @endif()
                         </div>
 
