@@ -51,7 +51,7 @@ test('An authorised user can add a post', function () {
     Livewire::test(ManagePosts::class)
         ->call('create')
         ->assertSee('Title')
-        ->set('cover_image', 'https://google.com')
+        ->set('cover_image', '')
         ->set('title', 'this is a post')
         ->set('slug', 'this-is-a-post')
         ->set('body', str_repeat('s', 100))
@@ -61,7 +61,9 @@ test('An authorised user can add a post', function () {
         ->set('published_at', '')
         ->set('meta_description', 'This is the meta description')
         ->call('save')
-        ->assertSuccessful();
+        ->assertSuccessful()
+        ->assertSee('Edit Post') ;  //user is returned to edit page to add photo's
+
 
     $this->assertDatabaseCount('posts', 1)
     ->assertDatabaseHas('posts', ['title' => 'this is a post',

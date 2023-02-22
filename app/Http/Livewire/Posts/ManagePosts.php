@@ -6,8 +6,6 @@ use App\Models\Post;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\MediaLibrary\Support\RemoteFile;
 
 class ManagePosts extends Component
 {
@@ -33,7 +31,7 @@ class ManagePosts extends Component
 
     public $meta_description;
 
-    public $published_at = 'Draft';
+    public $published_at;
 
     public $showAddForm = 0;
 
@@ -49,9 +47,7 @@ class ManagePosts extends Component
 
     public $showAlert = false;
 
-    public $newImage;
-
-    public $mediaItems = [];
+    //  public $mediaItems = [];
 
     protected $rules =
     [
@@ -88,14 +84,16 @@ class ManagePosts extends Component
         $this->validate(['newImage' => 'image|max:5000']);
     }
 
-    public function deleteImage($id)
+    public function deleteImage($image_id, $post_id)
     {
-        $image = Media::findOrFail($id);
-        $image->delete();
-        $this->showAlert = true;
+        $post=Post::findOrFail($post_id);
+        $post->deleteMedia($image_id);
+    }
 
-        session()->flash('message', ' Image Successfully deleted.');
-        session()->flash('alertType', 'success');
+    public function makeFeatured($image_url)
+    {
+        $this->cover_image =$image_url;
+        $this->showEditForm();
     }
 
     public function showAddForm()
@@ -124,6 +122,7 @@ class ManagePosts extends Component
     protected $listeners = [
         'category_selected',
         'make_featured',
+        'photoAdded' => 'showEditForm'
     ];
 
     public function category_selected($category_id)
@@ -131,10 +130,7 @@ class ManagePosts extends Component
         $this->category_id = $category_id;
     }
 
-    public function make_featured($url)
-    {
-        $this->cover_image = $url;
-    }
+
 
     public function create()
     {
@@ -145,12 +141,11 @@ class ManagePosts extends Component
     {
         $data = $this->validate();
 
-        $this->post = Post::create($data);
-
-        $this->storeFile();
+        $post = Post::create($data);
 
         $this->resetExcept(['author_id']);
-        $this->showTable();
+
+        $this->edit($post->id);
 
         session()->flash('message', 'Post Successfully added.');
         session()->flash('alertType', 'success');
@@ -161,7 +156,7 @@ class ManagePosts extends Component
         $post = Post::findOrFail($id);
         $this->post = $post;
 
-        $this->mediaItems = $post->getMedia('featured');
+        //    $this->mediaItems = $post->getMedia('featured');
 
         $this->post_id = $post->id;
         $this->title = $post->title;
@@ -185,7 +180,7 @@ class ManagePosts extends Component
 
         $this->post->update($data);
 
-        $this->storeFile();
+        //  $this->storeFile();
 
         $this->resetExcept('author_id');
         $this->showTable();
@@ -216,21 +211,5 @@ class ManagePosts extends Component
 
         session()->flash('message', '');
         session()->flash('alertType', '');
-    }
-
-    public function storeFile()
-    {
-        if ($this->newImage) {
-            $this->post->addMedia($this->newImage->getRealPath())
-            ->setFile(new RemoteFile($this->newImage->getRealPath(), 's3'))
-            ->usingName($this->newImage->getClientOriginalName())
-            ->toMediaCollection('featured', 's3-featured');
-
-            $this->newImage = '';
-
-            $this->showEditForm;
-        } else {
-            return;
-        }
     }
 }

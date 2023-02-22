@@ -38,3 +38,28 @@ require __DIR__.'/auth.php';
 
 // Route::resource('posts',ManagePostsController::class);
 // Route::resource('categories',CategoryController::class);
+
+
+Route::get('rss', function () {
+    $source = 'http://bomborra.asia/wp-json';
+
+    $headers = get_headers($source);
+    $response = substr($headers[0], 9, 3);
+    if ($response == '404') {
+        return 'Invalid Source';
+    }
+
+    $data = simplexml_load_string(file_get_contents($source));
+    dd($data);
+    if (count($data) == 0) {
+        return 'No Posts';
+    }
+    $posts = '';
+    foreach ($data->channel->item as $item) {
+        $posts .= '<h1><a href="' . $item->link . '">'. $item->title . '</a></h1>';
+        $posts .= '<h4>' . $item->pubDate . '</h4>';
+        $posts .= '<p>' . $item->description . '</p>';
+        $posts .= '<hr><hr>';
+    }
+    return $posts;
+});

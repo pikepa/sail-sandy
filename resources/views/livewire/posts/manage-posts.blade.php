@@ -1,5 +1,5 @@
   <div class="px-2">
-    <!-- This Section allows add ing and update forms -->
+    <!-- This Section allows adding and update forms -->
 
     <div class="block">
       @if($showAddForm )
@@ -7,6 +7,13 @@
       @elseif($showEditForm)
         @include('livewire.posts.update')
       @endif
+
+      @auth
+      @isset($post_id)
+      <livewire:images.upload :post_id="$post->id" />
+      @endisset
+      @endauth
+      
     </div>
 
     @if($showTable)
