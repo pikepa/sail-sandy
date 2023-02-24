@@ -1,4 +1,4 @@
-<div>
+    <div>
     <div class="flex justify-between border-2 rounded-lg p-4">
         <div class="flex-1 mr-4 space-y-6">
             <!-- Post Title -->
@@ -16,8 +16,8 @@
             <!-- Meta Description -->
 
             <x-input.group for="meta_description" label="Meta Description" width="full">
-                <x-input.rich-text wire:model.lazy='meta_description' :initial-value="$meta_description" unique='meta'
-                    type="text" />
+                <x-input.rich-text wire:model.lazy='meta_description' :initial-value="$meta_description"
+                    unique='meta' type="text" />
             </x-input.group>
 
 
@@ -79,32 +79,37 @@
     </div>
 
     <!-- This is the spot for the Post Gallery -->
-
+    @if($post)
     <div>
         <div class="text-xl font-bold pt-2 pl-4 border-2 rounded-lg mt-2">
             Post Gallery
             <main class="flex flex-wrap py-4 -mx-2">
-                @forelse($post->getMedia('photos') as $image)
-                <div class="w-1/3 px-2 py-2">
-                    <div class="flex-1 overflow-hidden card">
-                        <img height='50px' class="object-cover w-full rounded object-centre"
-                            src="{{ $image->getUrl() }} " alt="Thumbnail is Missing here">
-                        <div class='flex justify-between mt-2 p4'>
-                            @auth
-                            <button wire:click='deleteImage({{ $image->id }}, "{{ $post->id  }}")'>
-                                <i class="fas fa-trash"></i>
-                            </button>
-                            <button wire:click='makeFeatured("{{ $image->getUrl() }}")'>
-                                <i class="fas fa-bolt"></i>
-                            </button>
-                            @endauth
+                <div>
+                    @forelse($post->getMedia('photos') as $image)
+                        <div class="w-1/3 px-2 py-2">
+                            <div class="flex-1 overflow-hidden card">
+                                <img height='50px' class="object-cover w-full rounded object-centre"
+                                    src="{{ $image->getUrl() }} " alt="Thumbnail is Missing here">
+                                <div class='flex justify-between mt-2 p4'>
+                                    @auth
+                                    <button wire:click='deleteImage({{ $image->id }}, "{{ $post->id  }}")'>
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <button wire:click='makeFeatured("{{ $image->getUrl() }}")'>
+                                        <i class="fas fa-bolt"></i>
+                                    </button>
+                                    @endauth
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    @empty
+                        <div class="pt-2">
+                            There are no related image files
+                        </div>
+                    @endforelse
                 </div>
-                @empty
-                <div class="mx-2 card"> No Pictures Yet</div>
-                @endforelse
             </main>
         </div>
     </div>
+    @endif
 </div>
