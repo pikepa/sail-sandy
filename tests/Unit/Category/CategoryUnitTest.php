@@ -9,60 +9,12 @@ beforeEach(function () {
     $this->signIn($this->user);
 });
 
-test('A category name is required', function () {
+test('Category Validation rules on save', function ($field, $value, $rule) {
     Livewire::test(ManageCategories::class)
-    ->set('name', '')
+    ->set($field, $value)
     ->call('save')
-    ->assertHasErrors(['name' => 'required']);
-});
-
-test('A category name has max chars 50', function () {
-    Livewire::test(ManageCategories::class)
-    ->set('name', str_repeat('s', 51))
-    ->call('save')
-    ->assertHasErrors(['name' => 'max']);
-});
-test('A category description is required', function () {
-    Livewire::test(ManageCategories::class)
-    ->set('description', '')
-    ->call('save')
-    ->assertHasErrors(['description' => 'required']);
-});
-
-test('A category description has min chars 10', function () {
-    Livewire::test(ManageCategories::class)
-    ->set('description', str_repeat('s', 1))
-    ->call('save')
-    ->assertHasErrors(['description' => 'min']);
-});
-
-test('A category description has max chars 144', function () {
-    Livewire::test(ManageCategories::class)
-    ->set('description', str_repeat('s', 145))
-    ->call('save')
-    ->assertHasErrors(['description' => 'max']);
-});
-
-test('A status is required', function () {
-    Livewire::test(ManageCategories::class)
-    ->set('status', '')
-    ->call('save')
-    ->assertHasErrors(['status' => 'required']);
-});
-
-test('A status is a boolean', function () {
-    Livewire::test(ManageCategories::class)
-    ->set('status', '32.2')
-    ->call('save')
-    ->assertHasErrors(['status' => 'boolean']);
-});
-
-test('A category type is required', function () {
-    Livewire::test(ManageCategories::class)
-    ->set('type', '')
-    ->call('save')
-    ->assertHasErrors(['type' => 'required']);
-});
+    ->assertHasErrors([$field => $rule]);
+})->with('category_validation');
 
 test('When a user hits the add button the create form is shown', function () {
     Livewire::test(ManageCategories::class)
