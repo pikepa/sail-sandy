@@ -44,7 +44,7 @@ test('a name is required for a subscriber', function () {
 });
 
 test('a newsletter subscribe button appears on the home screen', function () {
-    $res = get('/')->assertSuccessful()
+    $res = get('/home')->assertSuccessful()
        ->assertSee('Newsletter');
 });
 

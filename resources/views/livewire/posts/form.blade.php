@@ -26,7 +26,7 @@
         <div class=" space-y-6">
             <!-- Post Category -->
             <div>
-                <x-input.group for="category" label="Catgory" width="full">
+                <x-input.group for="category" label="Category" width="full">
                     <livewire:forms.category-select :cat_id="$selectedCategory" />
                 </x-input.group>
             </div>

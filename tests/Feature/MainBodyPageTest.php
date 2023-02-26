@@ -6,11 +6,10 @@ use App\Models\User;
 use function Pest\Laravel\get;
 
 it('can load the home page', function () {
-    get('/')
+    get('/home')
         ->assertStatus(200)
         ->assertSee('Bomborra Media Productions')
-        ->assertSee('Latest Articles')
-        ->assertSee('Podcasts');
+        ->assertSee('THE TRUTH ALWAYS BREAKS');
 });
 
 test('A guest can view a published post on the home page', function () {
@@ -18,7 +17,7 @@ test('A guest can view a published post on the home page', function () {
     User::factory()->create();
     $post = Post::factory()->create(['published_at' => now()]);
 
-    $this->get('/')
+    $this->get('/home')
     ->assertStatus(200)
     ->assertSee($post->title)
     ->assertSee('... more')
@@ -30,7 +29,7 @@ test('A guest can not view an unpublished post on the home page', function () {
     User::factory()->create();
     $post = Post::factory()->create(['published_at' => null]);
 
-    $response = $this->get('/')
+    $response = $this->get('/home')
     ->assertStatus(200)
     ->assertDontSee($post->title);
 });

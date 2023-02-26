@@ -2,7 +2,7 @@
     <x-guest-layout>
         <x-pages.standard-page>
             <div onclick="location.href='/';" class="cursor-pointer">
-                <menus class="grid grid-cols-1 border-b-2 ">
+                <menus class="grid grid-cols-1 border-b-2 hidden ">
 
                     <livewire:menus.menu-top />
 
@@ -12,17 +12,17 @@
 
                 </menus>
             </div>
-            <div class="py-2">
+            <div class="">
                 <div class="max-w-7xl mx-auto">
                     <div class=" border-gray-900 border-2 rounded-lg">
                         <div class="flex flex-row justify-between items-center">
-                            <div class="ml-4 pt-2  text-3xl font-semibold">
+                            <div class="ml-4 text-3xl  text-gray-700 font-bold">
                                 {{$post->title}}
                                 @isset($post->published_at) <p class="text-xs font-bold text-gray-600">Published on {{$post->published_at->toFormattedDateString()}} by {{$post->author->name}}</p>@endisset
                                 @empty($post->published_at) <p class="text-xs font-bold text-gray-600">Not Published - Draft by {{$post->author->name}}</p>@endempty
                             </div>
                             <div class="text-right mr-4 font-bold text-xl">
-                                <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i> Back</a>
+                                <a href="/"> Enter <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
 
                         </div>

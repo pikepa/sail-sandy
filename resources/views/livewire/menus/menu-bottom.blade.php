@@ -1,15 +1,16 @@
-<div class="flex flex-row justify-between items-center p-2 text-gray-100  bg-cyan-900 ">
+<div class="flex flex-row justify-between items-center p-2 text-gray-100 font-extrabold bg-cyan-900 ">
     <div class="uppercase flex flex-row justify-left space-x-4 items-center ">
-        <a href="/posts/about-us">
+        <a href="/">
             <div>About Us</div>
         </a>
-        <a href="/vault/">The Vault</a>
-
+  
         @foreach($categories as $category)
         <a href="/category/posts/{{$category->slug}}">
             <div>{{$category->name}}</div>
         </a>
         @endforeach
+
+        <a href="/vault/">The Vault</a>
     </div>
     <div>
         @auth

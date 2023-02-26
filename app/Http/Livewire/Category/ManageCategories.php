@@ -18,7 +18,7 @@ class ManageCategories extends Component
 
     public $type = '';
 
-    public $parent_id = '';
+    public $parent_id = null;
 
     public $category_id = '';
 
@@ -37,9 +37,9 @@ class ManageCategories extends Component
     public $showAlert = false;
 
     protected $rules = [
-        'name' => 'required|max:50',
+        'name' => 'required|min:6|max:50',
         'slug' => 'required',
-        'description' => 'required|min:5|max:144',
+        'description' => 'required|min:10|max:240',
         'type' => 'required',
         'status' => 'required|boolean',
         'parent_id' => '',

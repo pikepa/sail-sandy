@@ -1,14 +1,15 @@
 <?php
 
+use App\Http\Livewire\Posts\ShowPost;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ManageSubscriberController;
 use App\Http\Livewire\Links\ManageLinks;
+use App\Http\Controllers\WelcomeController;
+use App\Http\Livewire\Posts\ShowVaultPosts;
 use App\Http\Livewire\Pages\DashStandardPage;
 use App\Http\Livewire\Posts\ShowCategoryPosts;
-use App\Http\Livewire\Posts\ShowPost;
-use App\Http\Livewire\Posts\ShowVaultPosts;
 use App\Http\Livewire\Subscriber\VerifySubscriber;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ManageSubscriberController;
 
 Route::get('/test', function () {
     return view('test');
@@ -17,7 +18,8 @@ Route::get('/test', function () {
 /*
 * Guest Routes
 */
-Route::get('/', HomeController::class)->name('home');
+Route::get('/', WelcomeController::class)->name('welcome');
+Route::get('/home', HomeController::class)->name('home');
 Route::resource('/subscribers', ManageSubscriberController::class);
 Route::post('/verifyOTP/{id}/{otp}', VerifySubscriber::class);
 Route::get('/posts/{slug}', ShowPost::class)->name('showpost');
