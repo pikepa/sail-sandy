@@ -10,8 +10,6 @@
 
             <livewire:menus.menu-bottom />
 
-            <!-- <x-menus.ticker /> -->
-
         </menus>
         <tvprods>
             <div class="mt-1 p-1 border-2 border-gray-200 bg-cyan-100">
