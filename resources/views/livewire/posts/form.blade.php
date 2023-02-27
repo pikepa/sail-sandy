@@ -24,6 +24,13 @@
 
         </div>
         <div class=" space-y-6">
+            <!-- Post Channel -->
+            <div>
+                <x-input.group for="Channel_id" label="Channel" width="full">
+                    <input wire:model='channel_id' type="   text" class="ml-2">
+                </x-input.group>
+            </div>
+
             <!-- Post Category -->
             <div>
                 <x-input.group for="category" label="Category" width="full">

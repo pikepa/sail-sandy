@@ -24,6 +24,8 @@ class ManagePosts extends Component
     public $is_in_vault = false;
 
     public $category_id;
+    
+    public $channel_id;
 
     public $author_id;
 
@@ -51,13 +53,14 @@ class ManagePosts extends Component
 
     protected $rules =
     [
-        'title' => 'required|max:250',
+        'title' => 'required|min:10|max:250',
         'slug' => 'required',
         'body' => 'required|min:20',
-        'meta_description' => 'required|max:300',
-        'is_in_vault' => 'required',
-        'author_id' => 'required',
-        'category_id' => 'required',
+        'meta_description' => 'required|min:20|max:300',
+        'is_in_vault' => 'required|boolean',
+        'author_id' => 'required|integer',
+        'category_id' => 'required|integer',
+        'channel_id' => 'required|integer',
         'published_at' => '',
         'cover_image' => 'nullable|url',
     ];
@@ -165,6 +168,7 @@ class ManagePosts extends Component
         $this->body = $post->body;
         $this->is_in_vault = $post->is_in_vault;
         $this->category_id = $post->category_id;
+        $this->channel_id = $post->channel_id;
         $this->selectedCategory = $post->category_id;
         $this->author_id = $post->author_id;
         $this->published_at = $post->published_at;
@@ -176,9 +180,10 @@ class ManagePosts extends Component
     public function update($id)
     {
         $data = $this->validate();
-        $this->post = Post::findOrFail($id);
+        
+        $post = Post::findOrFail($id);
 
-        $this->post->update($data);
+        $post->update($data);
 
         //  $this->storeFile();
 

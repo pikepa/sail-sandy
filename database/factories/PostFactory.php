@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Channel;
+use App\Models\Category;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PostFactory extends Factory
 {
@@ -27,8 +28,9 @@ class PostFactory extends Factory
             'is_in_vault' => false,
             'meta_description' => $this->faker->paragraph,
             'published_at' => $this->faker->dateTimeThisMonth(),
-            'author_id' => User::inRandomOrder()->first(),
-            'category_id' => Category::inRandomOrder()->first(),
+            'channel_id' => Channel::inRandomOrder()->first()->id,
+            'author_id' => User::inRandomOrder()->first()->id,
+            'category_id' => Category::inRandomOrder()->first()->id,
         ];
     }
 }

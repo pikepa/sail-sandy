@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Post;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -25,8 +24,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             CategorySeeder::class,
+            ChannelSeeder::class,
+            PostSeeder::class,
         ]);
 
-        Post::factory()->count(5)->create();
     }
 }

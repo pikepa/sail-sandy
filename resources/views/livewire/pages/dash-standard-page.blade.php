@@ -8,12 +8,12 @@
                     <livewire:posts.manage-posts />
                     @endif
 
-                    @if($show =='categories')
-                    <livewire:category.manage-categories />
+                    @if($show =='channels')
+                    <livewire:channel.manage-channels />
                     @endif
 
-                    @if($show =='pages')
-                    <livewire:pages.manage-pages />
+                    @if($show =='categories')
+                    <livewire:category.manage-categories />
                     @endif
 
                     @if($show =='links')

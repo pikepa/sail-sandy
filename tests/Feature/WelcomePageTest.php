@@ -1,18 +1,20 @@
 <?php
 
-use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Channel;
+use App\Models\Category;
 use function Pest\Laravel\get;
 
 it('can load the welcome page', function () {
 
-    $user=User::factory()->create();
+    User::factory()->create();
+    Channel::factory()->create();
     $category=Category::factory()->create(['slug'=>'welcome']);
     $post=Post::factory()->create([
         'category_id'=>$category->id,
-        'author_id'=>$user->id
     ]);
+
 
     get('/')
         ->assertStatus(200)

@@ -3,15 +3,16 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Channel;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model implements HasMedia
 {
@@ -31,6 +32,7 @@ class Post extends Model implements HasMedia
         'body',
         'is_in_vault',
         'meta_description',
+        'channel_id',
         'published_at',
         'author_id',
         'category_id',
@@ -85,6 +87,11 @@ class Post extends Model implements HasMedia
     public function category(): BelongsTo
     {
         return $this->BelongsTo(Category::class);
+    }
+
+    public function channel(): BelongsTo
+    {
+        return $this->BelongsTo(Channel::class);
     }
 
     public function tags(): HasMany

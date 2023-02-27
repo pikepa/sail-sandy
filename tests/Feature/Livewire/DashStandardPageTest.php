@@ -36,20 +36,21 @@ test('an authorised user can see the manage-posts page', function () {
         ->assertSeeLivewire('posts.manage-posts');
 });
 
-test('an authorised user can see the manage-pages page', function () {
-    $this->actingAs($this->user);
-
-    Livewire::test(DashStandardPage::class)
-        ->set('show', 'pages')
-        ->assertSeeLivewire('pages.manage-pages');
-});
 
 test('an authorised user can see the dashboaard page', function () {
     $this->actingAs($this->user);
 
     Livewire::test(DashStandardPage::class)
         ->set('show', 'dash')
-        ->assertSee('Posts');
+        ->assertSee('Dashboard:-');
+});
+
+test('an authorised user can see the channels page', function () {
+    $this->actingAs($this->user);
+
+    Livewire::test(DashStandardPage::class)
+        ->set('show', 'channels')
+        ->assertSeeLivewire('channel.manage-channels');
 });
 
 test('an authorised user can see the home link', function () {

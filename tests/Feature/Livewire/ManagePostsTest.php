@@ -3,9 +3,15 @@
 use App\Http\Livewire\Posts\ManagePosts;
 use App\Http\Livewire\Posts\ShowPost;
 use App\Models\Category;
+use App\Models\Channel;
 use App\Models\Post;
 use App\Models\User;
 use Livewire\Livewire;
+
+beforeEach(function () {
+     $this->category = Category::factory()->create();
+     $this->channel = Channel::factory()->create();
+});
 
 test('An authorised user sees the Manage Posts page', function () {
     $this->signIn();
@@ -14,7 +20,7 @@ test('An authorised user sees the Manage Posts page', function () {
 });
 
 test('A guest can view a published post', function () {
-    Category::factory()->create();
+
     User::factory()->create();
 
     $post = Post::factory()->create();
@@ -29,10 +35,9 @@ test('A guest can view a published post', function () {
 
 test('An authorised user can see a list of all posts', function () {
     $this->signIn();
-    $category = Category::factory()->create();
 
-    $post1 = Post::factory()->create(['category_id' => 1]);
-    $post2 = Post::factory()->create(['category_id' => 1]);
+    $post1 = Post::factory()->create();
+    $post2 = Post::factory()->create();
 
     Livewire::test(ManagePosts::class)
         ->set('showTable', true)
@@ -44,9 +49,8 @@ test('An authorised user can see a list of all posts', function () {
 });
 
 test('An authorised user can add a post', function () {
-    $this->actingAs(User::factory()->create());
 
-    $category = Category::factory()->create();
+    $this->actingAs(User::factory()->create());
 
     Livewire::test(ManagePosts::class)
         ->call('create')
@@ -56,7 +60,8 @@ test('An authorised user can add a post', function () {
         ->set('slug', 'this-is-a-post')
         ->set('body', str_repeat('s', 100))
         ->set('is_in_vault', false)
-        ->set('category_id', $category->id)
+        ->set('category_id', $this->category->id)
+        ->set('channel_id', $this->channel->id)
         ->set('author_id', auth()->user()->id)
         ->set('published_at', '')
         ->set('meta_description', 'This is the meta description')
@@ -71,23 +76,23 @@ test('An authorised user can add a post', function () {
 });
 
 test('an authorised user can update a post', function () {
+
     $this->actingAs(User::factory()->create());
-    $category = Category::factory()->create();
 
     $post = Post::factory()->create();
 
     Livewire::test(ManagePosts::class)
     ->call('edit', $post->id)
-    ->set('title', 'New Title')
+    ->set('title', 'This title needs to be over ten characters')
     ->call('update', $post->id)
-    ->assertSuccessful();
+    ->assertSuccessful()
+    ->assertSee('Post Successfully Updated.');
 
-    expect(Post::latest()->first()->title)->toBe('New Title');
+    expect(Post::find($post->id)->title)->toBe('This title needs to be over ten characters');
 });
 
 test('An authorised user can delete a post', function () {
     $this->actingAs(User::factory()->create());
-    Category::factory()->create();
 
     $post = Post::factory()->create();
 
@@ -102,7 +107,6 @@ test('An authorised user can delete a post', function () {
 
 test('A message is displayed when a user deletes a post', function () {
     $this->signIn();
-    Category::factory()->create();
 
     $post = Post::factory()->create();
 
@@ -114,7 +118,6 @@ test('A message is displayed when a user deletes a post', function () {
 
 test('An authorised User can mark a post as being in the vault', function () {
     $this->signIn();
-    Category::factory()->create();
     $post = Post::factory()->create(['is_in_vault' => false]);
 
     Livewire::test(ManagePosts::class)

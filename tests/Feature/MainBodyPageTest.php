@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Category;
+use App\Models\Channel;
 use App\Models\Post;
 use App\Models\User;
 use function Pest\Laravel\get;
@@ -14,7 +15,9 @@ it('can load the home page', function () {
 
 test('A guest can view a published post on the home page', function () {
     Category::factory()->create();
+    Channel::factory()->create();
     User::factory()->create();
+
     $post = Post::factory()->create(['published_at' => now()]);
 
     $this->get('/home')
@@ -26,7 +29,9 @@ test('A guest can view a published post on the home page', function () {
 
 test('A guest can not view an unpublished post on the home page', function () {
     Category::factory()->create();
+    Channel::factory()->create();
     User::factory()->create();
+    
     $post = Post::factory()->create(['published_at' => null]);
 
     $response = $this->get('/home')

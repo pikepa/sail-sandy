@@ -3,12 +3,14 @@
 use App\Http\Livewire\Posts\DisplayPostGallery;
 use App\Http\Livewire\Posts\ShowPost;
 use App\Models\Category;
+use App\Models\Channel;
 use App\Models\Post;
 use App\Models\User;
 use Livewire\Livewire;
 
 beforeEach(function () {
     Category::factory()->create();
+    Channel::factory()->create();
     User::factory()->create();
 });
 
