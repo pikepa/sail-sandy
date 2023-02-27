@@ -38,6 +38,7 @@
 
                 <x-table.row>
                   <x-table.heading class="text-left">Title</x-table.heading>
+                  <x-table.heading class="text-left">Channel</x-table.heading>
                   <x-table.heading class="text-left">Category</x-table.heading>
                   <x-table.heading class="text-left">Author</x-table.heading>
                   <x-table.heading class="text-left">Published</x-table.heading>
@@ -50,6 +51,7 @@
                 <x-table.row>
                   <x-table.cell class="text-sky-600 font-bold dark:text-sky-400"><a
                       href="/posts/{{$post->slug}}">{{$post->title}}</a></x-table.cell>
+                  <x-table.cell>{{$post->channel->name}}</x-table.cell>
                   <x-table.cell>{{$post->category->name}}</x-table.cell>
                   <x-table.cell>{{$post->author->name}}</x-table.cell>
                   @isset($post->published_at)<x-table.cell class="text-left">{{$post->published_at->toFormattedDateString()}}</x-table.cell>@endisset

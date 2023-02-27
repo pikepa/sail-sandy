@@ -27,7 +27,7 @@
             <!-- Post Channel -->
             <div>
                 <x-input.group for="Channel_id" label="Channel" width="full">
-                    <input wire:model='channel_id' type="   text" class="ml-2">
+                    <livewire:forms.channel-select :chan_id="$selectedChannel" />
                 </x-input.group>
             </div>
 

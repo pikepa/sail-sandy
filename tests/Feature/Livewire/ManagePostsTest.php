@@ -43,8 +43,10 @@ test('An authorised user can see a list of all posts', function () {
         ->set('showTable', true)
         ->call('render')
         ->assertSee($post1->title)
+        ->assertSee($post1->channel->name)
         ->assertSee($post1->author_id)
         ->assertSee($post2->title)
+        ->assertSee($post2->channel->name)
         ->assertSee($post2->author_id);
 });
 

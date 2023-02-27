@@ -41,6 +41,10 @@ class ManagePosts extends Component
 
     public $showTable = 1;
 
+    public $channels;
+
+    public $selectedChannel;
+
     public $categories;
 
     public $selectedCategory;
@@ -124,6 +128,7 @@ class ManagePosts extends Component
 
     protected $listeners = [
         'category_selected',
+        'channel_selected',
         'make_featured',
         'photoAdded' => 'showEditForm'
     ];
@@ -131,6 +136,11 @@ class ManagePosts extends Component
     public function category_selected($category_id)
     {
         $this->category_id = $category_id;
+    }
+
+    public function channel_selected($channel_id)
+    {
+        $this->channel_id = $channel_id;
     }
 
 
