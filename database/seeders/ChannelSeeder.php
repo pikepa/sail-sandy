@@ -19,6 +19,7 @@ class ChannelSeeder extends Seeder
             'name' => 'No Channel',
             'slug' => 'no-channel',
             'status' => '1',
+            'sort' => 0,
             'created_at' => now(),
         ]);   
 
@@ -26,6 +27,7 @@ class ChannelSeeder extends Seeder
             'name' => 'Television Productions',
             'slug' => 'television-productions',
             'status' => '1',
+            'sort' => 1,
             'created_at' => now(),
         ]);   
     
@@ -33,6 +35,7 @@ class ChannelSeeder extends Seeder
             'name' => 'Audio and Podcasts',
             'slug' => 'audio-and-podcasts',
             'status' => '1',
+            'sort' => 2,
             'created_at' => now(),
         ]);   
     
@@ -40,6 +43,7 @@ class ChannelSeeder extends Seeder
             'name' => 'Articles',
             'slug' => 'articles',
             'status' => '1',
+            'sort' => 3,
             'created_at' => now(),
         ]);   
     
@@ -47,6 +51,7 @@ class ChannelSeeder extends Seeder
             'name' => 'Published Books',
             'slug' => 'published-books',
             'status' => '1',
+            'sort' => 4,
             'created_at' => now(),
         ]);   
     

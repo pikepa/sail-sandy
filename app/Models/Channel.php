@@ -12,9 +12,19 @@ class Channel extends Model
 
     protected $table = 'channels';
 
-    protected $fillable = ['name', 'slug', 'status',];
+    protected $fillable = ['name', 'slug', 'status','sort'];
 
 
+    public function getDisplayStatusAttribute($status)
+    {
+        if ($this->status == true) {
+            return 'Active';
+        } else {
+            return 'Inactive';
+        }
+    }
+
+    //Model Relationships
     public function posts(): HasMany
     {
         return $this->HasMany(Post::class);

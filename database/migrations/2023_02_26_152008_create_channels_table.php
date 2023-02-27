@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name')->required()->unique();
             $table->string('slug')->required();
             $table->boolean('status')->required()->default(false);
+            $table->integer('sort')->required();
             $table->timestamps();
         });
     }

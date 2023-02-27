@@ -1,11 +1,21 @@
 <div>
-    <div>
-      @if (session()->has('message') && $showAlert = true)
-      <x-forms.success />
-      @endif
-    </div>
+  <div class="w-1/2 mx-auto">
+    @if($showAddForm)
+    @include('livewire.channel.create')
+    @endif
+
+    @if($showEditForm)
+    @include('livewire.channel.update')
+    @endif
   </div>
-  <x-pages.dash-page-sub-head title="Channels" btntext="Add Post">
+
+  @if($showTable)
+  <div>
+    @if (session()->has('message') && $showAlert = true)
+    <x-forms.success />
+    @endif
+  </div>
+  <x-pages.dash-page-sub-head title="Channels" btntext="Add Channel">
     A list of all the channels in your account.
   </x-pages.dash-page-sub-head>
 
@@ -19,8 +29,9 @@
 
               <x-table.row>
                 <x-table.heading class="text-left">Name</x-table.heading>
-                <x-table.heading class="text-left">Url</x-table.heading>
-                <x-table.heading class="text-left">Author</x-table.heading>
+                <x-table.heading class="text-left">Slug</x-table.heading>
+                <x-table.heading class="text-left">Sort</x-table.heading>
+                <x-table.heading class="text-left">Status</x-table.heading>
                 <x-table.heading class="text-left"></x-table.heading>
                 <x-table.heading class="text-left"></x-table.heading>
               </x-table.row>
@@ -28,10 +39,10 @@
             <x-slot name="body">
               @forEach($channels as $channel)
               <x-table.row>
-                <x-table.cell class="text-sky-600 font-bold dark:text-sky-400"><a
-                    href="/posts/{{$post->slug}}">{{$channel->title}}</a></x-table.cell>
-                <x-table.cell>{{$channel->url}}</x-table.cell>
-                <x-table.cell>{{$channel->author->name}}</x-table.cell>
+                <x-table.cell>{{$channel->name}}</x-table.cell>
+                <x-table.cell>{{$channel->slug}}</x-table.cell>
+                <x-table.cell>{{$channel->sort}}</x-table.cell>
+                <x-table.cell>{{$channel->display_status}}</x-table.cell>
                 <x-table.cell>
                   <x-button.link wire:click="edit({{ $channel->id }})"><i class="fa-solid fa-pen-to-square"></i>
                   </x-button.link>
@@ -48,3 +59,5 @@
       </div>
     </div>
   </div>
+  @endif
+</div>

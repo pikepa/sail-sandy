@@ -24,6 +24,7 @@ class ChannelFactory extends Factory
             'name' => $name,
             'slug' => $slug,
             'status' => $this->faker->numberBetween(0, 1),
+            'sort' => $this->faker->numberBetween(0, 4),
         ];
     }
 }
