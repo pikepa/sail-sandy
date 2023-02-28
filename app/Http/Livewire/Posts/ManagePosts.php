@@ -29,7 +29,7 @@ class ManagePosts extends Component
 
     public $author_id;
 
-    public $cover_image = null;
+    public $cover_image = 'https://d18sfhl837dknt.cloudfront.net/featured/J1aR7bQQON3gwr3GipXyXJ1gmA3FSwKiRfjCj8hr.jpg';
 
     public $meta_description;
 

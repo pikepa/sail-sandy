@@ -18,7 +18,7 @@ class ChannelSelect extends Component
         if ($chan_id != null) {
             $this->channel_id = $chan_id;
         }
-        $this->channels = Channel::where('status', '1')->get();
+        $this->channels = Channel::get();
     }
 
     public function render()
