@@ -31,10 +31,19 @@ test('A guest can not view an unpublished post on the home page', function () {
     Category::factory()->create();
     Channel::factory()->create();
     User::factory()->create();
-    
+
     $post = Post::factory()->create(['published_at' => null]);
 
     $response = $this->get('/home')
     ->assertStatus(200)
     ->assertDontSee($post->title);
+});
+
+test (' A guest can see an Active channel on the home page', function(){
+    //Setup
+    $channel = Channel::factory()->create(['status' => true]);
+
+    $this->get('/home')
+    ->assertSee($channel->name);
+
 });

@@ -29,7 +29,7 @@ class MainBodyHeader extends Component
                     </div>
                 </div>
             @else
-                <div class='flex justify-between items-center'>
+                <div class='flex justify-left items-center border-b-2-gray-200'>
                     <div class="w-1/2 text-4xl Font-bold text-teal-900 pb-2">
                         {{$category->name}}
                     </div>
