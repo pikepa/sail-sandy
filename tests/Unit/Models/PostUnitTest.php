@@ -24,7 +24,7 @@ test('Post Validation rules on save', function ($field, $value, $rule) {
 test('when the post title is changed the slug changes', function () {
     Category::factory()->create();
     Channel::factory()->create();
-    
+
     $post = Post::factory()->create([
         'title' => 'this-is-a-fake-title']);
 

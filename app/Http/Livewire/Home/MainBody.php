@@ -19,10 +19,9 @@ class MainBody extends Component
 
     public function render()
     {
-
         return view('livewire.home.main-body', [
             'posts' => Post::published()
-            ->where('channel_id', $this->channel->id )
+            ->where('channel_id', $this->channel->id)
             ->orderBy('published_at', 'desc')
             ->limit(12)
             ->paginate(4),

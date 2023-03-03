@@ -7,7 +7,6 @@ use App\Models\Category;
 use function Pest\Laravel\get;
 
 it('can load the welcome page', function () {
-
     User::factory()->create();
     Channel::factory()->create();
     $category=Category::factory()->create(['slug'=>'welcome']);
@@ -21,4 +20,3 @@ it('can load the welcome page', function () {
         ->assertSee($post->title)
         ->assertSee('Enter');
 });
-

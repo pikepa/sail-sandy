@@ -22,7 +22,7 @@ class CategorySeeder extends Seeder
             'created_at' => now(),
 
         ]);
-        
+
         DB::table('categories')->insert([
             'name' => 'AsiaWatch',
             'slug' => 'asia-watch',
@@ -35,7 +35,7 @@ class CategorySeeder extends Seeder
             'name' => 'The Vault',
             'slug' => 'the-vault',
             'type' => 'main',
-            'status' => '1', 
+            'status' => '1',
             'created_at' => now(),
         ]);
         DB::table('categories')->insert([
@@ -62,6 +62,5 @@ class CategorySeeder extends Seeder
             'created_at' => now(),
 
         ]);
-
     }
 }

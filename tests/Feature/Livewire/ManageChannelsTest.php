@@ -69,4 +69,3 @@ test('an authorised user can see a channel listing', function () {
 
     $this->assertDatabaseCount('channels', 1);
 });
-

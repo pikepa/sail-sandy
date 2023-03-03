@@ -9,8 +9,8 @@ use App\Models\User;
 use Livewire\Livewire;
 
 beforeEach(function () {
-     $this->category = Category::factory()->create();
-     $this->channel = Channel::factory()->create();
+    $this->category = Category::factory()->create();
+    $this->channel = Channel::factory()->create();
 });
 
 test('An authorised user sees the Manage Posts page', function () {
@@ -20,7 +20,6 @@ test('An authorised user sees the Manage Posts page', function () {
 });
 
 test('A guest can view a published post', function () {
-
     User::factory()->create();
 
     $post = Post::factory()->create();
@@ -51,7 +50,6 @@ test('An authorised user can see a list of all posts', function () {
 });
 
 test('An authorised user can add a post', function () {
-
     $this->actingAs(User::factory()->create());
 
     Livewire::test(ManagePosts::class)
@@ -78,7 +76,6 @@ test('An authorised user can add a post', function () {
 });
 
 test('an authorised user can update a post', function () {
-
     $this->actingAs(User::factory()->create());
 
     $post = Post::factory()->create();

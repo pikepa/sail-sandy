@@ -8,7 +8,7 @@ it('has many posts', function () {
     //Set up
     $this->signIn();
     Category::factory()->create();
-    
+
     $channel = Channel::factory()
         ->has(Post::factory()->count(2))
         ->create();

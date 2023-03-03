@@ -13,7 +13,7 @@ test('any user can view published posts by category', function () {
     $user = User::factory()->create();
     $category = Category::factory()->create();
     Channel::factory()->create();
-    
+
     $post = Post::factory()->create(['published_at' => now()]);
 
     Livewire::test(ShowCategoryPosts::class, ['cat_slug' => $category->slug])

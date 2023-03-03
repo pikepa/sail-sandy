@@ -24,7 +24,7 @@ class ManagePosts extends Component
     public $is_in_vault = false;
 
     public $category_id;
-    
+
     public $channel_id;
 
     public $author_id;
@@ -190,7 +190,7 @@ class ManagePosts extends Component
     public function update($id)
     {
         $data = $this->validate();
-        
+
         $post = Post::findOrFail($id);
 
         $post->update($data);

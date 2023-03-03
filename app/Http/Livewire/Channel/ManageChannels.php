@@ -88,7 +88,7 @@ class ManageChannels extends Component
     }
 
 
-    public function edit($id)    
+    public function edit($id)
     {
         $channel = Channel::findOrFail($id);
 
@@ -143,5 +143,4 @@ class ManageChannels extends Component
         session()->flash('message', '');
         session()->flash('alertType', '');
     }
-
 }

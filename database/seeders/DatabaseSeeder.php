@@ -27,6 +27,5 @@ class DatabaseSeeder extends Seeder
             ChannelSeeder::class,
             PostSeeder::class,
         ]);
-
     }
 }

@@ -39,11 +39,10 @@ test('A guest can not view an unpublished post on the home page', function () {
     ->assertDontSee($post->title);
 });
 
-test (' A guest can see an Active channel on the home page', function(){
+test(' A guest can see an Active channel on the home page', function () {
     //Setup
     $channel = Channel::factory()->create(['status' => true]);
 
     $this->get('/home')
     ->assertSee($channel->name);
-
 });
