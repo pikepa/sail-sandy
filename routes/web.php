@@ -4,6 +4,7 @@ use App\Http\Livewire\Posts\ShowPost;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Livewire\Links\ManageLinks;
+use App\Http\Controllers\WpApiController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Livewire\Posts\ShowVaultPosts;
 use App\Http\Livewire\Pages\DashStandardPage;
