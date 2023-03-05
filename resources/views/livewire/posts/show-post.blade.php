@@ -22,7 +22,7 @@
                                 @empty($post->published_at) <p class="text-xs font-bold text-gray-600">Not Published - Draft by {{$post->author->name}}</p>@endempty
                             </div>
                             <div class="text-right mr-4 font-bold text-xl">
-                                <a href="{{ url()->previous() }}"> Back <i class="fa-solid fa-arrow-right"></i></a>
+                                <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i> Back </a>
                             </div>
 
                         </div>
