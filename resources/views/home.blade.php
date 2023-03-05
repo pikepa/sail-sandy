@@ -23,13 +23,12 @@
         <footer class="grid grid-cols-1 gap-2 bg-cyan-700 p-4 text-gray-100 rounded-b-lg">
             <div class="mt-2 grid grid-cols-3 gap-2 ">
                 <div class="p-4">
-                    <h5 class=" font-semibold border-b-4 border-gray-100">Recent Posts</h5>
+                    <h5 class=" font-semibold border-b-4 border-gray-100">We're also on Social Media</h5>
                     <ul class="list-disc p-2">
-                        <li>Troubled Waters, a podcast with Abby Seiff </li>
-                        <li>War & Hypersonics, a podcast with Carl Schuster</li>
-                        <li>Workers Rights, a podcast with Dave Welsh</li>
-                        <li>Mekong Drought, a podcast with Brian Eyler</li>
-                        <li>Reds & Whites in Asia, a podcast with Darren Gall</li>
+                        <li><a href='https://twitter.com/lukehunt' target="_blank" > Twitter</a></li>
+                        <li><a href='https://www.linkedin.com/in/luke-hunt-150b231/' target="_blank" > LinkedIn</a></li>
+                        <li><a href='https://www.pinterest.com.au/huntluke/' target="_blank" > Pinterest</a></li>
+
                     </ul>
                 </div>
                 <div class="p-4">
