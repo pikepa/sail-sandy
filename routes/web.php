@@ -7,6 +7,7 @@ use App\Http\Livewire\Links\ManageLinks;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Livewire\Posts\ShowVaultPosts;
 use App\Http\Livewire\Pages\DashStandardPage;
+use App\Http\Livewire\Posts\ShowChannelPosts;
 use App\Http\Livewire\Posts\ShowCategoryPosts;
 use App\Http\Livewire\Subscriber\VerifySubscriber;
 use App\Http\Controllers\ManageSubscriberController;
@@ -24,6 +25,7 @@ Route::resource('/subscribers', ManageSubscriberController::class);
 Route::post('/verifyOTP/{id}/{otp}', VerifySubscriber::class);
 Route::get('/posts/{slug}', ShowPost::class)->name('showpost');
 Route::get('/category/posts/{cat_slug}', ShowCategoryPosts::class)->name('categoryposts');
+Route::get('/channel/posts/{chan_slug}', ShowChannelPosts::class)->name('channelposts');
 Route::get('/vault/', ShowVaultPosts::class)->name('posts.vault');
 
 /*

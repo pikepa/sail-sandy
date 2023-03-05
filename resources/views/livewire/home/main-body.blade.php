@@ -11,7 +11,7 @@
 
     @if($this->postCount >= 5 )
     <div class="flex justify-end font-semibold text-2xl text-red-600 pt-2 px-2">
-        Show More.... 
+       <a href="{{ route('channelposts', ['chan_slug' => $this->channel->slug]) }}">Show More....</a> 
     </div>
     @endif
 </div>
