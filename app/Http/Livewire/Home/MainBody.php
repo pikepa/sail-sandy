@@ -11,6 +11,8 @@ class MainBody extends Component
     use WithPagination;
 
     public $channel;
+    public $postCount;
+    public $posts;
 
     public function mount($channel)
     {
@@ -19,12 +21,13 @@ class MainBody extends Component
 
     public function render()
     {
-        return view('livewire.home.main-body', [
-            'posts' => Post::published()
-            ->where('channel_id', $this->channel->id)
-            ->orderBy('published_at', 'desc')
-            ->limit(12)
-            ->paginate(4),
-        ]);
+        $this->posts = Post::published()
+        ->where('channel_id', $this->channel->id)
+        ->orderBy('published_at', 'desc')
+        ->get();
+
+        $this->postCount = $this->posts->count();
+        
+        return view('livewire.home.main-body');
     }
 }

@@ -18,7 +18,7 @@
 
                             </div>
                             <div class="text-right mr-4 font-bold text-xl">
-                                <a href="/home"> Enter <i class="fa-solid fa-arrow-right"></i></a>
+                                <a href="/home"> Please Enter <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
                 </div>

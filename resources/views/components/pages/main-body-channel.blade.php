@@ -3,8 +3,4 @@
         {{ $channel->name }} 
     </div>
     <livewire:home.main-body :channel="$channel" />
-
-    <div>
-        <!-- Pagination Goes here -->
-    </div>
 </div>
