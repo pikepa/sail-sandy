@@ -180,6 +180,7 @@ class ManagePosts extends Component
         $this->category_id = $post->category_id;
         $this->channel_id = $post->channel_id;
         $this->selectedCategory = $post->category_id;
+        $this->selectedChannel = $post->channel_id;
         $this->author_id = $post->author_id;
         $this->published_at = $post->published_at;
         $this->meta_description = $post->meta_description;
