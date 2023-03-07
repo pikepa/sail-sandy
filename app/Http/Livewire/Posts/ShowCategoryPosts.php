@@ -25,13 +25,13 @@ class ShowCategoryPosts extends Component
             return view(
                 'livewire.posts.show-category-posts',
                 ['posts' => Post::with('author')->where('category_id', $this->category->id)
-                        ->orderBy('published_at', 'desc')->paginate(12), ]
+                        ->orderBy('published_at', 'desc')->paginate(25), ]
             );
         } else {
             return view(
                 'livewire.posts.show-category-posts',
                 ['posts' => Post::published()->with('author')->where('category_id', $this->category->id)
-                        ->orderBy('published_at', 'desc')->paginate(12), ]
+                        ->orderBy('published_at', 'desc')->paginate(25), ]
             );
         }
     }

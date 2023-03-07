@@ -13,11 +13,9 @@ use App\Http\Livewire\Posts\ShowCategoryPosts;
 use App\Http\Livewire\Subscriber\VerifySubscriber;
 use App\Http\Controllers\ManageSubscriberController;
 
-Route::get('/test', function () {
-    return view('test');
-});
+Route::get('/test', WpApiController::class);
 
-/*
+/*  
 * Guest Routes
 */
 Route::get('/', WelcomeController::class)->name('welcome');

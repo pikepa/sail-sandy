@@ -54,6 +54,7 @@
                     </div>
                 </div>
             </div>
+            {{ $posts->links() }}
         </x-pages.standard-page>
     </x-guest-layout>
 
