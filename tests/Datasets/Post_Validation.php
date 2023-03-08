@@ -23,7 +23,7 @@ dataset('post_validation', [
 
     'A post meta_description is required' => ['meta_description', null, 'required'],
     'A post meta_description is Min 20 ' => ['meta_description', str_repeat('*', 19), 'min'],
-    'A post meta_description is Max 300' => ['meta_description', str_repeat('*', 3001), 'max'],
+    'A post meta_description is Max 500' => ['meta_description', str_repeat('*', 501), 'max'],
 
     'A post is_in_vault flag is required' => ['is_in_vault', null, 'required'],
     'A post is_in_vault flag is boolean' => ['is_in_vault', 'abc', 'boolean'],

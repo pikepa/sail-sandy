@@ -60,7 +60,7 @@ class ManagePosts extends Component
         'title' => 'required|min:10|max:250',
         'slug' => 'required',
         'body' => 'required|min:20',
-        'meta_description' => 'required|min:20|max:300',
+        'meta_description' => 'required|min:20|max:500',
         'is_in_vault' => 'required|boolean',
         'author_id' => 'required|integer',
         'category_id' => 'required|integer',

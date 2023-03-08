@@ -15,7 +15,7 @@ it('can load the home page', function () {
 
 test('A guest can view a published post on the home page', function () {
     Category::factory()->create();
-    Channel::factory()->create();
+    Channel::factory()->create(['sort'=> 1]);
     User::factory()->create();
 
     $post = Post::factory()->create(['published_at' => now()]);
