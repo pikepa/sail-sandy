@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Channel;
+use App\Models\Category;
 use App\Models\Subscriber;
 use function Pest\Faker\faker;
 use function Pest\Laravel\get;
@@ -43,10 +47,18 @@ test('a name is required for a subscriber', function () {
         ->assertInvalid(['name' => 'The name field is required.']);
 });
 
-test('a newsletter subscribe button appears on the home screen', function () {
-    $res = get('/home')->assertSuccessful()
-       ->assertSee('Newsletter');
-})->skip();
+test('a newsletter subscribe button appears on the welcome screen', function () {
+    User::factory()->create();
+    Category::factory()->create(['slug' => 'welcome']);
+    Channel::factory()->create(['slug' => 'no-channel']);
+    Channel::factory()->create(['slug' => 'no-channel']);
+   $post = Post::factory()->create();
+
+    $this->get('/')->assertSuccessful()
+       ->assertSee($post->title)
+       ->assertSee('Please Enter')
+       ->assertSee('Subscribe to our Newsletter');
+});
 
 test('a guest user can see the create subscriber page', function () {
     $this->get('/subscribers/create')
