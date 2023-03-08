@@ -97,4 +97,8 @@ class Post extends Model implements HasMedia
     {
         return $this->HasMany(Tag::class, 'post_tag');
     }
+
+
+
+
 }
