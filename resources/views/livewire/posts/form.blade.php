@@ -91,7 +91,7 @@
         <div class="text-xl font-bold pt-2 pl-4 border-2 rounded-lg mt-2">
             Post Gallery
             <main class="py-4 -mx-2">
-                     <div class="grid grid-cols-4gap-2">
+                     <div class="grid grid-cols-4 gap-2">
                             <div class="w-full px-2 py-2">
                                 @forelse($post->getMedia('photos') as $image)
                                     <img height='50px' class="object-cover w-full rounded object-centre"
