@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Post;
-use App\Models\Channel;
 use App\Models\Category;
+use App\Models\Channel;
+use App\Models\Post;
 
 it('has many posts', function () {
     //Set up

@@ -11,6 +11,7 @@ class HomeController extends Controller
     {
         $channels = Channel::where('status', true)
         ->orderBy('sort', 'asc')->get();
+
         return view('home')->with(['channels' => $channels]);
     }
 }

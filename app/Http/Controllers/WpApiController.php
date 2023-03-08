@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\WpApi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 
 class WpApiController extends Controller
 {
@@ -16,8 +15,7 @@ class WpApiController extends Controller
     {
         $var = new WpApi();
         $posts = $var->importPosts();
-        $count=Post::count();
-        dd('At the end', $count );
-
+        $count = Post::count();
+        dd('At the end', $count);
     }
 }

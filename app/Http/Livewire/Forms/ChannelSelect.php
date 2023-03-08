@@ -18,13 +18,12 @@ class ChannelSelect extends Component
         if ($chan_id != null) {
             $this->channel_id = $chan_id;
         }
-      //  dd($chan_id);
+        //  dd($chan_id);
         $this->channels = Channel::get();
     }
 
     public function render()
     {
-
         return view('livewire.forms.channel-select', $this->channels);
     }
 

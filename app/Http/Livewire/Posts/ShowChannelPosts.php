@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire\Posts;
 
-use App\Models\Post;
 use App\Models\Channel;
+use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Illuminate\Support\Facades\Auth;
 
 class ShowChannelPosts extends Component
 {

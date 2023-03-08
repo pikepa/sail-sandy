@@ -67,8 +67,7 @@ test('An authorised user can add a post', function () {
         ->set('meta_description', 'This is the meta description')
         ->call('save')
         ->assertSuccessful()
-        ->assertSee('Edit Post') ;  //user is returned to edit page to add photo's
-
+        ->assertSee('Edit Post');  //user is returned to edit page to add photo's
 
     $this->assertDatabaseCount('posts', 1)
     ->assertDatabaseHas('posts', ['title' => 'this is a post',
@@ -130,4 +129,3 @@ test('An authorised User can mark a post as being in the vault', function () {
     $this->assertDatabaseHas('posts', ['is_in_vault' => true,
         'meta_description' => 'this is a new meta_description', ]);
 });
-

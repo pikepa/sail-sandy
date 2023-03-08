@@ -37,7 +37,6 @@ test('an authorised user can see the manage-posts page', function () {
         ->assertSeeLivewire('posts.manage-posts');
 });
 
-
 test('an authorised user can see the dashboaard page', function () {
     $this->actingAs($this->user);
 

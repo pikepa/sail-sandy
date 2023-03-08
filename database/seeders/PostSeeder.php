@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Channel;
 use App\Models\Post;
 use App\Models\User;
-use App\Models\Channel;
-use App\Models\Category;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 

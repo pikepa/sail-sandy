@@ -87,7 +87,6 @@ class ManageChannels extends Component
         session()->flash('alertType', 'success');
     }
 
-
     public function edit($id)
     {
         $channel = Channel::findOrFail($id);
@@ -97,7 +96,6 @@ class ManageChannels extends Component
         $this->sort = $channel->sort;
         $this->status = $channel->status;
         $this->channel_id = $channel->id;
-
 
         $this->showEditForm();
     }
@@ -115,7 +113,6 @@ class ManageChannels extends Component
         session()->flash('message', 'Channel Successfully updated.');
         session()->flash('alertType', 'success');
     }
-
 
     public function delete($id)
     {

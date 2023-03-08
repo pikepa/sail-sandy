@@ -1,17 +1,16 @@
 <?php
 
+use App\Http\Livewire\Posts\ManagePosts;
+use App\Models\Category;
+use App\Models\Channel;
 use App\Models\Post;
 use App\Models\User;
 use Livewire\Livewire;
-use App\Models\Channel;
-use App\Models\Category;
-use App\Http\Livewire\Posts\ManagePosts;
 
 beforeEach(function () {
     $this->user = User::factory()->create();
     $this->signIn($this->user);
 });
-
 
 test('Post Validation rules on save', function ($field, $value, $rule) {
     Livewire::test(ManagePosts::class)
@@ -20,13 +19,12 @@ test('Post Validation rules on save', function ($field, $value, $rule) {
     ->assertHasErrors([$field => $rule]);
 })->with('post_validation');
 
-
 test('when the post title is changed the slug changes', function () {
     Category::factory()->create();
     Channel::factory()->create();
 
     $post = Post::factory()->create([
-        'title' => 'this-is-a-fake-title']);
+        'title' => 'this-is-a-fake-title', ]);
 
     Livewire::test(ManagePosts::class)
     ->call('edit', $post->id)

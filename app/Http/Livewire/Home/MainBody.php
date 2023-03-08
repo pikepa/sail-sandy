@@ -11,7 +11,9 @@ class MainBody extends Component
     use WithPagination;
 
     public $channel;
+
     public $postCount;
+
     public $posts;
 
     public function mount($channel)
@@ -27,7 +29,7 @@ class MainBody extends Component
         ->get();
 
         $this->postCount = $this->posts->count();
-        
+
         return view('livewire.home.main-body');
     }
 }

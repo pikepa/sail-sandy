@@ -10,6 +10,7 @@ use Livewire\WithFileUploads;
 class ManagePosts extends Component
 {
     use WithFileUploads;
+
     public $search;
 
     public $posts;
@@ -94,15 +95,14 @@ class ManagePosts extends Component
 
     public function deleteImage($image_id, $post_id)
     {
-        $post=Post::findOrFail($post_id);
+        $post = Post::findOrFail($post_id);
         $post->deleteMedia($image_id);
         $this->showEditForm();
-
     }
 
     public function makeFeatured($image_url)
     {
-        $this->cover_image =$image_url;
+        $this->cover_image = $image_url;
         $this->showEditForm();
     }
 
@@ -133,7 +133,7 @@ class ManagePosts extends Component
         'category_selected',
         'channel_selected',
         'make_featured',
-        'photoAdded' => 'showEditForm'
+        'photoAdded' => 'showEditForm',
     ];
 
     public function category_selected($category_id)
@@ -145,8 +145,6 @@ class ManagePosts extends Component
     {
         $this->channel_id = $channel_id;
     }
-
-
 
     public function create()
     {
@@ -201,7 +199,7 @@ class ManagePosts extends Component
 
         //  $this->storeFile();
 
-        $this->resetExcept(['author_id','search']);
+        $this->resetExcept(['author_id', 'search']);
         $this->showTable();
 
         session()->flash('message', 'Post Successfully Updated.');

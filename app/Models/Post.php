@@ -3,15 +3,15 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model implements HasMedia
 {
@@ -97,8 +97,4 @@ class Post extends Model implements HasMedia
     {
         return $this->HasMany(Tag::class, 'post_tag');
     }
-
-
-
-
 }

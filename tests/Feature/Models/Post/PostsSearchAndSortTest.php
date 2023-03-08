@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Livewire\Posts\ManagePosts;
+use App\Models\Category;
+use App\Models\Channel;
 use App\Models\Post;
 use Livewire\Livewire;
-use App\Models\Channel;
-use App\Models\Category;
-use App\Http\Livewire\Posts\ManagePosts;
 
 beforeEach(function () {
     $this->category = Category::factory()->create();
@@ -13,7 +13,7 @@ beforeEach(function () {
 
 test('An authorised User can search for a post in the dashboard', function () {
     $this->signIn();
-    $post1=Post::factory()->create();
+    $post1 = Post::factory()->create();
     $post = Post::factory()->create(['title' => 'My Title']);
 
     Livewire::test(ManagePosts::class)
@@ -24,12 +24,12 @@ test('An authorised User can search for a post in the dashboard', function () {
 
 test('An authorised User sees no Post found when too many chars in the search', function () {
     $this->signIn();
-    $post1=Post::factory()->create();
+    $post1 = Post::factory()->create();
     $post = Post::factory()->create(['title' => 'My Title']);
 
     Livewire::test(ManagePosts::class)
         ->set('search', 'asdasdasdasdadasdadasdasdasdasdasdadadad')
-        ->assertSee("No Posts found")
+        ->assertSee('No Posts found')
         ->assertDontSee($post->title)
         ->assertDontSee($post1->title);
 });
