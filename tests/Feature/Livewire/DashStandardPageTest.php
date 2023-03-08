@@ -32,6 +32,7 @@ test('an authorised user can see the manage-posts page', function () {
     $this->actingAs($this->user);
 
     Livewire::test(DashStandardPage::class)
+        ->set('show', 'dash')
         ->set('show', 'posts')
         ->assertSeeLivewire('posts.manage-posts');
 });
