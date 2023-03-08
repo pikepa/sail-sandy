@@ -95,6 +95,8 @@ class ManagePosts extends Component
     {
         $post=Post::findOrFail($post_id);
         $post->deleteMedia($image_id);
+        $this->showEditForm();
+
     }
 
     public function makeFeatured($image_url)

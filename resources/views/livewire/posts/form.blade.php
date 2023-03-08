@@ -90,25 +90,23 @@
     <div>
         <div class="text-xl font-bold pt-2 pl-4 border-2 rounded-lg mt-2">
             Post Gallery
-            <main class="flex flex-wrap py-4 -mx-2">
-                <div>
+            <main class="py-4 -mx-2">
+                <div class="grid grid-cols-4 bg-cyan-100 gap-2">
                     @forelse($post->getMedia('photos') as $image)
-                        <div class="w-1/3 px-2 py-2">
-                            <div class="flex-1 overflow-hidden card">
-                                <img height='50px' class="object-cover w-full rounded object-centre"
-                                    src="{{ $image->getUrl() }} " alt="Thumbnail is Missing here">
-                                <div class='flex justify-between mt-2 p4'>
-                                    @auth
-                                    <button wire:click='deleteImage({{ $image->id }}, "{{ $post->id  }}")'>
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                    <button wire:click='makeFeatured("{{ $image->getUrl() }}")'>
-                                        <i class="fas fa-bolt"></i>
-                                    </button>
-                                    @endauth
-                                </div>
+                            <div class="w-full px-2 py-2">
+                                    <img height='50px' class="object-cover w-full rounded object-centre"
+                                        src="{{ $image->getUrl() }} " alt="Thumbnail is Missing here">
+                                    <div class='flex justify-between mt-2 p4'>
+                                        @auth
+                                        <button wire:click='deleteImage({{ $image->id }}, "{{ $post->id  }}")'>
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                        <button wire:click='makeFeatured("{{ $image->getUrl() }}")'>
+                                            <i class="fas fa-bolt"></i>
+                                        </button>
+                                        @endauth
+                                    </div>
                             </div>
-                        </div>
                     @empty
                         <div class="pt-2">
                             There are no related image files

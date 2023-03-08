@@ -34,7 +34,7 @@ class Upload extends Component
             ->usingName($this->photo->getClientOriginalName())
             ->toMediaCollection('photos', 's3');
 
-        $this->reset('photo');
+        $this->photo= "";
 
         $this->emitUp('photoAdded');
     }
