@@ -2,7 +2,7 @@
     <x-app-layout>
         <x-pages.standard-page>
                 <div class="max-w-7xl min-h-screen mx-auto">
-                        <div class="m-4 text-5xl text-center mt-12 p-8 border-b-2 text-gray-700 font-bold">
+                        <div class=" text-5xl text-center p-8 border-b-2 text-gray-700 font-bold">
                             {{$post->title}}
                         </div>
                         <div class=" overflow-hidden  min-h-full rounded-lg pb-4">
@@ -44,7 +44,7 @@
                                                 </div>
                                                 <div>
                                                     <div>{{config('constants.design')}}</div>
-                                                    <div>Contact: {{config('constants.design_by')}}</div>
+                                                    <div>{{config('constants.design_by')}}</div>
                                                 </div>
                                                 <div>
                                                     <div>Website by: {{config('constants.website')}}</div>
