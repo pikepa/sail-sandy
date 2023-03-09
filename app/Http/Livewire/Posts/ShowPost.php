@@ -8,7 +8,10 @@ use Livewire\Component;
 
 class ShowPost extends Component
 {
+
     public $post;
+    public $post_id;
+    public $showEditForm = false;
 
     public function mount($slug)
     {
@@ -20,10 +23,16 @@ class ShowPost extends Component
                 return redirect('/login')->with('status', 'Not Authorized!');
             }
         }
+        $this->post_id = $this->post->id;
     }
 
     public function render()
     {
         return view('livewire.posts.show-post');
+    }
+
+    public function editPost()
+    {
+        // return redirect()->to('/dashboard/posts/'. $this->post->id );   
     }
 }

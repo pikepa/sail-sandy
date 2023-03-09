@@ -3,15 +3,15 @@
 
   <div class="block">
     @if($showAddForm )
-    @include('livewire.posts.create')
+        @include('livewire.posts.create')
     @elseif($showEditForm)
-    @include('livewire.posts.update')
+        @include('livewire.posts.update')
     @endif
 
     @auth
-    @isset($post_id)
-    <livewire:images.upload :post_id="$post->id" />
-    @endisset
+    @if($post_id)
+      <livewire:images.upload :post_id="$post->id" />
+    @endif
     @endauth
 
   </div>

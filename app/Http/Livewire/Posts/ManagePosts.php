@@ -71,16 +71,26 @@ class ManagePosts extends Component
         'cover_image' => 'nullable|url',
     ];
 
+        // listen from event from CategorySelect
+
+        protected $listeners = [
+            'category_selected',
+            'channel_selected',
+            'make_featured',
+            'photoAdded' => 'showEditForm',
+            'editPost' => 'render',
+        ];
+
     public function mount()
     {
         $this->author_id = auth()->user()->id;
-    }
+     }
 
     public function render()
-    {
-        $this->posts = Post::search('title', $this->search)->with('author')->orderBy('created_at', 'desc')->get();
-
-        return view('livewire.posts.manage-posts');
+    {   
+            $this->posts = Post::search('title', $this->search)->with('author')->orderBy('created_at', 'desc')->get();
+            return view('livewire.posts.manage-posts');
+    
     }
 
     public function updatedTitle($value)
@@ -126,15 +136,6 @@ class ManagePosts extends Component
         $this->showEditForm = false;
         $this->showAddForm = false;
     }
-
-    // listen from event from CategorySelect
-
-    protected $listeners = [
-        'category_selected',
-        'channel_selected',
-        'make_featured',
-        'photoAdded' => 'showEditForm',
-    ];
 
     public function category_selected($category_id)
     {
@@ -196,8 +197,6 @@ class ManagePosts extends Component
         $post = Post::findOrFail($id);
 
         $post->update($data);
-
-        //  $this->storeFile();
 
         $this->resetExcept(['author_id', 'search']);
         $this->showTable();
