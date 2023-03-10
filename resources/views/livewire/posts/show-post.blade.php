@@ -16,7 +16,7 @@
             <div class="max-w-7xl mx-auto">
                 <div class=" border-gray-900 border-2 rounded-lg">
                     <div class="flex flex-row justify-between items-center">
-                        <div class="ml-4 text-3xl  text-gray-700 font-bold">
+                        <div class="ml-4 text-3xl pt-4  text-gray-700 font-bold">
                             {{$post->title}}
                             @isset($post->published_at) <p class="text-xs font-bold text-gray-600">Published on
                                 {{$post->published_at->toFormattedDateString()}} by {{$post->author->name}}</p>@endisset
@@ -26,7 +26,7 @@
                         <div class="flex text-right mr-4 font-bold text-xl">
                             @if(Auth::user())
                             <div class="mr-4">
-                                <a href="#" ><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="/posts/edit/{{ $post->slug }}/P" ><i class="fa-solid fa-pen-to-square"></i></a>
                                 
                             </div>
                             @endif

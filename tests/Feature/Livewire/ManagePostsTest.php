@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Livewire\Posts\ManagePosts;
-use App\Http\Livewire\Posts\ShowPost;
-use App\Models\Category;
-use App\Models\Channel;
 use App\Models\Post;
 use App\Models\User;
 use Livewire\Livewire;
+use App\Models\Channel;
+use App\Models\Category;
+use App\Http\Livewire\Posts\EditPost;
+use App\Http\Livewire\Posts\ShowPost;
+use App\Http\Livewire\Posts\ManagePosts;
 
 beforeEach(function () {
     $this->category = Category::factory()->create();
@@ -66,27 +67,11 @@ test('An authorised user can add a post', function () {
         ->set('published_at', '')
         ->set('meta_description', 'This is the meta description')
         ->call('save')
-        ->assertSuccessful()
-        ->assertSee('Edit Post');  //user is returned to edit page to add photo's
+        ->assertSuccessful();
 
     $this->assertDatabaseCount('posts', 1)
     ->assertDatabaseHas('posts', ['title' => 'this is a post',
         'is_in_vault' => false, ]);
-});
-
-test('an authorised user can update a post', function () {
-    $this->actingAs(User::factory()->create());
-
-    $post = Post::factory()->create();
-
-    Livewire::test(ManagePosts::class)
-    ->call('edit', $post->id)
-    ->set('title', 'This title needs to be over ten characters')
-    ->call('update', $post->id)
-    ->assertSuccessful()
-    ->assertSee('Post Successfully Updated.');
-
-    expect(Post::find($post->id)->title)->toBe('This title needs to be over ten characters');
 });
 
 test('An authorised user can delete a post', function () {
@@ -118,13 +103,10 @@ test('An authorised User can mark a post as being in the vault', function () {
     $this->signIn();
     $post = Post::factory()->create(['is_in_vault' => false]);
 
-    Livewire::test(ManagePosts::class)
-        ->call('edit', $post->id)
-        ->assertDontSee('Post Successfully Updated')
+    Livewire::test(EditPost::class,['origin'=>'P','slug'=>$post->slug])
         ->set('is_in_vault', true)
         ->set('meta_description', 'this is a new meta_description')
-        ->call('update', $post->id)
-        ->assertSee('Post Successfully Updated');
+        ->call('update', $post->id);
 
     $this->assertDatabaseHas('posts', ['is_in_vault' => true,
         'meta_description' => 'this is a new meta_description', ]);

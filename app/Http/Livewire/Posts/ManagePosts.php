@@ -3,12 +3,16 @@
 namespace App\Http\Livewire\Posts;
 
 use App\Models\Post;
-use Illuminate\Support\Str;
 use Livewire\Component;
+use Illuminate\Support\Str;
+use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+
 
 class ManagePosts extends Component
 {
+    use WithPagination;
+
     use WithFileUploads;
 
     public $search;
@@ -77,8 +81,6 @@ class ManagePosts extends Component
             'category_selected',
             'channel_selected',
             'make_featured',
-            'photoAdded' => 'showEditForm',
-            'editPost' => 'render',
         ];
 
     public function mount()
@@ -88,7 +90,8 @@ class ManagePosts extends Component
 
     public function render()
     {   
-            $this->posts = Post::search('title', $this->search)->with('author')->orderBy('created_at', 'desc')->get();
+        $this->posts = Post::search('title', $this->search)->with('author')->orderBy('created_at', 'desc')->get();
+            
             return view('livewire.posts.manage-posts');
     
     }
@@ -103,19 +106,6 @@ class ManagePosts extends Component
         $this->validate(['newImage' => 'image|max:5000']);
     }
 
-    public function deleteImage($image_id, $post_id)
-    {
-        $post = Post::findOrFail($post_id);
-        $post->deleteMedia($image_id);
-        $this->showEditForm();
-    }
-
-    public function makeFeatured($image_url)
-    {
-        $this->cover_image = $image_url;
-        $this->showEditForm();
-    }
-
     public function showAddForm()
     {
         $this->showTable = false;
@@ -123,12 +113,6 @@ class ManagePosts extends Component
         $this->showAddForm = true;
     }
 
-    public function showEditForm()
-    {
-        $this->showTable = false;
-        $this->showEditForm = true;
-        $this->showAddForm = false;
-    }
 
     public function showTable()
     {
@@ -160,48 +144,9 @@ class ManagePosts extends Component
 
         $this->resetExcept(['author_id']);
 
-        $this->edit($post->id);
+     //  return redirect()->to('/posts/edit'.$post->slug);
 
         session()->flash('message', 'Post Successfully added.');
-        session()->flash('alertType', 'success');
-    }
-
-    public function edit($id)
-    {
-        $post = Post::findOrFail($id);
-        $this->post = $post;
-
-        //    $this->mediaItems = $post->getMedia('featured');
-
-        $this->post_id = $post->id;
-        $this->title = $post->title;
-        $this->cover_image = $post->cover_image;
-        $this->slug = $post->slug;
-        $this->body = $post->body;
-        $this->is_in_vault = $post->is_in_vault;
-        $this->category_id = $post->category_id;
-        $this->channel_id = $post->channel_id;
-        $this->selectedCategory = $post->category_id;
-        $this->selectedChannel = $post->channel_id;
-        $this->author_id = $post->author_id;
-        $this->published_at = $post->published_at;
-        $this->meta_description = $post->meta_description;
-
-        $this->showEditForm();
-    }
-
-    public function update($id)
-    {
-        $data = $this->validate();
-
-        $post = Post::findOrFail($id);
-
-        $post->update($data);
-
-        $this->resetExcept(['author_id', 'search']);
-        $this->showTable();
-
-        session()->flash('message', 'Post Successfully Updated.');
         session()->flash('alertType', 'success');
     }
 

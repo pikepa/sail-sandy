@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Livewire\Posts\ManagePosts;
-use App\Models\Category;
-use App\Models\Channel;
 use App\Models\Post;
 use App\Models\User;
 use Livewire\Livewire;
+use App\Models\Channel;
+use App\Models\Category;
+use App\Http\Livewire\Posts\EditPost;
+use App\Http\Livewire\Posts\ManagePosts;
 
 beforeEach(function () {
     $this->user = User::factory()->create();
@@ -26,8 +27,7 @@ test('when the post title is changed the slug changes', function () {
     $post = Post::factory()->create([
         'title' => 'this-is-a-fake-title', ]);
 
-    Livewire::test(ManagePosts::class)
-    ->call('edit', $post->id)
+    Livewire::test(EditPost::class, ['slug' => $post->slug, 'origin' => 'P'])
     ->set('title', 'this is a new title')
     ->call('update', $post->id);
 
@@ -40,13 +40,6 @@ test('When a user hits the add button the create form is shown', function () {
       ->assertSee('Add Post')
       ->assertSee('Save');
 });
-
-  test('When a user hits the edit button the update form is shown', function () {
-      Livewire::test(ManagePosts::class)
-      ->call('showEditForm')
-      ->assertSee('Edit Post')
-      ->assertSee('Save');
-  });
 
   test('When a user hits the show table button the main table is shown', function () {
       Livewire::test(ManagePosts::class)

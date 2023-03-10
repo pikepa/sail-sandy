@@ -4,8 +4,6 @@
   <div class="block">
     @if($showAddForm )
         @include('livewire.posts.create')
-    @elseif($showEditForm)
-        @include('livewire.posts.update')
     @endif
 
     @auth
@@ -61,9 +59,8 @@
                 @isset($post->published_at)<x-table.cell
                   class="text-left">{{$post->published_at->toFormattedDateString()}}</x-table.cell>@endisset
                 @empty($post->published_at)<x-table.cell class="text-left">Draft</x-table.cell>@endempty
-                <x-table.cell>
-                  <x-button.link wire:click="edit({{ $post->id }})"><i class="fa-solid fa-pen-to-square"></i>
-                  </x-button.link>
+                 <x-table.cell class="text-sky-600 font-bold dark:text-sky-400"><a
+                    href="/posts/edit/{{$post->slug}}/D"><i class="fa-solid fa-pen-to-square"></i></a>
                 </x-table.cell>
                 <x-table.cell>
                   <x-button.link wire:click="delete({{ $post->id }})"><i class="fa-regular fa-trash-can"></i>

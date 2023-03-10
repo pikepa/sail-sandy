@@ -1,4 +1,4 @@
-    <div>
+<div>
     <div class="flex justify-between border-2 rounded-lg p-4">
         <div class="flex-1 mr-4 space-y-6">
             <!-- Post Title -->
@@ -16,8 +16,8 @@
             <!-- Meta Description -->
 
             <x-input.group for="meta_description" label="Meta Description" width="full">
-                <x-input.rich-text wire:model.lazy='meta_description' :initial-value="$meta_description"
-                    unique='meta' type="text" />
+                <x-input.rich-text wire:model.lazy='meta_description' :initial-value="$meta_description" unique='meta'
+                    type="text" />
             </x-input.group>
 
 
@@ -92,33 +92,35 @@
             Post Gallery
             <main class="py-4 -mx-2">
 
-            <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-                @forelse($post->getMedia('photos') as $image)
+                <ul role="list"
+                    class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+                    @forelse($post->getMedia('photos') as $image)
                     <li class="relative">
-                      <div class=" group aspect-w-10 aspect-h-7 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
-                        <img class="object-cover" src="{{ $image->getUrl() }} " alt="Thumbnail is Missing here">
-                      </div>
-                      @auth
-                      <div class="px-4 pt-2 flex justify-between">
-                        <button wire:click='deleteImage({{ $image->id }}, "{{ $post->id  }}")'>
-                            <i class="fas fa-trash"></i>
-                        </button>
-                        <button wire:click='makeFeatured("{{ $image->getUrl() }}")'>
-                            <i class="fas fa-bolt"></i>
-                        </button>
-                      </div>
+                        <div
+                            class=" group aspect-w-10 aspect-h-7 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                            <img class="object-cover" src="{{ $image->getUrl() }} " alt="Thumbnail is Missing here">
+                        </div>
+                        @auth
+                        <div class="px-4 pt-2 flex justify-between">
+                            <button wire:click='deleteImage({{ $image->id }}, "{{ $post->id  }}")'>
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button wire:click='makeFeatured("{{ $image->getUrl() }}")'>
+                                <i class="fas fa-bolt"></i>
+                            </button>
+                        </div>
 
-                      @endauth
+                        @endauth
                     </li>
-                  
+
                     <!-- More files... -->
-                @empty
+                    @empty
                     <div class="pt-2 ">
                         There are no related image files
                     </div>
-                @endforelse
-            </ul>
-
+                    @endforelse
+                </ul>
+                <livewire:posts.display-post-gallery :$post />
             </main>
         </div>
     </div>
