@@ -47,9 +47,13 @@
                         </div>
 
                     </div>
+                    <!-- This is the post gallery -->
+                    <div class="p-4">
+                     <livewire:posts.display-post-gallery :post="$post">
+                    </div>
                 </div>
+
                 <div class="mt-2">
-                    <livewire:posts.display-post-gallery :post='$post' />
                 </div>
             </div>
         </div>

@@ -14,7 +14,7 @@ class DisplayPostGallery extends Component
     public function mount(Post $post)
     {
         $this->post = $post;
-        $this->mediaItems = $post->getMedia('featured');
+        $this->mediaItems = $post->getMedia('photos');
     }
 
     public function render()
