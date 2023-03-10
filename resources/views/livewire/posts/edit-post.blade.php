@@ -1,5 +1,13 @@
 <div>
+    <menus class="grid grid-cols-1 border-b-2 ">
 
+        <livewire:menus.menu-top />
+
+        <x-menus.menu-middle />
+
+        <livewire:menus.menu-bottom />
+
+    </menus>
     <div>
         <div>
           @if (session()->has('message') && $showAlert = true)
@@ -15,7 +23,7 @@
     
         @auth
         @if($post_id)
-            <livewire:images.upload :post_id="$post->id" />
+            <livewire:images.upload :post="$post" />
         @endif
         @endauth
     

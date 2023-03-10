@@ -86,43 +86,5 @@
     </div>
 
     <!-- This is the spot for the Post Gallery -->
-    @if($post)
-    <div>
-        <div class="text-xl font-bold pt-2 pl-4 border-2 rounded-lg mt-2">
-            Post Gallery
-            <main class="py-4 -mx-2">
-
-                <ul role="list"
-                    class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-                    @forelse($post->getMedia('photos') as $image)
-                    <li class="relative">
-                        <div
-                            class=" group aspect-w-10 aspect-h-7 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
-                            <img class="object-cover" src="{{ $image->getUrl() }} " alt="Thumbnail is Missing here">
-                        </div>
-                        @auth
-                        <div class="px-4 pt-2 flex justify-between">
-                            <button wire:click='deleteImage({{ $image->id }}, "{{ $post->id  }}")'>
-                                <i class="fas fa-trash"></i>
-                            </button>
-                            <button wire:click='makeFeatured("{{ $image->getUrl() }}")'>
-                                <i class="fas fa-bolt"></i>
-                            </button>
-                        </div>
-
-                        @endauth
-                    </li>
-
-                    <!-- More files... -->
-                    @empty
-                    <div class="pt-2 ">
-                        There are no related image files
-                    </div>
-                    @endforelse
-                </ul>
-                <livewire:posts.display-post-gallery :$post />
-            </main>
-        </div>
-    </div>
-    @endif
+    
 </div>

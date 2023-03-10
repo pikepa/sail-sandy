@@ -12,11 +12,11 @@ class Upload extends Component
 
     public $photo;
 
-    public $post_id;
+    public $post;
 
-    public function mount($post_id)
+    public function mount($post)
     {
-        $this->post_id = $post_id;
+        $this->post = $post;
     }
 
     public function render()
@@ -30,13 +30,31 @@ class Upload extends Component
             'photo' => 'required|image|mimes:jpg,jpeg,png,svg,gif|max:2048',
         ]);
 
-        $post = Post::find($this->post_id);
+        $post = Post::find($this->post->id);
         $post->addMedia($this->photo->getRealPath())
             ->usingName($this->photo->getClientOriginalName())
             ->toMediaCollection('photos', 's3');
 
         $this->photo = '';
 
-        $this->emitUp('photoAdded');
+        return redirect()->route('edit.post', ['slug'=> $this->post->slug, 'origin' => 'P']);
+    }
+
+    public function deleteImage($image_id, $post_id)
+    {
+        $post = Post::findOrFail($post_id);
+        $post->deleteMedia($image_id);
+
+        return redirect()->route('edit.post', ['slug'=> $this->post->slug, 'origin' => 'P']);
+    }
+
+    public function changeFeatured($image_url, $post_id)
+    {
+        $post = Post::findOrFail($post_id);
+        $post->cover_image = $image_url;
+        $post->update();
+
+        return redirect()->route('edit.post', ['slug'=> $this->post->slug, 'origin' => 'P']);
+
     }
 }

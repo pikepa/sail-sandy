@@ -56,7 +56,6 @@ class EditPost extends Component
             'refreshComponent' => '$refresh',
             'category_selected',
             'channel_selected',
-            'made_featured'=>'$refresh',
             'photoAdded'=>'$refresh',
             'editPost' => 'render',
         ];
@@ -102,21 +101,7 @@ class EditPost extends Component
         $this->validate(['newImage' => 'image|max:5000']);
     }
 
-    public function deleteImage($image_id, $post_id)
-    {
-        $post = Post::findOrFail($post_id);
-        $post->deleteMedia($image_id);
-
-        return redirect()->to('/posts/edit/'.$this->post->slug.'/P');
-    }
-
-    public function makeFeatured($image_url)
-    {
-        $this->cover_image = $image_url;
-
-        return redirect()->to('/posts/edit/'.$this->post->slug.'/P');
-
-    }
+ 
 
     public function category_selected($category_id)
     {

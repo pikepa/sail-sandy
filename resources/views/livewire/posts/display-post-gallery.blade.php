@@ -21,19 +21,5 @@
         </div>
 
     </div>
-
-<!-- 
-    <div>
-        @isset($post_id)
-        <div class="">
-            <div class="pt-4 ml-4">
-                <input wire:model='newImage' type="file" />
-            </div>
-            <div class="mt-4 ml-4">
-                <button class="w-28 p-2 rounded-lg bg-green-500 font-semibold" wire:click="storeFile">Upload</button>
-            </div>
-        </div>
-        @endisset
-    </div> -->
     @endif
 </div>
