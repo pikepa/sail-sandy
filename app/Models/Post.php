@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Post extends Model implements HasMedia
 {
@@ -72,6 +73,20 @@ class Post extends Model implements HasMedia
         return $this->featured_image
         ? Storage::disk('s3')->url($this->featured_image)
         : '';
+    }
+
+    // Media Definitions
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+        ->width(200)
+            ->height(200)
+            ->sharpen(10);
+
+        $this->addMediaConversion('full')
+        ->width(800)
+            ->height(800)
+            ->sharpen(10);
     }
 
     /*

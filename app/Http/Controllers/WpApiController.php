@@ -13,9 +13,8 @@ class WpApiController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $var = new WpApi();
-        $posts = $var->importPosts();
+        $var = new WpApi;
+        //  $posts = $var->importImages();
         $count = Post::count();
-        dd('At the end', $count);
     }
 }

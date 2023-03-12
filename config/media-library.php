@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      * The disk on which to store added files and derived images by default. Choose
      * one or more of the disks you've configured in config/filesystems.php.
@@ -23,7 +22,7 @@ return [
     /*
      * By default all conversions will be performed on a queue.
      */
-    'queue_conversions_by_default' => env('QUEUE_CONVERSIONS_BY_DEFAULT', true),
+    'queue_conversions_by_default' => env('QUEUE_CONVERSIONS_BY_DEFAULT', false),
 
     /*
      * The fully qualified class name of the media model.
@@ -58,6 +57,7 @@ return [
      * The class that contains the strategy for determining a media file's path.
      */
     'path_generator' => Spatie\MediaLibrary\Support\PathGenerator\DefaultPathGenerator::class,
+    // 'path_generator' => App\Helpers\EnvironmentPathGenerator::class,
 
     /*
      * Here you can specify which path generator should be used for the given class.
