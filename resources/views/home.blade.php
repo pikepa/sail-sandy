@@ -25,7 +25,7 @@
                 <div class="p-4">
                     <h5 class=" font-semibold border-b-4 border-gray-100">We're also on Social Media</h5>
                     <ul class="list-disc p-2">
-                        <li><a href='https://twitter.com/lukehunt' target="_blank" > Twitter</a></li>
+                        <li><a href='https://twitter.com/lukeanthonyhunt' target="_blank" > Twitter</a></li>
                         <li><a href='https://www.linkedin.com/in/luke-hunt-150b231/' target="_blank" > LinkedIn</a></li>
                         <li><a href='https://www.pinterest.com.au/huntluke/' target="_blank" > Pinterest</a></li>
 

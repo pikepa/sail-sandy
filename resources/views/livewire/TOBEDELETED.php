@@ -27,7 +27,6 @@
                     <ul class="list-disc p-2">
                         <li><a href="https://twitter.com/lukeanthonyhunt" Alt="Luke hunt on Twitter">Find Me on Twitter</a></li>
                         <li><a href="https://www.pinterest.com.au/huntluke/" Alt="Luke hunt on Pinterest">Follow me on Pinterest</a></li>
- 
                     </ul>
                 </div>
                 <div class="p-4">
