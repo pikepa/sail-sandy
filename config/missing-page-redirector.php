@@ -22,7 +22,7 @@ return [
      * You can use Laravel's route parameters here.
      */
     'redirects' => [
-        '/the-last-correspondents' => '/posts/the-last-correspondents',
+        '/{url}' => '/posts/{url}',
         //        '/old-blog/{url}' => '/new-blog/{url}',
     ],
 

@@ -1,9 +1,9 @@
 <div class="bg-cyan-100 p-2">
     
-    <div class="grid grid-cols-4 bg-cyan-100 gap-2">
+    <div class="grid sm:grid-cols-2 md:grid-cols-5 bg-cyan-100 gap-2">
         @foreach($posts as $post )
         <x-posts.card :post="$post" />
-            @if($loop->iteration == 4)
+            @if($loop->iteration == 5)
                 @break
             @endif
         @endforeach
