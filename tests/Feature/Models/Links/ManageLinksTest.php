@@ -14,6 +14,5 @@ use Livewire\Livewire;
 
     test('a User can see link details', function () {
         $link = Link::factory()->create();
-
         Livewire::test('ManageLinks')->assertSee($link->title);
     })->skip();
