@@ -18,7 +18,9 @@ return new class() extends Migration
             $table->string('title');
             $table->string('url');
             $table->foreignId('owner_id')->constrained('users');
-            $table->string('type');
+            $table->string('position');
+            $table->boolean('status');
+            $table->unsignedInteger('sort');
             $table->timestamps();
         });
     }

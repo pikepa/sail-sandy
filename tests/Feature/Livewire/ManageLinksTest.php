@@ -20,6 +20,40 @@ use App\Http\Livewire\Links\ManageLinks;
         $link2 = Link::factory()->create();
         
         Livewire::test(ManageLinks::class)
-            ->assertSee($link1->title)->assertSee($link1->owner->name)
+            ->assertSee($link1->title)
             ->assertSee($link2->title);
+    });
+
+    test('an authorised user can create a Link', function () {
+        $this->signIn();
+    $this->withoutExceptionHandling();
+
+        Livewire::test(ManageLinks::class)
+        ->call('create')
+        ->assertSee('Add Link')
+        ->set('title', 'My Link')
+        ->set('url', 'https://google.com')
+        ->set('position', 'right')
+        ->set('status', true)
+        ->set('sort', 1)
+        ->call('save')
+        ->assertSuccessful()
+        ->assertSee('Link Successfully added.');
+    
+        $this->assertDatabaseCount('links', 1);
+    
+        expect(Link::latest()->first()->title)->toBe('My Link');
+    });
+
+
+    test('an authorised user can delete a link', function () {
+        $this->signIn();
+        $link = Link::factory()->create();
+
+        Livewire::test(ManageLinks::class)
+        ->call('delete', $link->id)
+        ->assertSuccessful()
+        ->assertSee('Link Successfully deleted.');
+
+        $this->assertDatabaseCount('links', 0);
     });

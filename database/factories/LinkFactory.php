@@ -16,7 +16,9 @@ class LinkFactory extends Factory
             'title' => $this->faker->sentence,
             'url' => $this->faker->url,
             'owner_id' => User::inRandomOrder()->first(),
-            'type' => 'assoc'
+            'position' => 'right',
+            'sort'=> '1',
+            'status' => true,
         ];
     }
 }

@@ -20,8 +20,9 @@ class Link extends Model
         'title',
         'url',
         'owner_id',
-        'type',
-        'published_at',
+        'position',
+        'sort',
+        'status'
     ];
 
     public function owner(): BelongsTo

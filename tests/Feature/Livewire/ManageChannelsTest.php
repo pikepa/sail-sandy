@@ -14,6 +14,17 @@ test('a guest cannot access the category index', function () {
             ->assertRedirect('/login');
 });
 
+test('an authorised user can see a channel listing', function () {
+    $this->signIn($this->user);
+    $channel = Channel::factory()->create(['status' => true]);
+
+    Livewire::test(ManageChannels::class)
+    ->assertSee($channel->name)
+    ->assertSee('Active');
+
+    $this->assertDatabaseCount('channels', 1);
+});
+
 test('an authorised user can create a channel', function () {
     $this->signIn($this->user);
 
@@ -32,7 +43,7 @@ test('an authorised user can create a channel', function () {
     expect(Channel::latest()->first()->slug)->toBe('my-channel');
 });
 
-    test('an authorised user can update a category', function () {
+    test('an authorised user can update a channel', function () {
         $this->signIn($this->user);
         $channel = Channel::factory()->create();
 
@@ -59,13 +70,4 @@ test('an authorised user can delete a channel', function () {
     $this->assertDatabaseCount('channels', 0);
 });
 
-test('an authorised user can see a channel listing', function () {
-    $this->signIn($this->user);
-    $channel = Channel::factory()->create(['status' => true]);
 
-    Livewire::test(ManageChannels::class)
-    ->assertSee($channel->name)
-    ->assertSee('Active');
-
-    $this->assertDatabaseCount('channels', 1);
-});
