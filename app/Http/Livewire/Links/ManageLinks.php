@@ -94,7 +94,7 @@ class ManageLinks extends Component
 
         Link::create($linkData);
 
-        $this->reset();
+        $this->resetExcept(['owner_id']);
 
         $this->showTable();
 
