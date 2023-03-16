@@ -17,7 +17,7 @@ class ManageLinks extends Component
 
     public $owner_id;
 
-    public $position = 'right';
+    public $position = 'RIGHT';
 
     public $status = 1;
 
