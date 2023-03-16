@@ -13,7 +13,7 @@
             @if($post->cover_image !== $item->getFullUrl())
             <div class="mx-auto w-full rounded-lg border text-center">
                 <img class="rounded-lg object-cover object-centre w-full" src="{{$item->getFullUrl('thumb')}}"
-                    style="height:325px" alt="{{$item->name}}">
+                    style="height:200px" alt="{{$item->name}}">
             </div>
             @endif
             @endforeach
