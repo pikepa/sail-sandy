@@ -1,7 +1,7 @@
 <div class="p-4 space-y-6 rounded-lg border-2">
     <!-- link Name -->
     <x-input.group for="title" label="Title" width="full">
-        <x-input.text wire:model='title' type="text" class="form-input w-full rounded">
+        <x-input.text wire:model='title' type="text" class="form-input w-full rounded" value="{{$title}}">
         </x-input.text>
     </x-input.group>
 

@@ -102,6 +102,36 @@ class ManageLinks extends Component
         session()->flash('alertType', 'success');
     }
 
+
+    public function edit($id)
+    {
+        $link = Link::findOrFail($id);
+
+        $this->title = $link->title;
+        $this->url = $link->url;
+        $this->sort = $link->sort;
+        $this->position = $link->position;
+        $this->status = $link->status;
+        $this->owner_id = $link->owner_id;
+        $this->link_id = $link->id;
+
+        $this->showEditForm();
+    }
+
+    public function update($id)
+    {
+        $link = Link::find($id);
+        $linkData = $this->validate();
+
+        $link->update($linkData);
+
+        $this->reset();
+        $this->showTable();
+
+        session()->flash('message', 'Link Successfully updated.');
+        session()->flash('alertType', 'success');
+    }
+
     public function delete($id)
     {
         $link = Link::find($id);

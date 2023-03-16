@@ -46,6 +46,22 @@ use App\Http\Livewire\Links\ManageLinks;
     });
 
 
+    test('an authorised user can update a link', function () {
+        $this->signIn();
+        $link = Link::factory()->create();
+
+        Livewire::test(ManageLinks::class)
+        ->call('edit', $link->id)
+        ->set('title', 'My Link has changed')
+        ->set('position','Center')
+        ->call('update', $link->id)
+        ->assertSuccessful()
+        ->assertSee('Link Successfully updated.');
+
+        expect(Link::latest()->first()->title)->toBe('My Link has changed');
+    });
+
+
     test('an authorised user can delete a link', function () {
         $this->signIn();
         $link = Link::factory()->create();
