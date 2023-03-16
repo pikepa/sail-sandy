@@ -1,9 +1,10 @@
 <?php
 
-use App\Models\Category;
-use App\Models\Channel;
+use App\Models\Link;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Channel;
+use App\Models\Category;
 use function Pest\Laravel\get;
 
 it('can load the home page', function () {
@@ -45,4 +46,13 @@ test(' A guest can see an Active channel on the home page', function () {
 
     $this->get('/home')
     ->assertSee($channel->name);
+});
+test(' A guest can see an Active link on the home page', function () {
+    //Setup
+    $this->signIn();
+    $link = Link::factory()->create(['status' => true]);
+    
+    //Act and Assert
+    $this->get('/home')
+    ->assertSee($link->title);
 });

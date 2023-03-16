@@ -125,7 +125,7 @@ class ManageLinks extends Component
 
         $link->update($linkData);
 
-        $this->reset();
+        $this->resetExcept(['owner_id']);
         $this->showTable();
 
         session()->flash('message', 'Link Successfully updated.');

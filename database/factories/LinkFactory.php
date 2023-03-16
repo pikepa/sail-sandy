@@ -16,7 +16,7 @@ class LinkFactory extends Factory
             'title' => $this->faker->sentence,
             'url' => $this->faker->url,
             'owner_id' => User::inRandomOrder()->first(),
-            'position' => 'right',
+            'position' => strtoUpper('right'),
             'sort'=> '1',
             'status' => true,
         ];

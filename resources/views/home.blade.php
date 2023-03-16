@@ -33,31 +33,12 @@
                 </div>
                 <div class="p-4">
                     <h5 class=" font-semibold border-b-4 border-gray-100">Press Clubs</h5>
-                    <ul class=" pt-2">
-                        <li>BANGKOK</li>
-                        <li>HONG KONG</li>
-                        <li>JAKARTA</li>
-                        <li>KUALA LUMPUR</li>
-                        <li>PHNOM PENH</li>
-                        <li>TOKYO</li>
-                    </ul>
+                        <livewire:home.display-links position="CENTER"/>
                 </div>
                 <div class="p-4">
                     <h5 class="font-semibold border-b-4 border-gray-100">Associates</h5>
                     <div class="">
-                        <ul class="list-disc p-2">
-                            <li>Asia Motion</li>
-                            <li>Blind Eye Productions</li>
-                            <li>Craig Skehan Photos</li>
-                            <li>David Fox</li>
-                            <li>Lee Nutter</li>
-                            <li>Little Red Blog</li>
-                            <li>Luke Hunt Photos</li>
-                            <li>Peter O'Sullivan Photos</li>
-                            <li>Richard Reitman<l /li>
-                            <li>Robert Carmichael</li>
-                            <li>Ross Mueller</li>
-                        </ul>
+                            <livewire:home.display-links position="RIGHT"/>
                     </div>
                 </div>
             </div>
