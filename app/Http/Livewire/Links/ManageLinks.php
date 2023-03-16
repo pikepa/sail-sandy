@@ -35,7 +35,7 @@ class ManageLinks extends Component
         'title' => 'required|min:6|max:50',
         'url' => 'required|url',
         'position' => "required|in:RIGHT,CENTER,LEFT",
-        'owner_id' => 'required',
+        'owner_id' => 'required|integer',
         'status' => 'required|boolean',
         'sort' => 'required|integer',
     ];
