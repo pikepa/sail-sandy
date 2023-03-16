@@ -17,7 +17,8 @@ return new class() extends Migration
             $table->id();
             $table->string('title');
             $table->string('url');
-            $table->foreignId('author_id')->constrained('users');
+            $table->foreignId('owner_id')->constrained('users');
+            $table->string('type');
             $table->timestamps();
         });
     }

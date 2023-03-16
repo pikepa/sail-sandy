@@ -5,7 +5,7 @@
       @endif
     </div>
   </div>
-  <x-pages.dash-page-sub-head title="Links" btntext="Add Post">
+  <x-pages.dash-page-sub-head title="Links" btntext="Add Link">
     A list of all the links in your account.
   </x-pages.dash-page-sub-head>
 
@@ -20,7 +20,8 @@
               <x-table.row>
                 <x-table.heading class="text-left">Title</x-table.heading>
                 <x-table.heading class="text-left">Url</x-table.heading>
-                <x-table.heading class="text-left">Author</x-table.heading>
+                <x-table.heading class="text-left">Owner</x-table.heading>
+                <x-table.heading class="text-left">Type</x-table.heading>
                 <x-table.heading class="text-left"></x-table.heading>
                 <x-table.heading class="text-left"></x-table.heading>
               </x-table.row>
@@ -28,10 +29,10 @@
             <x-slot name="body">
               @forEach($links as $link)
               <x-table.row>
-                <x-table.cell class="text-sky-600 font-bold dark:text-sky-400"><a
-                    href="/posts/{{$post->slug}}">{{$link->title}}</a></x-table.cell>
+                <x-table.cell>{{$link->title}}</x-table.cell>
                 <x-table.cell>{{$link->url}}</x-table.cell>
-                <x-table.cell>{{$link->author->name}}</x-table.cell>
+                <x-table.cell>{{$link->owner->name}}</x-table.cell>
+                <x-table.cell>{{$link->type}}</x-table.cell>
                 <x-table.cell>
                   <x-button.link wire:click="edit({{ $link->id }})"><i class="fa-solid fa-pen-to-square"></i>
                   </x-button.link>

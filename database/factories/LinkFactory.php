@@ -15,7 +15,8 @@ class LinkFactory extends Factory
         return [
             'title' => $this->faker->sentence,
             'url' => $this->faker->url,
-            'author_id' => User::inRandomOrder()->first(),
+            'owner_id' => User::inRandomOrder()->first(),
+            'type' => 'assoc'
         ];
     }
 }
