@@ -49,7 +49,7 @@ class ManageLinks extends Component
 
     public function render()
     {
-        $this->links = Link::with('owner')->orderBy('sort', 'asc')->get();
+        $this->links = Link::with('owner')->orderBy('position')->orderBy('sort', 'asc')->get();
         return view('livewire.links.manage-links');
     }
     
