@@ -1,12 +1,14 @@
 <?php
 
-use App\Models\Category;
-use App\Models\Channel;
 use App\Models\Post;
-use App\Models\Subscriber;
 use App\Models\User;
+use Livewire\Livewire;
+use App\Models\Channel;
+use App\Models\Category;
+use App\Models\Subscriber;
 use function Pest\Faker\faker;
 use function Pest\Laravel\post;
+use App\Http\Livewire\Subscriber\ManageSubscribers;
 
 test('anyone can subscribe to the Newsletter', function () {
     $email = faker()->email;
@@ -72,3 +74,20 @@ test('the create subscriber page contains the livewire menu components', functio
          ->assertSeeLivewire('menus.menu-bottom')
          ->assertSeeLivewire('menus.menu-top');
 });
+
+test('an authorised user can see a list of subscribers', function () {
+    $this->signin();
+
+   $subsc1 = Subscriber::factory()->create();
+   $subsc2 = Subscriber::factory()->create();
+
+    Livewire::test(ManageSubscribers::class)
+        ->set('showTable', true)
+        ->call('render')
+        ->assertSee($subsc1->name)
+        ->assertSee($subsc1->email)
+        ->assertSee($subsc2->name)
+        ->assertSee($subsc2->email);
+});
+
+
