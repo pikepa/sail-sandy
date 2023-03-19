@@ -2,18 +2,23 @@
 
 namespace App\Models;
 
-use App\Mail\SubscribedEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use App\Mail\SubscribedEmail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Subscriber extends Model
 {
     use HasFactory;
 
     protected $table = 'subscribers';
+
+    public $casts = [
+        'validated_at' => 'datetime:format("yyyy-mm-dd")',
+    ];
 
     protected $fillable = ['name', 'email', 'validation_key', 'validated_at'];
 

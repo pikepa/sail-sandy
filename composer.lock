@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "13ba5f0986245daf246c0bf972b116e3",
+    "content-hash": "e71013b58fa3e061ad236251129f1911",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.261.8",
+            "version": "3.261.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "9c38c82b7d3fb2b15957e71cae3957450e131ed8"
+                "reference": "233b70c951707830dd205959375c98be35cbb36e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9c38c82b7d3fb2b15957e71cae3957450e131ed8",
-                "reference": "9c38c82b7d3fb2b15957e71cae3957450e131ed8",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/233b70c951707830dd205959375c98be35cbb36e",
+                "reference": "233b70c951707830dd205959375c98be35cbb36e",
                 "shasum": ""
             },
             "require": {
@@ -146,9 +146,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.261.8"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.261.13"
             },
-            "time": "2023-03-09T19:23:27+00:00"
+            "time": "2023-03-16T18:22:32+00:00"
         },
         {
             "name": "brick/math",
@@ -3833,6 +3833,77 @@
             "time": "2023-01-12T18:13:24+00:00"
         },
         {
+            "name": "rappasoft/laravel-livewire-tables",
+            "version": "v2.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rappasoft/laravel-livewire-tables.git",
+                "reference": "5894709a29098b3a1adc67f7593f6a1400bdd98a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rappasoft/laravel-livewire-tables/zipball/5894709a29098b3a1adc67f7593f6a1400bdd98a",
+                "reference": "5894709a29098b3a1adc67f7593f6a1400bdd98a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^8.0|^9.0|^10.0",
+                "livewire/livewire": "^2.6",
+                "php": "^7.4|^8.0",
+                "spatie/laravel-package-tools": "^1.4.3"
+            },
+            "require-dev": {
+                "ext-sqlite3": "*",
+                "orchestra/testbench": "^6.13|^7.0|^8.0",
+                "phpunit/phpunit": "^9.3",
+                "spatie/laravel-ray": "^1.9"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rappasoft\\LaravelLivewireTables\\LaravelLivewireTablesServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rappasoft\\LaravelLivewireTables\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthony Rappa",
+                    "email": "rappa819@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A dynamic table component for Laravel Livewire",
+            "homepage": "https://github.com/rappasoft/laravel-livewire-tables",
+            "keywords": [
+                "datatables",
+                "laravel",
+                "livewire",
+                "rappasoft",
+                "tables"
+            ],
+            "support": {
+                "issues": "https://github.com/rappasoft/laravel-livewire-tables/issues",
+                "source": "https://github.com/rappasoft/laravel-livewire-tables/tree/v2.11.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/rappasoft",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-02-16T18:32:49+00:00"
+        },
+        {
             "name": "spatie/browsershot",
             "version": "3.57.6",
             "source": {
@@ -4037,16 +4108,16 @@
         },
         {
             "name": "spatie/image-optimizer",
-            "version": "1.6.3",
+            "version": "1.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image-optimizer.git",
-                "reference": "9ed7a80f92310d162adb39f8ffe2622b5ae05d91"
+                "reference": "d997e01ba980b2769ddca2f00badd3b80c2a2512"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/9ed7a80f92310d162adb39f8ffe2622b5ae05d91",
-                "reference": "9ed7a80f92310d162adb39f8ffe2622b5ae05d91",
+                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/d997e01ba980b2769ddca2f00badd3b80c2a2512",
+                "reference": "d997e01ba980b2769ddca2f00badd3b80c2a2512",
                 "shasum": ""
             },
             "require": {
@@ -4086,9 +4157,9 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/image-optimizer/issues",
-                "source": "https://github.com/spatie/image-optimizer/tree/1.6.3"
+                "source": "https://github.com/spatie/image-optimizer/tree/1.6.4"
             },
-            "time": "2023-02-28T16:56:09+00:00"
+            "time": "2023-03-10T08:43:19+00:00"
         },
         {
             "name": "spatie/laravel-login-link",
@@ -4334,16 +4405,16 @@
         },
         {
             "name": "spatie/laravel-package-tools",
-            "version": "1.14.1",
+            "version": "1.14.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-package-tools.git",
-                "reference": "b477dd2f89d0751f0e51ffb3a70181f0bc7ab8df"
+                "reference": "bab62023a4745a61170ad5424184533685e73c2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/b477dd2f89d0751f0e51ffb3a70181f0bc7ab8df",
-                "reference": "b477dd2f89d0751f0e51ffb3a70181f0bc7ab8df",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/bab62023a4745a61170ad5424184533685e73c2d",
+                "reference": "bab62023a4745a61170ad5424184533685e73c2d",
                 "shasum": ""
             },
             "require": {
@@ -4382,7 +4453,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-package-tools/issues",
-                "source": "https://github.com/spatie/laravel-package-tools/tree/1.14.1"
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.14.2"
             },
             "funding": [
                 {
@@ -4390,7 +4461,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-01-27T15:33:45+00:00"
+            "time": "2023-03-14T16:41:21+00:00"
         },
         {
             "name": "spatie/laravel-sitemap",
