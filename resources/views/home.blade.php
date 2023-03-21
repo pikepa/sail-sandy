@@ -23,7 +23,7 @@
         <footer class="grid grid-cols-1 gap-2 bg-cyan-700 p-4 text-gray-100 rounded-b-lg">
             <div class="mt-2 grid grid-cols-3 gap-2 ">
                 <div class="p-4">
-                    <h5 class=" font-semibold border-b-4 border-gray-100">Social Media</h5>
+                    <h5 class=" font-semibold border-b-4 border-gray-100">We're also on Social Media</h5>
                         <livewire:home.display-links position="LEFT"/>
                 </div>
                 <div class="p-4">
