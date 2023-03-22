@@ -11,7 +11,7 @@ use function Pest\Laravel\post;
 use App\Http\Livewire\Subscriber\ManageSubscribers;
 
 test('anyone can subscribe to the Newsletter', function () {
-    $email = faker()->email;
+    $email = fake()->email;
 
     post('/subscribers', ['email' => $email, 'name' => 'Peter Piper'])->assertValid();
 
@@ -19,7 +19,7 @@ test('anyone can subscribe to the Newsletter', function () {
 });
 
 test('an new email must be unique on the subscribers table', function () {
-    $email = faker()->email;
+    $email = fake()->email;
 
     Subscriber::create(['email' => $email]);
 
@@ -29,7 +29,7 @@ test('an new email must be unique on the subscribers table', function () {
 });
 
 test('an new email must be a valid email', function () {
-    $email = faker()->name;
+    $email = fake()->name;
 
     post('/subscribers', ['email' => $email])
 
@@ -58,7 +58,7 @@ test('a newsletter subscribe button appears on the welcome screen', function () 
     $this->get('/')->assertSuccessful()
        ->assertSee($post->title)
        ->assertSee('Please Enter')
-       ->assertSee('Subscribe to our Newsletter');
+       ->assertSee('Subscribe to our Updates.');
 });
 
 test('a guest user can see the create subscriber page', function () {

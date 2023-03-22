@@ -20,6 +20,10 @@
                                 <button wire:click='deleteImage({{ $image->id }}, "{{ $post->id  }}")'>
                                     <i class="fas fa-trash"></i>
                                 </button>
+                                <div>
+                                    <x-images.show_pinned />
+                                </div>
+
                                 <button wire:click='changeFeatured("{{ $image->getUrl() }}", "{{ $post->id }}" )'>
                                     <i class="fas fa-bolt"></i>
                                 </button>
