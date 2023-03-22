@@ -21,7 +21,7 @@
                                     <i class="fas fa-trash"></i>
                                 </button>
                                 <div>
-                                    <x-images.show_pinned />
+                                    <livewire:images.pin-images :image="$image"/>
                                 </div>
 
                                 <button wire:click='changeFeatured("{{ $image->getUrl() }}", "{{ $post->id }}" )'>

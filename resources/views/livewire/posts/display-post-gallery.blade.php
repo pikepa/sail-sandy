@@ -10,12 +10,14 @@
     <div class="border-2 p-4 rounded-lg ">
         <div class="grid grid-cols-4 gap-2 ">
             @foreach($mediaItems as $item)
-            @if($post->cover_image !== $item->getFullUrl())
-            <div class="mx-auto w-full rounded-lg border text-center">
-                <img class="rounded-lg object-cover object-centre w-full" src="{{$item->getFullUrl('thumb')}}"
-                    style="height:200px" alt="{{$item->name}}">
-            </div>
-            @endif
+                @if($item->getCustomProperty('pinned', false) == true)
+                    @if($post->cover_image !== $item->getFullUrl())
+                    <div class="mx-auto w-full rounded-lg border text-center">
+                        <img class="rounded-lg object-cover object-centre w-full" src="{{$item->getFullUrl('thumb')}}"
+                            style="height:200px" alt="{{$item->name}}">
+                    </div>
+                    @endif
+                @endif
             @endforeach
 
         </div>
