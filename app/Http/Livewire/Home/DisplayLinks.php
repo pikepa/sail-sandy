@@ -23,7 +23,7 @@ class DisplayLinks extends Component
 
         return <<<'blade'
             <div>
-            <ul class="list-disc p-2">
+            <ul class="list-disc ml-4 p-2">
                 @if($links)
                     @foreach($links as $link)
                         <li><a href={{$link->url}} target="_blank">{{$link->title}}</a></li>
