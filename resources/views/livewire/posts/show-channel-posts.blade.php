@@ -25,9 +25,7 @@
                             <a href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left"></i> Back</a>
                         </div>
                     </div>
-                    <div class="ml-4 text-base">
 
-                    </div>
                     <div class=" overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-2 bg-cyan-100 border-b border-gray-200">
                         @if($posts->count() > 0 )
@@ -44,7 +42,7 @@
                                             @empty($post->published_at) <p class="text-xs font-bold text-gray-600">Not Published - Draft by {{$post->author->name}}</p>@endempty
                                         <p class="mt-2 text-gray-600">{!!$post->body!!}.</p>
                                     </div>
-                                </div>
+                                </div>  
                             @endforeach
                         @else
                                 <div class="p-2">Sorry, there are currently no Articles within this Channel</div>
