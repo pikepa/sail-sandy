@@ -1,5 +1,5 @@
 <div class="rounded-t-lg p-2 font-extrabold text-white  bg-cyan-900 ">
-    <div class="uppercase flex flex-row justify-between items-center p-2 ">
+    <div class="uppercase flex flex-col justify-left sm:flex-row sm:justify-between sm:items-center p-2 ">
         <a href="/home"><div>Home</div></a>
         @foreach($categories as $category)
         <a href="/category/posts/{{$category->slug}}"><div>{{$category->name}}</div></a>
