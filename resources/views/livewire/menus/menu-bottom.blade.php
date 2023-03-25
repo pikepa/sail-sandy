@@ -13,7 +13,7 @@
                 <ul class="pl-4 list-disc">
                     <x-menus.item routename='welcome'>About Us</x-menus.item>
                     @foreach($categories as $category)
-                    <li><a href="{{ url('/category/posts/'. $category->slug ) }}" class="hover:font-semibold">{{
+                    <li><a href="{{ url('/category/posts/'. $category->slug ) }}" class="hover:font-bold">{{
                             $category->name }} </li></a>
                     @endforeach
                 </ul>

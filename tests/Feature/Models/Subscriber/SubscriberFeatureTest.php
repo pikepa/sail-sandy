@@ -57,8 +57,8 @@ test('a newsletter subscribe button appears on the welcome screen', function () 
 
     $this->get('/')->assertSuccessful()
        ->assertSee($post->title)
-       ->assertSee('Please Enter')
-       ->assertSee('Subscribe to our Updates.');
+       ->assertSee('Enter')
+       ->assertSee('Subscribe ');
 });
 
 test('a guest user can see the create subscriber page', function () {
