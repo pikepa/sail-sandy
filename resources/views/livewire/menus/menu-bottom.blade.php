@@ -4,8 +4,8 @@
         <div x-data="{ open: false }" class="sm:hidden">
 
             <div x-on:click="open = ! open" class=" ml-4 mt-4 text-3xl">
-                <span x-show="!open"><i class="fa fa-bars" aria-hidden="true"></i></span>
-                <span x-show="open"><i class="far fa-times-circle"></i></span>
+                <span x-cloak x-show="!open"><i class="fa fa-bars" aria-hidden="true"></i></span>
+                <span x-cloak x-show="open"><i class="far fa-times-circle"></i></span>
             </div>
 
             <div x-show="open" x-transition.duration.2s
