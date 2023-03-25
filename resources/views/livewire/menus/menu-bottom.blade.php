@@ -9,7 +9,7 @@
             </div>
 
             <div x-show="open" x-transition.duration.2s
-                class="w-56 bg-gray-200 max-w-sm rounded-lg overflow-hidden shadow mr-4 pl-4 ">
+                class="w-56 p-2 max-w-sm rounded-lg overflow-hidden shadow mr-4 pl-4 ">
                 <ul class="pl-4 list-disc">
                     <x-menus.item routename='welcome'>About Us</x-menus.item>
                     @foreach($categories as $category)
