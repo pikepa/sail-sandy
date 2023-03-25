@@ -30,9 +30,9 @@
                         <div class="p-2 bg-cyan-100 border-b border-gray-200">
                         @if($posts->count() > 0 )
                             @foreach($posts as $post)
-                                <div class="bg-cyan-100 flex flex-row border-2 border-gray-300 shadow-md rounded-md mb-2 p-2">
-                                    <div class="w-1/5">
-                                        <img class="object-cover h-44 w-full rounded-md " src='{{$post->cover_image}}'
+                                <div class="bg-cyan-100 flex flex-col sm:flex-row border-2 border-gray-300 shadow-md rounded-md mb-2 p-2">
+                                    <div class="">
+                                        <img class=" w-full h-64 sm:w-64 object-center object-cover rounded-md " src='{{$post->cover_image}}'
                                             alt="placeimg">
                                     </div>
                                     <div class="w-4/5 ml-4 max-h-36 overflow-hidden">
