@@ -22,7 +22,7 @@
         </div>
 
         <div >
-            <div class=" uppercase sm:flex flex-col justify-left sm:flex-row sm:justify-between sm:items-center p-2 ">
+            <div class="hidden uppercase sm:flex flex-col justify-left sm:flex-row sm:justify-between sm:items-center p-2 ">
                 <a href="/">
                     <div>About Us</div>
                 </a>
