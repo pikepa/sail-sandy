@@ -21,12 +21,12 @@
 
         </div>
         <div class="">
-            <div class="hidden uppercase sm:flex flex-col justify-left sm:flex-row sm:justify-between sm:items-center p-2 ">
+            <div class=" uppercase sm:flex flex-col justify-left sm:flex-row sm:justify-between sm:items-center p-2 ">
                 <a href="/home">
                     <div>Home</div>
                 </a>
                 @foreach($categories as $category)
-                
+
                 <a href="/category/posts/{{$category->slug}}">
                     <div>{{$category->name}}</div>
                 </a>
