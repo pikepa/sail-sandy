@@ -1,5 +1,5 @@
 <div>
-    <div class=" rounded-lg p-2 font-extrabold text-white bg-teal-800 ">
+    <div class=" rounded-lg p-1 font-extrabold text-white bg-teal-800 ">
         <div >
             <div class="hidden uppercase sm:flex flex-col justify-left sm:flex-row sm:justify-between sm:items-center p-2 ">
                 <a href="/">
