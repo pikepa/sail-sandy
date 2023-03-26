@@ -1,4 +1,5 @@
 <div>
+    <!-- This is the top menu and on mobile includes all menu items -->
     <div class="rounded-lg p-2 font-extrabold text-white bg-teal-800 ">
 
         <div x-data="{ open: false }" class="sm:hidden">

@@ -1,4 +1,5 @@
 <div>
+    <!-- This is the bottom menu and on small screens just shows as a line, the items are included in the top menu -->
     <div class=" rounded-lg p-1 font-extrabold text-white bg-teal-800 ">
         <div >
             <div class="hidden uppercase sm:flex flex-col justify-left sm:flex-row sm:justify-between sm:items-center p-2 ">
