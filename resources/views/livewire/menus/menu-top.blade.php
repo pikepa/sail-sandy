@@ -26,6 +26,7 @@
                     <div>Home</div>
                 </a>
                 @foreach($categories as $category)
+                
                 <a href="/category/posts/{{$category->slug}}">
                     <div>{{$category->name}}</div>
                 </a>
