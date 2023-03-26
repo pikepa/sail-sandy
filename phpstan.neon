@@ -16,3 +16,9 @@ parameters:
         - ./*/*/FileToBeExcluded.php
 
     checkMissingIterableValueType: false
+
+
+    bladestan:
+        template_paths:
+            # default
+            - resources/views

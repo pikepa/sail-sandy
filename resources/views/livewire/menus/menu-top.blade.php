@@ -3,7 +3,7 @@
 
         <div x-data="{ open: false }" class="sm:hidden">
 
-            <div x-on:click="open = ! open" class=" ml-4 mt-4 text-3xl">
+            <div x-on:click="open = ! open" class=" m-2 ml-4 text-3xl">
                 <span x-cloak x-show="!open"><i class="fa fa-bars" aria-hidden="true"></i></span>
                 <span x-cloak x-show="open"><i class="far fa-times-circle  "></i></span>
             </div>
@@ -20,9 +20,8 @@
             </div>
 
         </div>
-
-        <div class="collapse sm:visible">
-            <div class=" uppercase flex flex-col justify-left sm:flex-row sm:justify-between sm:items-center p-2 ">
+        <div class="">
+            <div class="hidden uppercase sm:flex flex-col justify-left sm:flex-row sm:justify-between sm:items-center p-2 ">
                 <a href="/home">
                     <div>Home</div>
                 </a>
