@@ -4,9 +4,6 @@
         <div class="p-2 uppercase text-red-600 font-bold text-lg   text-center">
             THE TRUTH ALWAYS BREAKS
         </div>
-        <!-- <div class="p-2 uppercase text-red-600 font-bold text-lg   text-center">
-            A COLLABORATION BY CORRESPONDENTS IN SOUTHEAST ASIA
-        </div> -->
     </div>
 
 </div>
