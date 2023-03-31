@@ -11,7 +11,7 @@
 
             </menus>
         </div>
-        <x-forms.card title="Newsletter Registration">
+        <x-forms.card title="Updates Registration">
 
             <!-- component -->
             <div class="flex items-center justify-center p-6">
