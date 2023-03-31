@@ -19,7 +19,7 @@ class Post extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
-    use Searchable;
+    // use Searchable;
 
     protected $table = 'posts';
 
