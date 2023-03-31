@@ -1,5 +1,5 @@
 @component('mail::message')
-# Bomborra Media Newsletter
+# Bomborra Media Updates
 
 Thank you for submitting your email to receive updates from our site. Please click on the link below to confirm your email address.
 
