@@ -4,7 +4,6 @@ require __DIR__."/vendor/autoload.php";
 use Algolia\AlgoliaSearch\SearchClient;
 
 // Connect and authenticate with your Algolia app
-$client = SearchClient::create("WI2WFQVE2W", "427b5ff2ee04408fbd94efd15b0ac729");
 
 // Create a new index and add a record
 $index = $client->initIndex("test_index");
