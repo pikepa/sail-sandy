@@ -16,9 +16,9 @@
                         Published - Draft by {{$post->author->name}}</p>@endempty
                     <p class="mt-2 text-gray-600">{!! $post->trimmed_body !!}.</p>
                 </div>
-                <div class="pt-2">
-                    @if(! Str::length($post->trimmed_body < 300 ))
-                    <p><strong><em>Click for full post</em></strong></p>
+                <div class="pt-2 font-semibold text-xl">
+                    @if( Str::length($post->trimmed_body) > 300 )
+                    <p><strong>Click for full post</strong> {{ $post->wordcount }}</p> 
                     @endif
                 </div>
 

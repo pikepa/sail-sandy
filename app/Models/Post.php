@@ -68,6 +68,16 @@ class Post extends Model implements HasMedia
         return Str::words(strip_tags($this->body), 120);
     }
 
+    public function getWordcountAttribute($value)
+    {
+        $n= (str_word_count($this->body)/200);
+        $whole = floor($n);
+        $fraction = $n - $whole;
+        if(($whole + (round($fraction * 60) > 30 ? 1 : 0)) > 1)
+            return  " : " . ($whole + (round($fraction * 60) > 30 ? 1 : 0))." - min read." ;
+        else return;
+    }
+
     public function setSlugAttribute($value)
     {
         $this->attributes['slug'] = Str::slug($value);
