@@ -65,6 +65,11 @@ class Post extends Model implements HasMedia
         return $query->where('published_at', '!=', null);
     }
 
+    public function getTrimmedBodyAttribute($value)
+    {
+        return Str::words(strip_tags($this->body), 120);
+    }
+
     public function setSlugAttribute($value)
     {
         $this->attributes['slug'] = Str::slug($value);
