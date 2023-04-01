@@ -19,7 +19,9 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', WelcomeController::class)->name('welcome');
 Route::get('home', HomeController::class)->name('home');
+
 Route::resource('subscribers', ManageSubscriberController::class);
+
 Route::post('verifyOTP/{id}/{otp}', VerifySubscriber::class);
 Route::get('posts/{slug}', ShowPost::class)->name('showpost');
 Route::get('category/posts/{cat_slug}', ShowCategoryPosts::class)->name('categoryposts');
