@@ -34,9 +34,9 @@
                             @foreach($posts as $post)
                             <a href="../../posts/{{$post->slug}}">
                                 <div
-                                    class="bg-cyan-100 flex flex-col sm:flex-row border-2 border-gray-300 shadow-md rounded-md mb-2 p-2">
+                                    class="bg-cyan-100  flex flex-col sm:flex-row border-2 border-gray-300 shadow-md rounded-md mb-2 p-2">
                                     <div class="">
-                                        <img class=" w-full h-72 sm:w-64 object-center object-cover rounded-md "
+                                        <img class=" w-full h-64  sm:w-64 object-center object-cover rounded-md "
                                             src='{{$post->cover_image}}' alt="placeimg">
                                     </div>
                                     <div class="w-4/5 ml-4 flex flex-col justify-between overflow-hidden">
