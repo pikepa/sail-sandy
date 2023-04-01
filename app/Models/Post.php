@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Support\Str;
-use Laravel\Scout\Searchable;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -19,7 +18,6 @@ class Post extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
-    // use Searchable;
 
     protected $table = 'posts';
 
