@@ -48,7 +48,8 @@ class Subscriber extends Model
         $this->cacheTheOTP();
 
         Mail::to($this->email)
-  //  ->send(new SubscribedEmail($this->cacheTheOTP(),$this->id))
-    ->queue(new SubscribedEmail($this->cacheTheOTP(), $this->id));
+            ->queue(new SubscribedEmail($this->cacheTheOTP(), $this->id));
+
+    return;
     }
 }

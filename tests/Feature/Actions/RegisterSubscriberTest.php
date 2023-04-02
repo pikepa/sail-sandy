@@ -39,8 +39,10 @@ test('an email is required for a subscriber', function () {
         ->assertInvalid(['email' => 'The email field is required.']);
 });
 
-test('a name is required for a subscriber', function () {
-    post('/subscribers', ['name' => ''])
+test('a name must be less than 255chars', function () {
+    post('/subscribers', ['name' => str_repeat('*', 256)])
 
-        ->assertInvalid(['name' => 'The name field is required.']);
+        ->assertInvalid(['name' => 'The name must not be greater than 255 characters.']);
 });
+
+

@@ -11,7 +11,7 @@ class RegisterSubscriber
     {
         $data = Validator::validate($data, [
             'email' => 'email|required|unique:subscribers',
-            'name' => 'required|string|max:255',
+            'name' => 'required|max:255',
         ]);
 
         $subscriber = Subscriber::create([
