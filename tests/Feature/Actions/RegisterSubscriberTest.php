@@ -1,18 +1,20 @@
 <?php
 
+use App\Actions\Subscriber\RegisterSubscriber;
 use App\Models\Subscriber;
 use function Pest\Laravel\post;
-use App\Actions\Subscriber\RegisterSubscriber;
 
 test('anyone can subscribe to the Newsletter', function () {
-    $action = app( RegisterSubscriber::class);
+    $action = app(RegisterSubscriber::class);
 
     $subscriber = $action([
-        'email' =>fake()->email,
-        'name' => 'Peter Piper'
+        'email' => 'foo@foobar.com',
+        'name' => 'Peter Piper',
     ]);
 
-    expect(Subscriber::query()->exists())->toBeTrue();
+    expect($subscriber->refresh())
+            ->email->toBe('foo@foobar.com')
+            ->name->toBe('Peter Piper');
 });
 
 test('an new email must be unique on the subscribers table', function () {
@@ -44,5 +46,3 @@ test('a name must be less than 255chars', function () {
 
         ->assertInvalid(['name' => 'The name must not be greater than 255 characters.']);
 });
-
-

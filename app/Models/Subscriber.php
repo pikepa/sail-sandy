@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
 use App\Mail\SubscribedEmail;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class Subscriber extends Model
 {
@@ -50,6 +49,5 @@ class Subscriber extends Model
         Mail::to($this->email)
             ->queue(new SubscribedEmail($this->cacheTheOTP(), $this->id));
 
-    return;
     }
 }

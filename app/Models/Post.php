@@ -3,15 +3,15 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Post extends Model implements HasMedia
@@ -70,12 +70,14 @@ class Post extends Model implements HasMedia
 
     public function getWordcountAttribute($value)
     {
-        $n= (str_word_count($this->body)/200);
+        $n = (str_word_count($this->body) / 200);
         $whole = floor($n);
         $fraction = $n - $whole;
-        if(($whole + (round($fraction * 60) > 30 ? 1 : 0)) > 1)
-            return  " : " . ($whole + (round($fraction * 60) > 30 ? 1 : 0))." - min read." ;
-        else return;
+        if (($whole + (round($fraction * 60) > 30 ? 1 : 0)) > 1) {
+            return  ' : '.($whole + (round($fraction * 60) > 30 ? 1 : 0)).' - min read.';
+        } else {
+            return;
+        }
     }
 
     public function setSlugAttribute($value)

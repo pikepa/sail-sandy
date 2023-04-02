@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Subscriber\RegisterSubscriber;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
-use App\Actions\Subscriber\RegisterSubscriber;
 
 class ManageSubscriberController extends Controller
 {
@@ -21,12 +21,11 @@ class ManageSubscriberController extends Controller
     /**
      * Store a newly created subscriber in storage.
      */
-
-    public function store(Request $request , RegisterSubscriber $registerSubscriber)
+    public function store(Request $request, RegisterSubscriber $registerSubscriber)
     {
         $subscriber = $registerSubscriber($request->all());
 
-      //  $subscriber->sendOTP;
+        //  $subscriber->sendOTP;
 
         return redirect('subscribers/thankyou');
     }

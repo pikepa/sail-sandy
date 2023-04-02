@@ -2,14 +2,15 @@
 
 namespace App\Http\Livewire\Subscriber;
 
-use Livewire\Component;
 use App\Models\Subscriber;
+use Livewire\Component;
 
 class ManageSubscribers extends Component
 {
     public $subscribers;
 
     public $search;
+
     public $showTable = true;
 
     public $showEditForm = false;

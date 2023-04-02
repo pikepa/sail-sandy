@@ -8,8 +8,8 @@ use Livewire\Component;
 class DisplayLinks extends Component
 {
     public $links = [];
-    public $position;
 
+    public $position;
 
     public function mount($position = 'RIGHT')
     {

@@ -8,7 +8,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class PinImages extends Component
 {
     public $image_id;
-    Public $pinned = true;
+
+    public $pinned = true;
 
     public function mount($image)
     {
@@ -34,19 +35,18 @@ class PinImages extends Component
     }
 
     public function setPinned()
-    { 
+    {
         $this->pinned = true;
         $image = Media::findorfail($this->image_id);
         $image->setCustomProperty('pinned', true);
         $image->update();
-
     }
 
     public function setUnpinned()
-    { 
-        $this->pinned = false;  
+    {
+        $this->pinned = false;
         $image = Media::findorfail($this->image_id);
         $image->setCustomProperty('pinned', false);
-        $image->update();  
+        $image->update();
     }
 }

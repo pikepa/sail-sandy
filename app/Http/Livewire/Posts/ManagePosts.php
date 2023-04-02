@@ -3,16 +3,14 @@
 namespace App\Http\Livewire\Posts;
 
 use App\Models\Post;
-use Livewire\Component;
 use Illuminate\Support\Str;
-use Livewire\WithPagination;
+use Livewire\Component;
 use Livewire\WithFileUploads;
-
+use Livewire\WithPagination;
 
 class ManagePosts extends Component
 {
     use WithPagination;
-
     use WithFileUploads;
 
     public $search;
@@ -75,25 +73,24 @@ class ManagePosts extends Component
         'cover_image' => 'nullable|url',
     ];
 
-        // listen from event from CategorySelect
+    // listen from event from CategorySelect
 
-        protected $listeners = [
-            'category_selected',
-            'channel_selected',
-            'make_featured',
-        ];
+    protected $listeners = [
+        'category_selected',
+        'channel_selected',
+        'make_featured',
+    ];
 
     public function mount()
     {
         $this->author_id = auth()->user()->id;
-     }
+    }
 
     public function render()
-    {   
+    {
         $this->posts = Post::search('title', $this->search)->with('author')->orderBy('created_at', 'desc')->get();
-            
-            return view('livewire.posts.manage-posts');
-    
+
+        return view('livewire.posts.manage-posts');
     }
 
     public function updatedTitle($value)
@@ -112,7 +109,6 @@ class ManagePosts extends Component
         $this->showEditForm = false;
         $this->showAddForm = true;
     }
-
 
     public function showTable()
     {
@@ -144,7 +140,7 @@ class ManagePosts extends Component
 
         $this->resetExcept(['author_id']);
 
-     //  return redirect()->to('/posts/edit'.$post->slug);
+        //  return redirect()->to('/posts/edit'.$post->slug);
 
         session()->flash('message', 'Post Successfully added.');
         session()->flash('alertType', 'success');

@@ -1,13 +1,13 @@
 <?php
 
+use App\Http\Livewire\Posts\EditPost;
+use App\Http\Livewire\Posts\ManagePosts;
+use App\Http\Livewire\Posts\ShowPost;
+use App\Models\Category;
+use App\Models\Channel;
 use App\Models\Post;
 use App\Models\User;
 use Livewire\Livewire;
-use App\Models\Channel;
-use App\Models\Category;
-use App\Http\Livewire\Posts\EditPost;
-use App\Http\Livewire\Posts\ShowPost;
-use App\Http\Livewire\Posts\ManagePosts;
 
 beforeEach(function () {
     $this->category = Category::factory()->create();
@@ -103,7 +103,7 @@ test('An authorised User can mark a post as being in the vault', function () {
     $this->signIn();
     $post = Post::factory()->create(['is_in_vault' => false]);
 
-    Livewire::test(EditPost::class,['origin'=>'P','slug'=>$post->slug])
+    Livewire::test(EditPost::class, ['origin' => 'P', 'slug' => $post->slug])
         ->set('is_in_vault', true)
         ->set('meta_description', 'this is a new meta_description')
         ->call('update', $post->id);

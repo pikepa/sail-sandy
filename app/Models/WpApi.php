@@ -11,10 +11,10 @@ class WpApi
     public function importPosts($page = '1')
     {
         for ($page = 1; $page <= 9; $page++) {
-            $posts = collect($this->getJson($this->url . 'posts/?_embed&filter[orderby]=modified&per_page=100&page=' . $page));
+            $posts = collect($this->getJson($this->url.'posts/?_embed&filter[orderby]=modified&per_page=100&page='.$page));
             foreach ($posts as $post) {
                 $this->syncPost($post);
-                echo nl2br($post->id . ',');
+                echo nl2br($post->id.',');
             }
         }
     }

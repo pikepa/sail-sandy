@@ -43,20 +43,20 @@ test('an authorised user can create a channel', function () {
     expect(Channel::latest()->first()->slug)->toBe('my-channel');
 });
 
-    test('an authorised user can update a channel', function () {
-        $this->signIn($this->user);
-        $channel = Channel::factory()->create();
+test('an authorised user can update a channel', function () {
+    $this->signIn($this->user);
+    $channel = Channel::factory()->create();
 
-        Livewire::test(ManageChannels::class)
-        ->call('edit', $channel->id)
-        ->set('name', 'My Channel')
-        ->set('status', 1)
-        ->call('update', $channel->id)
-        ->assertSuccessful()
-        ->assertSee('Channel Successfully updated.');
+    Livewire::test(ManageChannels::class)
+    ->call('edit', $channel->id)
+    ->set('name', 'My Channel')
+    ->set('status', 1)
+    ->call('update', $channel->id)
+    ->assertSuccessful()
+    ->assertSee('Channel Successfully updated.');
 
-        expect(Channel::latest()->first()->name)->toBe('My Channel');
-    });
+    expect(Channel::latest()->first()->name)->toBe('My Channel');
+});
 
 test('an authorised user can delete a channel', function () {
     $this->signIn($this->user);
@@ -69,5 +69,3 @@ test('an authorised user can delete a channel', function () {
 
     $this->assertDatabaseCount('channels', 0);
 });
-
-

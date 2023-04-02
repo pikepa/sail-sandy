@@ -1,11 +1,12 @@
 <?php
+
+use App\Http\Livewire\Subscriber\ManageSubscribers;
+use App\Models\Category;
+use App\Models\Channel;
 use App\Models\Post;
+use App\Models\Subscriber;
 use App\Models\User;
 use Livewire\Livewire;
-use App\Models\Channel;
-use App\Models\Category;
-use App\Models\Subscriber;
-use App\Http\Livewire\Subscriber\ManageSubscribers;
 
 test('a newsletter subscribe button appears on the welcome screen', function () {
     User::factory()->create();
@@ -37,8 +38,8 @@ test('the create subscriber page contains the livewire menu components', functio
 test('an authorised user can see a list of subscribers', function () {
     $this->signin();
 
-   $subsc1 = Subscriber::factory()->create();
-   $subsc2 = Subscriber::factory()->create();
+    $subsc1 = Subscriber::factory()->create();
+    $subsc2 = Subscriber::factory()->create();
 
     Livewire::test(ManageSubscribers::class)
         ->set('showTable', true)
@@ -48,5 +49,3 @@ test('an authorised user can see a list of subscribers', function () {
         ->assertSee($subsc2->name)
         ->assertSee($subsc2->email);
 });
-
-

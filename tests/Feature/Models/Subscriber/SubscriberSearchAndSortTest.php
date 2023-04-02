@@ -1,9 +1,8 @@
 <?php
 
-use Livewire\Livewire;
-use App\Models\Subscriber;
 use App\Http\Livewire\Subscriber\ManageSubscribers;
-
+use App\Models\Subscriber;
+use Livewire\Livewire;
 
 test('An authorised User can search for a subscriber in the dashboard', function () {
     $this->signIn();
@@ -17,7 +16,6 @@ test('An authorised User can search for a subscriber in the dashboard', function
 });
 
 test('An authorised User sees no Subscriber found when too many chars in the search', function () {
-    
     $this->signIn();
     $subsc1 = Subscriber::factory()->create();
     $subsc = Subscriber::factory()->create(['name' => 'my name']);
