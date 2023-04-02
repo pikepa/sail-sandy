@@ -7,25 +7,19 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterSubscriber
 {
-    public function execute(array $data)
+    public function __invoke(array $data): Subscriber
     {
-        $validator = Validator::make($data, [
+        $data = Validator::validate($data, [
             'email' => 'email|required|unique:subscribers',
-            'name' => 'required',
+            'name' => 'required|string|max:255',
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
         $subscriber = Subscriber::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            ...$data,
         ]);
 
         $subscriber->sendOTP();
 
-        return redirect()->back();
+        return $subscriber;
     }
 }

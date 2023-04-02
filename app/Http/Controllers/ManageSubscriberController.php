@@ -24,7 +24,9 @@ class ManageSubscriberController extends Controller
 
     public function store(Request $request , RegisterSubscriber $registerSubscriber)
     {
-        $subscriber = $registerSubscriber->execute($request->all());
+        $subscriber = $registerSubscriber($request->all());
+
+        $subscriber->sendOTP;
 
         return redirect('subscribers/thankyou');
     }

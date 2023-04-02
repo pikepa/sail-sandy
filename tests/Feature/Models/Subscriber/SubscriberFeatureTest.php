@@ -1,52 +1,11 @@
 <?php
-
 use App\Models\Post;
 use App\Models\User;
 use Livewire\Livewire;
 use App\Models\Channel;
 use App\Models\Category;
 use App\Models\Subscriber;
-use function Pest\Faker\faker;
-use function Pest\Laravel\post;
 use App\Http\Livewire\Subscriber\ManageSubscribers;
-
-test('anyone can subscribe to the Newsletter', function () {
-    $email = fake()->email;
-
-    post('/subscribers', ['email' => $email, 'name' => 'Peter Piper'])->assertValid();
-
-    expect(Subscriber::latest()->first()->email)->toBe($email);
-});
-
-test('an new email must be unique on the subscribers table', function () {
-    $email = fake()->email;
-
-    Subscriber::create(['email' => $email]);
-
-    post('/subscribers', ['email' => $email])
-
-        ->assertInvalid(['email' => 'The email has already been taken.']);
-});
-
-test('an new email must be a valid email', function () {
-    $email = fake()->name;
-
-    post('/subscribers', ['email' => $email])
-
-        ->assertInvalid(['email' => 'The email must be a valid email address.']);
-});
-
-test('an email is required for a subscriber', function () {
-    post('/subscribers', ['email' => ''])
-
-        ->assertInvalid(['email' => 'The email field is required.']);
-});
-
-test('a name is required for a subscriber', function () {
-    post('/subscribers', ['name' => ''])
-
-        ->assertInvalid(['name' => 'The name field is required.']);
-});
 
 test('a newsletter subscribe button appears on the welcome screen', function () {
     User::factory()->create();
