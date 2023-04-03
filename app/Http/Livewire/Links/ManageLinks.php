@@ -34,11 +34,12 @@ class ManageLinks extends Component
     protected $rules = [
         'title' => 'required|min:6|max:50',
         'url' => 'required|url',
-        'position' => "required|in:RIGHT,CENTER,LEFT",
+        'position' => 'required|in:RIGHT,CENTER,LEFT',
         'owner_id' => 'required|integer',
         'status' => 'required|boolean',
         'sort' => 'required|integer',
     ];
+
     /*
     Set the owner Id to the current User
     */
@@ -50,14 +51,14 @@ class ManageLinks extends Component
     public function render()
     {
         $this->links = Link::with('owner')->orderBy('position')->orderBy('sort', 'asc')->get();
+
         return view('livewire.links.manage-links');
     }
-    
+
     public function updatedPosition($value)
     {
         $this->position = strtoupper($value);
     }
-
 
     /*
       Switching Forms on Master Screen
@@ -101,7 +102,6 @@ class ManageLinks extends Component
         session()->flash('message', 'Link Successfully added.');
         session()->flash('alertType', 'success');
     }
-
 
     public function edit($id)
     {
@@ -158,10 +158,4 @@ class ManageLinks extends Component
         session()->flash('message', '');
         session()->flash('alertType', '');
     }
-
-
-
-
-
-
 }

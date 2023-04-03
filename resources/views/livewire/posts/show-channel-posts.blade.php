@@ -30,19 +30,9 @@
                         <div class="p-2 bg-cyan-100 border-b border-gray-200">
                         @if($posts->count() > 0 )
                             @foreach($posts as $post)
-                                <div class="bg-cyan-100 flex flex-col sm:flex-row border-2 border-gray-300 shadow-md rounded-md mb-2 p-2">
-                                    <div class="">
-                                        <img class=" w-full h-64 sm:w-64 object-center object-cover rounded-md " src='{{$post->cover_image}}'
-                                            alt="placeimg">
-                                    </div>
-                                    <div class="w-4/5 ml-4 max-h-36 overflow-hidden">
-                                        <a href="../../posts/{{$post->slug}}" ;
-                                            class="block text-lg leading-tight font-bold text-gray-900 hover:underline">{{$post->title}}</a>
-                                            @isset($post->published_at) <p class="text-xs font-bold text-gray-600">Published on {{$post->published_at->toFormattedDateString()}} by {{$post->author->name}}</p>@endisset
-                                            @empty($post->published_at) <p class="text-xs font-bold text-gray-600">Not Published - Draft by {{$post->author->name}}</p>@endempty
-                                        <p class="mt-2 text-gray-600">{!!$post->body!!}.</p>
-                                    </div>
-                                </div>  
+                            
+                            <x-listings.image-text-combo :post="$post"/> 
+ 
                             @endforeach
                         @else
                                 <div class="p-2">Sorry, there are currently no Articles within this Channel</div>

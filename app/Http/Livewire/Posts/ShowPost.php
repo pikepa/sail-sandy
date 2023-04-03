@@ -8,9 +8,10 @@ use Livewire\Component;
 
 class ShowPost extends Component
 {
-
     public $post;
+
     public $post_id;
+
     public $showEditForm = false;
 
     public function mount($slug)
@@ -33,6 +34,6 @@ class ShowPost extends Component
 
     public function editPost()
     {
-        // return redirect()->to('/dashboard/posts/'. $this->post->id );   
+        // return redirect()->to('/dashboard/posts/'. $this->post->id );
     }
 }

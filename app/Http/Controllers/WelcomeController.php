@@ -10,7 +10,6 @@ class WelcomeController extends Controller
 {
     public function __invoke(Request $request)
     {
-        
         $category = Category::where('slug', 'welcome')->first();
 
         $post = Post::with('author')->whereCategory_id($category->id)->first();

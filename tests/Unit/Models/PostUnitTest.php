@@ -1,12 +1,12 @@
 <?php
 
+use App\Http\Livewire\Posts\EditPost;
+use App\Http\Livewire\Posts\ManagePosts;
+use App\Models\Category;
+use App\Models\Channel;
 use App\Models\Post;
 use App\Models\User;
 use Livewire\Livewire;
-use App\Models\Channel;
-use App\Models\Category;
-use App\Http\Livewire\Posts\EditPost;
-use App\Http\Livewire\Posts\ManagePosts;
 
 beforeEach(function () {
     $this->user = User::factory()->create();
@@ -41,10 +41,10 @@ test('When a user hits the add button the create form is shown', function () {
       ->assertSee('Save');
 });
 
-  test('When a user hits the show table button the main table is shown', function () {
-      Livewire::test(ManagePosts::class)
-      ->call('showTable')
-      ->assertSee('Posts')
-      ->assertDontSee('Edit Post')
-      ->assertSee('Add Post');
-  });
+test('When a user hits the show table button the main table is shown', function () {
+    Livewire::test(ManagePosts::class)
+    ->call('showTable')
+    ->assertSee('Posts')
+    ->assertDontSee('Edit Post')
+    ->assertSee('Add Post');
+});

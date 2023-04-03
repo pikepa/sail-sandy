@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Link extends Model
 {
@@ -22,16 +22,14 @@ class Link extends Model
         'owner_id',
         'position',
         'sort',
-        'status'
+        'status',
     ];
 
     public function owner(): BelongsTo
     {
-
         return $this->belongsTo(
             related: User::class,
             foreignKey: 'owner_id',
         );
     }
-
 }

@@ -37,7 +37,7 @@ class Upload extends Component
 
         $this->photo = '';
 
-        return redirect()->route('edit.post', ['slug'=> $this->post->slug, 'origin' => 'P']);
+        return redirect()->route('edit.post', ['slug' => $this->post->slug, 'origin' => 'P']);
     }
 
     public function deleteImage($image_id, $post_id)
@@ -45,7 +45,7 @@ class Upload extends Component
         $post = Post::findOrFail($post_id);
         $post->deleteMedia($image_id);
 
-        return redirect()->route('edit.post', ['slug'=> $this->post->slug, 'origin' => 'P']);
+        return redirect()->route('edit.post', ['slug' => $this->post->slug, 'origin' => 'P']);
     }
 
     public function changeFeatured($image_url, $post_id)
@@ -54,7 +54,6 @@ class Upload extends Component
         $post->cover_image = $image_url;
         $post->update();
 
-        return redirect()->route('edit.post', ['slug'=> $this->post->slug, 'origin' => 'P']);
-
+        return redirect()->route('edit.post', ['slug' => $this->post->slug, 'origin' => 'P']);
     }
 }

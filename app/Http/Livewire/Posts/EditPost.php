@@ -3,8 +3,8 @@
 namespace App\Http\Livewire\Posts;
 
 use App\Models\Post;
-use Livewire\Component;
 use Illuminate\Support\Str;
+use Livewire\Component;
 
 class EditPost extends Component
 {
@@ -48,17 +48,20 @@ class EditPost extends Component
         $this->post = Post::where('slug', $slug)->first();
         $this->populate();
     }
+
     public function render()
     {
         return view('livewire.posts.edit-post');
     }
+
         protected $listeners = [
             'refreshComponent' => '$refresh',
             'category_selected',
             'channel_selected',
-            'photoAdded'=>'$refresh',
+            'photoAdded' => '$refresh',
             'editPost' => 'render',
         ];
+
     protected $rules =
     [
         'title' => 'required|min:10|max:250',
@@ -95,13 +98,10 @@ class EditPost extends Component
         $this->slug = Str::slug($value);
     }
 
-
     public function updatedNewImage()
     {
         $this->validate(['newImage' => 'image|max:5000']);
     }
-
- 
 
     public function category_selected($category_id)
     {
@@ -113,7 +113,6 @@ class EditPost extends Component
         $this->channel_id = $channel_id;
     }
 
-
     public function update($id)
     {
         $data = $this->validate();
@@ -121,18 +120,16 @@ class EditPost extends Component
         $post = Post::findOrFail($id);
 
         $post->update($data);
-        
-        if($this->origin === 'P'){
+
+        if ($this->origin === 'P') {
             return redirect()->to('/posts/'.$post->slug);
-        }else{
+        } else {
             return redirect()->to('/dashboard');
         }
-
     }
 
     public function cancel()
     {
         return redirect()->to('/posts/'.$this->post->slug);
     }
-
 }
