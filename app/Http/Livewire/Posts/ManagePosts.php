@@ -79,7 +79,13 @@ class ManagePosts extends Component
         'category_selected',
         'channel_selected',
         'make_featured',
+        'markdown-x:update' => 'updateBody',
     ];
+
+    public function updateBody($value)
+    {
+        $this->body = $value;
+    }
 
     public function mount()
     {

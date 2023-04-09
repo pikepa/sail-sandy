@@ -41,6 +41,7 @@
                             </div>
 
                             <div class="trix-content">
+                                <!-- {!! \Illuminate\Support\Str::markdown($post->meta_description) !!} -->
                                 {!!$post->body!!}
                             </div>
 

@@ -28,7 +28,7 @@ test('A guest can view a published post', function () {
     Livewire::test(ShowPost::class, ['slug' => $post->slug])
        ->assertStatus(200)
         ->assertSee($post->category->name)
-        ->assertSee('Bomborra')
+        ->assertSee(config('constants.title'))
         ->assertSee($post->title)
         ->assertSee($post->body);
 });

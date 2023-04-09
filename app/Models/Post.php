@@ -74,7 +74,7 @@ class Post extends Model implements HasMedia
         $whole = floor($n);
         $fraction = $n - $whole;
         if (($whole + (round($fraction * 60) > 30 ? 1 : 0)) > 1) {
-            return  ' : '.($whole + (round($fraction * 60) > 30 ? 1 : 0)).' - min read.';
+            return ' : '.($whole + (round($fraction * 60) > 30 ? 1 : 0)).' - min read.';
         } else {
             return;
         }

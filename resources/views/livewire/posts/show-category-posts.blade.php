@@ -13,7 +13,7 @@
                 </menus>
             </div>
             <div class=" ">
-                <div class="max-w-7xl mx-auto bg-cyan-100 ">
+                <div class="max-w-7xl mx-auto bg-cyan-50 ">
                     <div class=" pt-2 flex flex-row justify-between items-center">
                         <div class="">
                             <div class="ml-4  font-bold text-3xl">
@@ -29,7 +29,7 @@
                         {!!$category->description!!}
                     </div>
                     <div class=" overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class=" p-2 bg-cyan-100 border-b border-gray-200">
+                        <div class=" p-2 border-b border-gray-200">
                             @if($posts->count() > 0 )
                             @foreach($posts as $post)
                             

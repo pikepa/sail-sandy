@@ -10,8 +10,8 @@ use function Pest\Laravel\get;
 it('can load the home page', function () {
     get('/home')
         ->assertStatus(200)
-        ->assertSee('Bomborra Media Productions')
-        ->assertSee('THE TRUTH ALWAYS BREAKS');
+        ->assertSee(config('constants.title'))
+        ->assertSee(config('constants.subtitle'));
 });
 
 test('A guest can view a published post on the home page', function () {
