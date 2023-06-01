@@ -1,6 +1,6 @@
-<div class="bg-cyan-100 p-2">
+<div class="bg-pink-100 p-2">
     
-    <div class="grid sm:grid-cols-2 md:grid-cols-4 bg-cyan-100 gap-2">
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 bg-pink-100 gap-2">
         @foreach($posts as $post )
 
             <x-posts.card :post="$post" />

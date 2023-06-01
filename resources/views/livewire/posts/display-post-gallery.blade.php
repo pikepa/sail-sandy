@@ -2,7 +2,7 @@
 
 <div>
     @if($mediaItems->count()>1)
-    <div class="text-2xl font-bold p-2 pl-2 bg-cyan-50">
+    <div class="text-2xl text-white font-bold p-2 -ml-4 -mr-4 pl-2 bg-pink-600">
         Post Gallery
     </div>
 

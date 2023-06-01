@@ -1,4 +1,4 @@
-<div class="bg-cyan-100 rounded h-100 overflow-hidden shadow-lg">
+<div class="bg-pink-100 rounded-lg h-100 overflow-hidden border border-pink-400 shadow-lg">
     <a href="/posts/{{$post->slug}}">
         <div class="flex flex-col justify-between">
             <div class="">
