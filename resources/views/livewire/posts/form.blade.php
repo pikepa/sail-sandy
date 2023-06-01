@@ -20,8 +20,6 @@
                     type="text" />
             </x-input.group>
 
-
-
         </div>
         <div class=" space-y-6">
             <!-- Post Channel -->

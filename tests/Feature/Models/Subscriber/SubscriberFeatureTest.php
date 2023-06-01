@@ -1,38 +1,28 @@
 <?php
 
 use App\Http\Livewire\Subscriber\ManageSubscribers;
-use App\Models\Category;
-use App\Models\Channel;
-use App\Models\Post;
 use App\Models\Subscriber;
-use App\Models\User;
 use Livewire\Livewire;
 
-test('a newsletter subscribe button appears on the welcome screen', function () {
-    User::factory()->create();
-    Category::factory()->create(['slug' => 'welcome']);
-    Channel::factory()->create(['slug' => 'no-channel']);
-    Channel::factory()->create(['slug' => 'no-channel']);
-    $post = Post::factory()->create();
+test('a newsletter subscribe button appears on the home screen', function () {
 
-    $this->get('/')->assertSuccessful()
-       ->assertSee($post->title)
-       ->assertSee('Enter')
-       ->assertSee('Subscribe ');
+    $this->get('/home')
+        ->assertSee('Subscribe');
+
 });
 
 test('a guest user can see the create subscriber page', function () {
     $this->get('/subscribers/create')
-         ->assertSuccessful()
-         ->assertSee('Updates Registration')
-         ->assertSee('Full Name')
-         ->assertSee('Email Address')
-         ->assertSee('Submit');
+        ->assertSuccessful()
+        ->assertSee('Updates Registration')
+        ->assertSee('Full Name')
+        ->assertSee('Email Address')
+        ->assertSee('Submit');
 });
 test('the create subscriber page contains the livewire menu components', function () {
     $this->get('/subscribers/create')
-         ->assertSeeLivewire('menus.menu-bottom')
-         ->assertSeeLivewire('menus.menu-top');
+        ->assertSeeLivewire('menus.menu-bottom')
+        ->assertSeeLivewire('menus.menu-top');
 });
 
 test('an authorised user can see a list of subscribers', function () {

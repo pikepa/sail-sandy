@@ -17,7 +17,7 @@ beforeEach(function () {
 test('An authorised user sees the Manage Posts page', function () {
     $this->signIn();
     Livewire::test(ManagePosts::class)->assertSee('Posts')
-    ->assertSee('A list of all the posts in your account.');
+        ->assertSee('A list of all the posts in your account.');
 });
 
 test('A guest can view a published post', function () {
@@ -26,9 +26,10 @@ test('A guest can view a published post', function () {
     $post = Post::factory()->create();
 
     Livewire::test(ShowPost::class, ['slug' => $post->slug])
-       ->assertStatus(200)
+        ->assertStatus(200)
         ->assertSee($post->category->name)
-        ->assertSee('Bomborra')
+        ->assertSee(config('constants.title'))
+        ->assertSee(config('constants.subtitle'))
         ->assertSee($post->title)
         ->assertSee($post->body);
 });
@@ -70,8 +71,8 @@ test('An authorised user can add a post', function () {
         ->assertSuccessful();
 
     $this->assertDatabaseCount('posts', 1)
-    ->assertDatabaseHas('posts', ['title' => 'this is a post',
-        'is_in_vault' => false, ]);
+        ->assertDatabaseHas('posts', ['title' => 'this is a post',
+            'is_in_vault' => false, ]);
 });
 
 test('An authorised user can delete a post', function () {

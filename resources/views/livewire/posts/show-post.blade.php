@@ -43,6 +43,9 @@
                             <div class="trix-content">
                                 {!!$post->body!!}
                             </div>
+                            <div class="mt-6">
+                                {!! Illuminate\Support\Str::markdown($post->meta_description) !!}
+                            </div>
 
                         </div>
 

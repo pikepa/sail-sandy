@@ -1,17 +1,19 @@
 <?php
 
 return [
-    //Sample
+    'title' => "Sandy's Adventures",
+    'subtitle' => 'and Other things',
+
     'pagination' => ['items_per_page' => 1],
 
-    'publisher' => 'Luke Hunt',
-    'publisher_contact' => 'lukehunt@protonmail.com',
+    'publisher' => 'Sandy Pike',
+    'publisher_contact' => 'sandypike@thepikes.net',
 
-    'artworks' => 'Oso Kuma',
-    'artworks_contact' => 'osokuma@gmail.com',
+    'artworks' => '',
+    'artworks_contact' => '',
 
-    'design' => 'Bomborra Design',
-    'design_by' => 'Morgan Reinwald',
+    'design' => '',
+    'design_by' => '',
 
     'website' => 'IWCPP',
     'website_contact' => 'pikepeter@gmail.com',

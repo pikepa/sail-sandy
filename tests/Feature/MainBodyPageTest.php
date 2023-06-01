@@ -10,8 +10,8 @@ use function Pest\Laravel\get;
 it('can load the home page', function () {
     get('/home')
         ->assertStatus(200)
-        ->assertSee('Bomborra Media Productions')
-        ->assertSee('THE TRUTH ALWAYS BREAKS');
+        ->assertSee(config('constants.title'))
+        ->assertSee(config('constants.subtitle'));
 });
 
 test('A guest can view a published post on the home page', function () {
@@ -22,10 +22,10 @@ test('A guest can view a published post on the home page', function () {
     $post = Post::factory()->create(['published_at' => now(), 'channel_id' => 1]);
 
     $this->get('/home')
-    ->assertStatus(200)
-    ->assertSee($post->title)
-    ->assertSee('... more')
-    ->assertSee(substr($post->description. 0, 50));
+        ->assertStatus(200)
+        ->assertSee($post->title)
+        ->assertSee('... more')
+        ->assertSee(substr($post->description. 0, 50));
 });
 
 test('A guest can not view an unpublished post on the home page', function () {
@@ -36,8 +36,8 @@ test('A guest can not view an unpublished post on the home page', function () {
     $post = Post::factory()->create(['published_at' => null]);
 
     $response = $this->get('/home')
-    ->assertStatus(200)
-    ->assertDontSee($post->title);
+        ->assertStatus(200)
+        ->assertDontSee($post->title);
 });
 
 test(' A guest can see an Active channel on the home page', function () {
@@ -45,7 +45,7 @@ test(' A guest can see an Active channel on the home page', function () {
     $channel = Channel::factory()->create(['status' => true]);
 
     $this->get('/home')
-    ->assertSee($channel->name);
+        ->assertSee($channel->name);
 });
 test(' A guest can see an Active link on the home page', function () {
     //Setup
@@ -54,5 +54,5 @@ test(' A guest can see an Active link on the home page', function () {
 
     //Act and Assert
     $this->get('/home')
-    ->assertSee($link->title);
+        ->assertSee($link->title);
 });
