@@ -5,10 +5,8 @@ use App\Models\Subscriber;
 use Livewire\Livewire;
 
 test('a newsletter subscribe button appears on the home screen', function () {
-
     $this->get('/home')
         ->assertSee('Subscribe');
-
 });
 
 test('a guest user can see the create subscriber page', function () {
